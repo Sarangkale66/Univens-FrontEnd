@@ -1,7 +1,7 @@
 
 const FAQHeader = () => (
   <div className="text-center px-4 mb-10">
-    <p className="text-blue-400 text-sm uppercase">FAQ's</p>
+    <p className="text-gray-400 text-sm  font-semibold  uppercase">FAQ's</p>
     <h1 className="text-3xl sm:text-4xl font-bold mt-2 mb-4">Got Questions? We’ve Got Answers.</h1>
     <p className="text-gray-400 text-sm sm:text-base">Answers to common questions about our services, processes, and what sets us apart.</p>
   </div>
@@ -30,7 +30,7 @@ const FAQFooter = () => (
 );
 
 const FAQ = () => (
-  <div id="faq" className="bg-gray-900 text-white min-h-screen py-8">
+  <div id="faq" className=" text-white min-h-screen py-8">
     <div className="container mx-auto">
       <FAQHeader />
       <FAQSection />

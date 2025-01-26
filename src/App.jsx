@@ -71,7 +71,7 @@ function App() {
       <div id='home'></div>
       <div className="loader-bar fixed top-0 left-0 w-0 h-1 bg-teal-500 z-50 transition-all duration-300 ease-in-out"></div>
 
-      <div data-scroll-container className="bg-gradient-to-b from-[#0a0a1a] to-black text-white font-sans min-h-screen flex flex-col">
+      <div data-scroll-container className="tobg text-white font-sans min-h-screen flex flex-col">
         <Header />
         <div className="h-screen">
           <HeroSection />

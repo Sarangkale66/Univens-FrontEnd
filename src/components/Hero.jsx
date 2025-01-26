@@ -2,7 +2,7 @@ const Hero = () => {
   return (
     <div
       id="features"
-      className="w-full max-w-[1260px] min-h-screen mx-auto flex flex-col items-center gap-12 px-6 py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white"
+      className="w-full max-w-[1260px] min-h-screen mx-auto flex flex-col items-center gap-12 px-6 py-20  text-white"
     >
       {/* Hero Heading Section */}
       <div className="text-center">

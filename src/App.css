@@ -33,3 +33,22 @@
 .scroll-container {
   height: 100vh; 
 }
+
+.tobg{
+      background: linear-gradient(45deg, #04011e, #1C1A32, #5f2053, #18188c, #2de4d8, #2424ab);
+      background-size: 300% 300%;
+      animation: moveGradient 4s infinite;
+      filter: url(#liquid-effect);
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
