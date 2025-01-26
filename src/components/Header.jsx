@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-import React from 'react';
-import {Link} from 'react-scroll';
-=======
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
 import {React, useEffect, useRef, forwardRef } from 'react';
 import { Link } from 'react-scroll';
->>>>>>> 896e7e2d26498efac79667ba8f8ae999bed68a4c
 
 
 const Header = forwardRef((props, ref) => {

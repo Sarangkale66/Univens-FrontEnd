@@ -2,11 +2,7 @@ const Comparison = () => {
   return (
     <div
       id="comparison"
-<<<<<<< HEAD
       className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 md:px-8 py-16 text-white"
-=======
-      className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 md:px-8 py-16 bg-gradient-to-r text-white"
->>>>>>> 896e7e2d26498efac79667ba8f8ae999bed68a4c
     >
       {/* Section Header */}
       <div className="text-center">
