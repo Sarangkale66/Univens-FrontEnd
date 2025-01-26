@@ -2,7 +2,11 @@ const Hero = () => {
   return (
     <div
       id="features"
+<<<<<<< HEAD
       className="w-full max-w-[1260px] min-h-screen mx-auto flex flex-col items-center gap-12 px-6 py-20  text-white"
+=======
+      className="w-full max-w-[1260px] min-h-screen mx-auto flex flex-col items-center gap-12 px-6 py-20 bg-gradient-to-r text-white"
+>>>>>>> 896e7e2d26498efac79667ba8f8ae999bed68a4c
     >
       {/* Hero Heading Section */}
       <div className="text-center">
