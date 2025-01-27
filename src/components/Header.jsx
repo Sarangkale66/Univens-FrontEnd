@@ -8,6 +8,7 @@ import { Link } from 'react-scroll';
 const Header = forwardRef((props, ref) => {
   const headerRef = useRef();
   const buttonRef = useRef();
+  const animationRef = useRef(null);
   const navItemsRef =useRef([]);
 
   const updateButtonColor = (percentage) => {
@@ -37,18 +38,24 @@ const Header = forwardRef((props, ref) => {
   })
 
   return (
-    <div className="fixed w-screen z-20">
+    <div className="fixed w-screen z-20 px-10 md:px-0">
     <header className="flex flex-wrap justify-between items-center py-5 px-4 md:px-52">
       <h1 ref={headerRef} className="text-lg md:text-xl">Univens</h1>
-      <nav ref={ref} className="mt-4 md:mt-0">
-        <ul className="flex flex-wrap gap-2 space-x-2 md:space-x-6 border-slate-500 rounded-full py-3 px-2 border overflow-hidden">
+      <nav ref={ref} className="hidden md:flex md:justify-center md:items-center">
+        <ul className="flex flex-wrap gap-1">
           {['home', 'testimonials', 'features', 'process', 'comparison', 'faq'].map((item, index) => (
-            <li key={item} ref={(el) => (navItemsRef.current[index] = el)}>
-              <Link     
+            <li key={item} ref={(el) => (navItemsRef.current[index] = el)} className="flex justify-center items-center">
+              <Link
                 to={item}
                 smooth={true}
                 duration={500}
-                className="text-white hover:text-blue-500 bg-blue-500 hover:bg-slate-50 rounded-full py-2 px-3 cursor-pointer"
+                className="flex justify-center items-center px-5 py-3 text-white font-bold text-center cursor-pointer hover:scale-75"
+                style={{
+                  transform: "skew(-20deg)",
+                  borderRadius: "1px",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
+                  border: "1px solid #3d3d3d",
+                }}
               >
                 {item.charAt(0).toUpperCase() + item.slice(1)}
               </Link>
@@ -58,7 +65,7 @@ const Header = forwardRef((props, ref) => {
       </nav>
       <button
         ref={buttonRef}
-        className="mt-4 md:mt-0 bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600"
+        className="bg-[#295AAD] text-white py-2 px-4 rounded-sm"
       >
         Contact Us
       </button>

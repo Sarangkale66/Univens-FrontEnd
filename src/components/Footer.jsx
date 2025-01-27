@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 const App = () => {
   const [showScroll, setShowScroll] = useState(false);
 
-  // Scroll-to-top logic
   const handleScroll = () => {
     if (window.scrollY > 300) {
       setShowScroll(true);
@@ -24,7 +23,6 @@ const App = () => {
 
   return (
     <div className="flex flex-col min-h-screen text-white font-sans">
-      {/* Section Above Footer */}
       <section className="text-center py-16 px-4">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400">
           Ready to Solve Your Business Challenges?
@@ -58,26 +56,26 @@ const App = () => {
         </div>
         <a
           href="#"
-          className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-500 transition-transform transform hover:scale-105"
+          className="px-6 py-3 bg-[#295AAD] block w-fit mx-auto text-white font-semibold rounded-full hover:bg-blue-600 transition-transform transform hover:scale-105"
         >
           Schedule Your Free Consultation
         </a>
       </section>
 
       {/* Footer */}
-      <footer className="w-full py-6 px-4 bg-gradient-to-t from-gray-900 via-gray-800 to-gray-700 relative">
+      <footer className="w-full py-6 px-4 relative">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Left Section */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Univens</h3>
-            <p className="text-sm mb-6">
+            <h3 className="text-xl font-bold mb-4 ml-5">Univens</h3>
+            <p className="text-sm mb-6 ml-5">
               Univens is here to help you grow your business with fast & reliable
               solutions. Let us take care of the details, so you can focus on what
               matters.
             </p>
             <a
               href="#"
-              className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition-transform transform hover:scale-105"
+              className="px-4 py-2 ml-5 bg-[#295AAD] block w-fit text-white rounded-full hover:bg-blue-600 transition-transform transform hover:scale-105"
             >
               Contact Us →
             </a>
@@ -141,7 +139,7 @@ const App = () => {
           </div>
 
           {/* Right Section */}
-          <div>
+          <div className="ml-5">
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
@@ -192,7 +190,7 @@ const App = () => {
         {/* Back to Top Button */}
         {showScroll && (
           <motion.button
-            className="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-500"
+            className="fixed bottom-8 right-8 bg-[#295AAD] text-white p-3 rounded-full shadow-lg hover:bg-blue-500"
             onClick={scrollToTop}
             whileHover={{ scale: 1.2 }}
           >

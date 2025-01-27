@@ -10,11 +10,11 @@ const FAQHeader = () => {
   useEffect(() => {
     gsap.fromTo(
       headerRef.current,
-      { opacity: 0, y: -50 },
+      { opacity: 0, y: -40 },
       {
         opacity: 1,
         y: 0,
-        duration: 1,
+        duration: 1.2,
         ease: "power3.out",
         scrollTrigger: {
           trigger: headerRef.current,
@@ -25,16 +25,13 @@ const FAQHeader = () => {
   }, []);
 
   return (
-    <div ref={headerRef} className="text-center px-4 mb-12">
-      <p className="text-blue-400 text-sm uppercase tracking-wide">
-        Frequently Asked Questions
-      </p>
-      <h1 className="text-3xl sm:text-4xl font-bold mt-2 mb-4">
+    <div ref={headerRef} className="text-center px-6 mb-12">
+      <p className="text-blue-400 text-sm uppercase tracking-wide">FAQ</p>
+      <h1 className="text-4xl sm:text-5xl font-extrabold mt-2 mb-6 text-white">
         Got Questions? We’ve Got Answers.
       </h1>
-      <p className="text-gray-400 text-sm sm:text-base max-w-3xl mx-auto">
-        Discover everything you need to know about our services, processes, and
-        what makes us stand out.
+      <p className="text-gray-400 text-base max-w-4xl mx-auto">
+        Find answers to the most common questions about our services, process, and how we can help you.
       </p>
     </div>
   );
@@ -50,12 +47,12 @@ const FAQItem = ({ question, answer, isOpen, toggle, index, searchTerm }) => {
       {
         opacity: 1,
         y: 0,
-        duration: 0.5,
+        duration: 0.6,
         ease: "power3.out",
-        delay: index * 0.1,
+        delay: index * 0.2,
         scrollTrigger: {
           trigger: faqRef.current,
-          start: "top 90%",
+          start: "top 85%",
         },
       }
     );
@@ -86,7 +83,7 @@ const FAQItem = ({ question, answer, isOpen, toggle, index, searchTerm }) => {
     const parts = text.split(new RegExp(`(${term})`, "gi"));
     return parts.map((part, i) =>
       part.toLowerCase() === term.toLowerCase() ? (
-        <span key={i} className="bg-yellow-300 text-gray-800">
+        <span key={i} className="bg-yellow-300 text-gray-800 font-semibold">
           {part}
         </span>
       ) : (
@@ -96,19 +93,13 @@ const FAQItem = ({ question, answer, isOpen, toggle, index, searchTerm }) => {
   };
 
   return (
-    <div
-      ref={faqRef}
-      className="bg-gray-800 rounded-lg mb-4 overflow-hidden shadow-lg"
-    >
-      <div
-        onClick={handleToggle}
-        className="flex justify-between items-center p-4 cursor-pointer"
-      >
-        <p className="text-gray-300 text-sm sm:text-base font-semibold">
+    <div ref={faqRef} className="rounded-lg mb-4 overflow-hidden shadow-lg transition-all duration-300">
+      <div onClick={handleToggle} className="flex justify-between items-center p-5 cursor-pointer bg-gray-950 hover:bg-gray-900 transition-colors duration-200">
+        <p className="text-gray-300 text-lg font-medium">
           {highlightSearchTerm(question, searchTerm)}
         </p>
         <div
-          className="text-blue-400 font-bold text-lg"
+          className="text-blue-500 font-bold text-xl"
           style={{
             transform: `rotate(${isOpen ? "45deg" : "0deg"})`,
             transition: "transform 0.3s ease",
@@ -118,7 +109,7 @@ const FAQItem = ({ question, answer, isOpen, toggle, index, searchTerm }) => {
         </div>
       </div>
       <div
-        className="faq-content bg-gray-700 px-4 py-2 text-gray-400 text-sm sm:text-base"
+        className="faq-content bg-gray-700 px-6 py-4 text-gray-400 text-sm sm:text-base"
         style={{ height: 0, overflow: "hidden", opacity: 0 }}
       >
         {answer}
@@ -172,13 +163,13 @@ const FAQSection = () => {
   };
 
   return (
-    <div ref={faqSectionRef} className="px-4 mb-10">
+    <div ref={faqSectionRef} className="px-6 mb-10">
       {/* Search Bar */}
-      <div className="mb-6">
+      <div className="mb-8 max-w-lg mx-auto">
         <input
           type="text"
           placeholder="Search FAQs..."
-          className="w-full bg-gray-700 text-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full bg-gray-900 text-gray-300 rounded-lg px-6 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -226,11 +217,11 @@ const FAQFooter = () => {
   }, []);
 
   return (
-    <div ref={footerRef} className="text-center px-4">
-      <p className="text-gray-400 text-sm sm:text-base mb-4">
+    <div ref={footerRef} className="text-center px-6">
+      <p className="text-gray-400 text-base mb-6">
         Still have a question?
       </p>
-      <button className="bg-blue-500 text-white px-6 py-2 rounded-full shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-105">
+      <button className="bg-[#295AAD] text-white px-6 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-105 duration-300">
         Ask a Question
       </button>
     </div>
@@ -238,7 +229,7 @@ const FAQFooter = () => {
 };
 
 const FAQ = () => (
-  <div id="faq" className="text-white min-h-screen py-12 bg-gray-900">
+  <div id="faq" className="text-white min-h-screen py-16 bg-[#010102]">
     <div className="container mx-auto">
       <FAQHeader />
       <FAQSection />

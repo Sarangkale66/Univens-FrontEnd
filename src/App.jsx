@@ -20,7 +20,7 @@ function App() {
   const handleScroll = (e) => {
     const { deltaY } = e;
     if (deltaY > 0) {
-      gsap.to(ScrollRef.current, { y: -70, duration: 0.5 });
+      gsap.to(ScrollRef.current, { y: -100, duration: 0.5 });
     } else {
       gsap.to(ScrollRef.current, { y: 0, duration: 0.5 });
     }
@@ -54,15 +54,15 @@ function App() {
   return (
     <div className="scroll-container">
       <div id="home"></div>
-      <div data-scroll-container className="bg-gradient-to-b from-[#0a0a1a] to-black text-white font-sans min-h-screen flex flex-col">
-        <div className='BG h-screen w-screen overflow-hidden relative'>
-        <div class="glow-quarter"></div>
-        <div class="glow-inner"></div>
-        <Header ref={ScrollRef} />
-        <HeroSection />
+      <div data-scroll-container className="bg-[#010102] text-white font-sans min-h-screen flex flex-col">
+      <div className='BG w-full overflow-hidden relative'>
+          <div class="glow-quarter"></div>
+          <div class="glow-inner"></div>
+          <Header ref={ScrollRef} />
+          <HeroSection />
+      </div>
         <PartnersSection />
-        <TestimonialsSection />
-        </div>
+        {/* <TestimonialsSection /> */}
         <Hero />
         <Cards />
         <Comparison />
