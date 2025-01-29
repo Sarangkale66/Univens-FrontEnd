@@ -13,6 +13,8 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import AnimatedLoader from './components/AnimatedLoader';
 import 'react-toastify/dist/ReactToastify.css';
+import UnivensAnimation from './components/UnivensAnimation';
+import Element from './components/Elementimg';
 
 
 const Hero = lazy(() => import('./components/Hero'));
@@ -47,9 +49,11 @@ function App() {
       <div id="home"></div>
       <div data-scroll-container className="bg-[#010102] text-white font-sans min-h-screen flex flex-col pb-0">
         <div className="BG w-full overflow-hidden relative">
-          <div className="glow-quarter"></div>
-          <div className="glow-inner"></div>
-          <Header />
+          {/* <div className="glow-quarter"></div>
+          <div className="glow-inner"></div> */}
+          <UnivensAnimation/>
+          <Element/>
+          {/* <Header /> */}
           <HeroSection />
         </div>
         <PartnersSection />

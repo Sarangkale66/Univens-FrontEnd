@@ -70,7 +70,10 @@ const TestimonialsSection = () => {
   }, [currentIndex]);
 
   return (
-    <section id="testimonials" className="py-12 h-screen flex items-center bg-gradient-to-b">
+    <section id="testimonials" className="py-12 h-screen flex items-center justify-center bg-gradient-to-b flex-col">
+      <p className="text-center text-sm sm:text-base font-medium uppercase tracking-wide text-gray-400 gap-2" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          Testimonials
+        </p>
       <div className="container mx-auto text-center">
         <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
           What Our Clients Are Saying
