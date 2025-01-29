@@ -2,11 +2,12 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import ProgressBar from './components/ProgressBar.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>  
-    <ProgressBar/>
+  <>
+  {/* <StrictMode>   */}
+    {/* <ProgressBar/> */}
     <App />
-  </StrictMode>,
+  {/* </StrictMode>, */}
+  </>
 )

@@ -8,7 +8,8 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #1b1b43; 
+  background-color: #1b1b43;
+  cursor: pointer; 
   border-radius: 10px; 
 }
 

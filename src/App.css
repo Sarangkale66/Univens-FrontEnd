@@ -2,9 +2,38 @@
   height: 50px;
   width: 300px;
   font-weight: 800;
-  color: red;
   font-size: xx-large;
 }
+
+.background {
+  position: relative; 
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; 
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 .loader-bar {
   position: fixed;
@@ -79,4 +108,8 @@
     transform: translate(-50%, -50%) rotate(10deg);
     background-color: #010102;
   }
+}
+
+:root{
+  overflow-x: hidden;
 }

@@ -5,10 +5,13 @@ const Hero = () => {
       className="w-full max-w-[1260px] min-h-screen mx-auto flex flex-col items-center gap-12 px-6 py-20 bg-[#010102] text-white"
     >
       <div className="text-center">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight transition-transform transform hover:scale-105 hover:text-blue-200">
+        <p className="text-[10px] sm:text-[12px] md:text-[14px] font-medium uppercase tracking-widest text-gray-400" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          Features
+        </p>
+        <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
           Struggling to Find the Right Solutions for Your Business?
-        </h1>
-        <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-[800px] mx-auto mb-8 opacity-80 transition-opacity duration-500 hover:opacity-100">
+        </h5>
+        <p className="text-[10px] sm:text-[12px] md:text-[14px] text-gray-300 max-w-[800px] mx-auto mb-8 opacity-80" style={{ fontFamily: 'Inter' }}>
           As an entrepreneur, your time is precious. We know the frustration of searching for reliable
           solutions—waiting for responses, navigating complex processes, and getting lost in a sea of
           options. At Univens, we make it simple: request the service you need, and we’ll connect you
@@ -17,9 +20,9 @@ const Hero = () => {
       </div>
 
       <div className="w-full flex justify-center">
-        <div className="w-full max-w-[720px] sm:max-w-[960px] md:max-w-[1260px] h-[220px] sm:h-[320px] md:h-[405px] relative rounded-lg overflow-hidden shadow-2xl group">
+        <div className="w-full max-w-[800px] sm:max-w-[720px] md:max-w-[760px] lg:max-w-[820px] h-[280px] sm:h-[320px] md:h-[350px] lg:h-[380px] gap-0 border-radius-[24px_0px_0px_0px] relative rounded-lg overflow-hidden shadow-2xl">
           <video
-            className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 ease-in-out"
+            className="absolute inset-0 w-full h-full object-cover"
             src="/video.mp4"
             autoPlay
             muted
@@ -27,7 +30,7 @@ const Hero = () => {
             playsInline
             aria-label="Introduction video about Univen services"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30 group-hover:opacity-10 transition-opacity duration-500"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30"></div>
         </div>
       </div>
     </div>

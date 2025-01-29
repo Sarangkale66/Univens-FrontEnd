@@ -26,11 +26,11 @@ const FAQHeader = () => {
 
   return (
     <div ref={headerRef} className="text-center px-6 mb-12">
-      <p className="text-blue-400 text-sm uppercase tracking-wide">FAQ</p>
-      <h1 className="text-4xl sm:text-5xl font-extrabold mt-2 mb-6 text-white">
+      <p className="text-sm sm:text-base font-medium uppercase tracking-widest text-gray-400">FAQ</p>
+      <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
         Got Questions? We’ve Got Answers.
-      </h1>
-      <p className="text-gray-400 text-base max-w-4xl mx-auto">
+      </h5>
+      <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-[720px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
         Find answers to the most common questions about our services, process, and how we can help you.
       </p>
     </div>
@@ -165,16 +165,6 @@ const FAQSection = () => {
   return (
     <div ref={faqSectionRef} className="px-6 mb-10">
       {/* Search Bar */}
-      <div className="mb-8 max-w-lg mx-auto">
-        <input
-          type="text"
-          placeholder="Search FAQs..."
-          className="w-full bg-gray-900 text-gray-300 rounded-lg px-6 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
-
       {/* FAQ List */}
       {filteredFAQs.map((faq, index) => (
         <FAQItem

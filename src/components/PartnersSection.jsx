@@ -23,7 +23,7 @@ const PartnersSection = () => {
   useGSAP(() => {
     if (logoRefs.current.length && containerRef.current) {
       const totalWidth = logoRefs.current.reduce(
-        (acc, logo) => acc + logo.offsetWidth + 2, 
+        (acc, logo) => acc + logo.offsetWidth + 2,
         0
       );
 
@@ -32,15 +32,15 @@ const PartnersSection = () => {
 
       return gsap.to(wrapper, {
         x: -totalWidth,
-        duration: 10, 
+        duration: 10,
         ease: "linear",
-        repeat: -1, 
+        repeat: -1,
       });
     }
   }, [logos]);
 
   return (
-    <div className="relative w-1/2 overflow-hidden py-10 mx-auto">
+    <div className="relative w-full  md:w-1/2 overflow-hidden py-10 mx-auto">
       <div
         ref={containerRef}
         className="flex justify-center items-center whitespace-nowrap"

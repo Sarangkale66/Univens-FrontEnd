@@ -29,10 +29,10 @@ export default function WorkTogether() {
   }, []);
 
   return (
-    <div ref={sectionRef} className="bg-[#010102] text-white py-16 px-4 md:px-16">
+    <div ref={sectionRef} className="text-white py-16 px-4 md:px-16">
       <div className="text-center fade-in">
-        <p className="text-lg font-semibold text-blue-400">Business Models to Connect Over</p>
-        <h2 className="text-4xl font-bold mt-4">How We Work Together</h2>
+        <p className="text-lg font-semibold  text-gray-400">Business Models to Connect Over</p>
+        <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>How We Work Together</h5>
         <p className="text-lg text-gray-400 mt-4 max-w-3xl mx-auto">
           Whether you need a one-time solution or ongoing support, we’ve got you covered. Choose the business model that works for you.
         </p>
@@ -44,13 +44,13 @@ export default function WorkTogether() {
           <img
             src="https://euhfmfenonopvmoowvbb.supabase.co/storage/v1/object/public/product-images/uploads/Components/fv5yPBmjikTk2Jc47v6BFoFyxg.png.png" // Replace with actual image URL
             alt="Team working together"
-            className="rounded-lg shadow-lg opacity-[78%]"
+            className="rounded-lg shadow-lg"
           />
         </div>
 
         {/* Content Section */}
         <div className="space-y-6">
-          <div className="p-6 bg-gray-950 rounded-lg shadow-lg fade-in">
+          <div className="p-6 rounded-lg shadow-lg fade-in">
             <div className="flex items-center space-x-4">
               <div className="bg-blue-500 p-3 rounded-full">
                 <svg
@@ -75,7 +75,7 @@ export default function WorkTogether() {
             </p>
           </div>
 
-          <div className="p-6 bg-gray-950 rounded-lg shadow-lg fade-in">
+          <div className="p-6 rounded-lg shadow-lg fade-in">
             <div className="flex items-center space-x-4">
               <div className="bg-blue-500 p-3 rounded-full">
                 <svg
