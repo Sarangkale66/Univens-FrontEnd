@@ -74,8 +74,8 @@ const App = () => {
   {/* LinkedIn */}
   <a
     href="#"
-    className="text-gray-400 hover:text-white"
-    aria-label="LinkedIn"
+    className="text-gray-400 hover:text-white transform hover:scale-125 transition-transform duration-300"
+     aria-label="LinkedIn"
   >
     <svg
       className="w-6 h-6"
@@ -90,7 +90,7 @@ const App = () => {
   {/* Twitter */}
   <a
     href="#"
-    className="text-gray-400 hover:text-white"
+    className="text-gray-400 hover:text-white transform hover:scale-125 transition-transform duration-300"
     aria-label="Twitter"
   >
     <svg
@@ -106,7 +106,7 @@ const App = () => {
   {/* Instagram */}
   <a
     href="#"
-    className="text-gray-400 hover:text-white"
+    className="text-gray-400 hover:text-white transform hover:scale-125 transition-transform duration-300"
     aria-label="Instagram"
   >
     <svg
