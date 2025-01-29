@@ -59,12 +59,15 @@ const Slider = () => {
     {
       title: '1. What are you looking for *',
       description: 'Choose As Many As You Like',
-      content: ['IT Services', 'Marketing Services', 'HR Solutions', 'Other Services'].map((service, idx) => (
-        <button onClick={(e) => handleSelection(e, prev)} key={idx} className="bg-transparent shadow-xl px-4 py-2 rounded-lg flex items-center">
-          <span className="mr-3 bg-[#295AAD] text-white rounded-full w-6 h-6 flex items-center justify-center">{idx + 1}</span>
-          {service}
-        </button>
-      )),
+      content: (
+        <select className="bg-black text-white p-2 rounded-lg w-full">
+          {['Select Your choice','IT Services', 'Marketing Services', 'HR Solutions', 'Other Services'].map((service, idx) => (
+            <option key={idx} value={service}>
+              {service}
+            </option>
+          ))}
+        </select>
+      ),
     },
     {
       title: '2. Describe Your Requirement *',

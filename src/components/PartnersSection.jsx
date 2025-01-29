@@ -2,7 +2,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-
 const PartnersSection = () => {
   const containerRef = useRef(null);
   const logoRefs = useRef([]);
@@ -40,7 +39,10 @@ const PartnersSection = () => {
   }, [logos]);
 
   return (
-    <div className="relative w-full  md:w-1/2 overflow-hidden py-10 mx-auto">
+    <div className="relative w-full md:w-1/2 overflow-hidden py-10 mx-auto">
+      <h1 className="text-4xl md:text-4xl font-bold text-center mb-12">
+      Our Valued Collaborators
+      </h1>
       <div
         ref={containerRef}
         className="flex justify-center items-center whitespace-nowrap"
@@ -53,7 +55,7 @@ const PartnersSection = () => {
             alt={logo}
             className="h-10 mx-5 md:h-12 opacity-80 hover:opacity-100 cursor-pointer"
             style={{
-              width: "10%",
+              width: "30%",
               aspectRatio: "3 / 2",
               objectFit: "contain",
               ...(index % 5 !== 4 && { filter: "invert(1)" }),
