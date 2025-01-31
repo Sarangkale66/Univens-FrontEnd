@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import Bgeffect from './Bgeffectimg';
+
 
 const testimonials = [
   {
@@ -70,10 +72,10 @@ const TestimonialsSection = () => {
   }, [currentIndex]);
 
   return (
-    <section id="testimonials" className="py-12 h-screen flex items-center justify-center bg-gradient-to-b flex-col">
-      <p className="text-center text-sm sm:text-base font-medium uppercase tracking-wide text-gray-400 gap-2" style={{ fontFamily: 'Roboto, sans-serif' }}>
+    <section id="testimonials" className="h-screen flex items-center justify-center bg-gradient-to-b flex-col pt-10  ">
+      <button className=" mt-4 text-[#dbdbe2] text-base md:text-lg  bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default " style={{ fontFamily: 'Roboto, sans-serif' }}>
           Testimonials
-        </p>
+        </button>
       <div className="container mx-auto text-center">
         <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
           What Our Clients Are Saying

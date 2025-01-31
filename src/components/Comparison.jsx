@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Close, Check } from '@mui/icons-material';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Bgeffect from './Bgeffectimg';
 
 // Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -33,13 +34,14 @@ const Comparison = () => {
   return (
     <div
       id="comparison"
-      className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 md:px-8 py-16 text-white"
+      className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 md:px-8 py-16 text-white relative z-10"
       ref={sectionRef}
     >
       <div className="text-center fade-in">
-        <p className="text-sm sm:text-base font-medium uppercase tracking-widest text-gray-400">
+      <Bgeffect/>
+        <button className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Roboto, sans-serif' }}>
           Why Choose Univens
-        </p>
+        </button>
         <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
           Univens vs Other Agencies
         </h5>
@@ -48,7 +50,7 @@ const Comparison = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-16 z-10">
         {/* Other Agencies Card */}
         <div className="flex flex-col p-8 bg-gray-950 rounded-xl shadow-xl relative overflow-hidden fade-in">
           <h5 className="text-xl sm:text-2xl font-semibold text-center mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>

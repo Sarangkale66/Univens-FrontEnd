@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Bgeffect from './Bgeffectimg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,7 +27,7 @@ const FAQHeader = () => {
 
   return (
     <div ref={headerRef} className="text-center px-6 mb-12">
-      <p className="text-sm sm:text-base font-medium uppercase tracking-widest text-gray-400">FAQ</p>
+      <button className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Roboto, sans-serif' }}>FAQ</button>
       <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
         Got Questions? We’ve Got Answers.
       </h5>
@@ -219,8 +220,9 @@ const FAQFooter = () => {
 };
 
 const FAQ = () => (
-  <div id="faq" className="text-white min-h-screen py-16 bg-[#010102]">
-    <div className="container mx-auto">
+  <div id="faq" className="text-white min-h-screen py-16 bg-[#010102]  relative z-10">
+    <Bgeffect/>
+    <div className="container mx-auto ">
       <FAQHeader />
       <FAQSection />
       <FAQFooter />

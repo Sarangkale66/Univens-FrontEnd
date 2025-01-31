@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Bgeffect from './Bgeffectimg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,9 +30,10 @@ export default function WorkTogether() {
   }, []);
 
   return (
-    <div ref={sectionRef} className="text-white py-16 px-4 md:px-16">
-      <div className="text-center fade-in">
-        <p className="text-lg font-semibold  text-gray-400">Business Models to Connect Over</p>
+    <div ref={sectionRef} className="text-white py-16 px-4 md:px-16 relative z-10 ">
+      <Bgeffect/>
+      <div className="text-center fade-in ">
+        <button className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Roboto, sans-serif' }}>Business Models to Connect Over</button>
         <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>How We Work Together</h5>
         <p className="text-lg text-gray-400 mt-4 max-w-3xl mx-auto">
           Whether you need a one-time solution or ongoing support, we’ve got you covered. Choose the business model that works for you.

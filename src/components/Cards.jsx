@@ -1,16 +1,21 @@
 import { Assignment, Handshake, Star } from '@mui/icons-material';
 
+import Bgeffect from './Bgeffectimg';
+
 const Cards = () => {
   return (
     <div
       id="process"
-      className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 md:px-8 py-16 bg-gradient-to-r text-white"
+      className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 md:px-8 py-16 bg-gradient-to-r text-white relative z-10"
     >
+    
       {/* Section Header */}
       <div className="text-center">
-        <p className="text-sm sm:text-base font-medium uppercase tracking-widest text-gray-400">
+      <Bgeffect/>
+        
+        <button className=" mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Roboto, sans-serif' }}>
           How It Works
-        </p>
+        </button>
         <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
           Getting Started Is Easy
         </h5>
