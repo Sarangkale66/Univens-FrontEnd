@@ -43,10 +43,10 @@ const Comparison = () => {
           Why Choose Univens
         </button>
         <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
-          Univens vs Other Agencies
+          Why Entrepreneurs Choose Univens
         </h5>
         <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-[720px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
-          Discover why Univens is the trusted choice for businesses looking for tailored solutions, seamless processes, and expert-driven results.
+          We don’t just solve problems—we get things done. Univens gives you access to a trusted network of experts in every area of your business. From tech to marketing to HR, we streamline your journey with reliable solutions. No more stress. Just results.
         </p>
       </div>
 
@@ -95,7 +95,7 @@ const Comparison = () => {
                 <Check />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Instant access to experts to start solving problems right away.
+                Instant Access to Experts – Stop searching. Start solving with experts you can trust.
               </p>
             </li>
             <li className="flex items-start gap-6">
@@ -103,7 +103,7 @@ const Comparison = () => {
                 <Check />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Tailored solutions designed for your specific business needs.
+                Tailored Solutions, Every Time – Get exactly what you need, when you need it.
               </p>
             </li>
             <li className="flex items-start gap-6">
@@ -111,7 +111,7 @@ const Comparison = () => {
                 <Check />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Streamlined processes with no unnecessary hurdles or delays.
+                No Complex Processes – We make business support simple and straightforward.
               </p>
             </li>
           </ul>

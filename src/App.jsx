@@ -1,4 +1,7 @@
 import React, { useEffect, Suspense, lazy } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 import Lenis from '@studio-freight/lenis';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -16,11 +19,27 @@ import 'react-toastify/dist/ReactToastify.css';
 import UnivensAnimation from './components/UnivensAnimation';
 import Element from './components/Elementimg';
 
-
 const Hero = lazy(() => import('./components/Hero'));
 const TestimonialsSection = lazy(() => import('./components/TestimonialsSection'));
 
 function App() {
+  const handleSelection = (e) => e.preventDefault();
+
+    const { data, isLoading, isError, error } = useQuery({
+      queryKey: ['serverConnection'],
+      queryFn: async () => {
+        const response = await axios.get('http://localhost:8080/');
+        return response.data;
+      },
+      retry: true, 
+      retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 30000), 
+      onSuccess: (data) => {
+        console.log("Connected:", data);
+      },
+      onError: (error) => {
+        console.error("Error:", error);
+      },
+    });
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -39,8 +58,11 @@ function App() {
 
     lenis.on('scroll', ScrollTrigger.update);
 
+    document.addEventListener('selectstart', handleSelection);
+
     return () => {
       lenis.destroy();
+      document.removeEventListener('selectstart', handleSelection);
     };
   }, []);
 

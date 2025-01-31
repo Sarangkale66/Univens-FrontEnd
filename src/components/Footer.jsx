@@ -29,9 +29,7 @@ const App = () => {
       Ready to Solve Your Business Challenges?
     </h5>
     <p className="text-[10px] sm:text-[12px] md:text-[14px] text-gray-300 max-w-[800px] mx-auto mb-8 opacity-80" style={{ fontFamily: 'Inter' }}>
-      Contact us today to start crafting your solutions. Whether you need a
-      quick fix or a comprehensive solution, we’ve got you covered and
-      customized.
+      Get in touch with us now and start turning your ideas into action. Whether you need a quick fix or a comprehensive solution, we’ve got you covered.
     </p>
     <div className="flex flex-col items-center  md:flex-row md:flex-wrap md:justify-center gap-4 mb-8">
       <div className="flex flex-col  md:flex-row md:flex-wrap md:justify-center gap-4 mb-8">

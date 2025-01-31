@@ -1,126 +1,121 @@
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Bgeffect from './Bgeffectimg';
-
+import { MdStar, MdStarOutline } from "react-icons/md";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 const testimonials = [
   {
-    text: "‘Univens connected us with the right marketing experts at the perfect time. They made our growth seamless.’",
-    name: "Raj",
-    role: "Startup Founder",
-    image: "raj.jpg",
-    rating: 5,
+    name: "Raj Warma",
+    position: "Startup Founder",
+    image: "https://randomuser.me/api/portraits/men/63.jpg",
+    feedback: "Univens connected us with the right marketing experts at the perfect time. They made our growth seamless",
+    rating: 5
   },
   {
-    text: "‘We got exactly what you needed—no fuss, no delay. Univens just works.’",
-    name: "Priya",
-    role: "Scale-up Founder",
-    image: "priya.jpg",
-    rating: 5,
+    name: "Sarah Johnson",
+    position: "Scale-up Founder",
+    image: "https://randomuser.me/api/portraits/women/67.jpg",
+    feedback: "We got exactly what you needed—no fuss, no delay. Univens just works!",
+    rating: 4
   },
   {
-    text: "‘Working with Univens was a game changer for our business. Their team truly understood our needs.’",
-    name: "Emily",
-    role: "Business Owner",
-    image: "emily.jpg",
-    rating: 5,
+    name: "Michael Brown",
+    position: "Tech Entrepreneur!",
+    image: "https://randomuser.me/api/portraits/men/92.jpg",
+    feedback: "Univens helped us scale rapidly while keeping costs in check. Their expertise is unmatched.",
+    rating: 5
   },
   {
-    text: "‘The level of professionalism and expertise at Univens exceeded our expectations. Highly recommend!’",
-    name: "James",
-    role: "CEO",
-    image: "james.jpg",
-    rating: 5,
+    name: "Emily White",
+    position: "E-commerce CEO.",
+    image: "https://randomuser.me/api/portraits/women/88.jpg",
+    feedback: "We couldn’t be happier with the results. Univens understands our business and always delivers above expectations",
+    rating: 5
   },
   {
-    text: "‘Univens helped us streamline our processes, and the results speak for themselves.’",
-    name: "Michael",
-    role: "Operations Manager",
-    image: "michele.jpg",
-    rating: 4,
+    name: "Rock Warner",
+    position: "Product Manager",
+    image: "https://randomuser.me/api/portraits/men/44.jpg",
+    feedback: "The team at Univens provided us with tailored solutions that were practical, effective, and transformative for our company",
+    rating: 5
   },
+  {
+    name: "Anni Mava",
+    position: "Business Director.",
+    image: "https://randomuser.me/api/portraits/women/19.jpg",
+    feedback: "Univens’ attention to detail and commitment to our success made all the difference. They’ve been a true partner.",
+    rating: 5
+  }
 ];
 
-const TestimonialsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-  const testimonialRef = useRef(null);
+const StarRating = ({ rating }) => (
+  <div className="flex justify-center mt-3 text-yellow-500 text-xl">
+    {[...Array(5)].map((_, index) =>
+      index < rating ? <MdStar key={index} /> : <MdStarOutline key={index} />
+    )}
+  </div>
+);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+const TestimonialCard = ({ testimonial }) => (
+  <div className="bg-gradient-to-r from-Gunmetal-900 text-white shadow-lg rounded-2xl p-6 text-center border border-gray-800 hover:shadow-xl transition-shadow duration-300">
+    <img
+      src={testimonial.image}
+      alt={testimonial.name}
+      loading="lazy"
+      className="w-20 h-20 mx-auto rounded-full mb-4 border-4 border-gray-800"
+    />
+    <h3 className="text-xl font-semibold text-white">{testimonial.name}</h3>
+    <p className="text-gray-400 text-sm">{testimonial.position}</p>
+    <p className="text-gray-300 mt-3">"{testimonial.feedback}"</p>
+    <StarRating rating={testimonial.rating} />
+  </div>
+);
 
-  useEffect(() => {
-    const testimonial = testimonialRef.current;
-    if (testimonial) {
-      gsap.to(testimonial, {
-        opacity: 0, 
-        duration: 0.5,
-        onComplete: () => {
-          gsap.to(testimonial, {
-            opacity: 1, 
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-      });
-    }
-    setIsLoading(false);
-  }, [currentIndex]);
-
+const Testimonials = () => {
   return (
     <section id="testimonials" className="h-screen flex items-center justify-center bg-gradient-to-b flex-col pt-10  ">
       <div className="w-[80vw] relative z-10 flex flex-col items-center">
         <Bgeffect />
-      <button className=" mt-4 text-[#dbdbe2] text-base md:text-lg  bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default " style={{ fontFamily: 'Roboto, sans-serif' }}>
+      <button className=" mt-4 text-[#dbdbe2] text-base md:text-lg  bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default " style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Testimonials
         </button>
       <div className="container mx-auto text-center">
-        <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
+        <h5
+          className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6"
+          style={{ fontFamily: "Roboto, sans-serif" }}
+        >
           What Our Clients Are Saying
         </h5>
         <p className="text-gray-400 text-sm md:text-base mb-10">
-          Discover the experiences and success stories of our clients working with Univens.
+          Discover the experiences and success stories of our clients working
+          with Univens.
         </p>
         </div>
-        {isLoading && (
-          <div className="flex justify-center items-center mb-6">
-            <div className="w-12 h-12 border-4 border-t-4 border-blue-400 border-solid rounded-full animate-spin"></div>
-          </div>
-        )}
-
-        <div
-          ref={testimonialRef}
-          className="mt-10 mx-auto p-6 md:p-10 rounded-lg max-w-lg md:max-w-2xl shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-105 hover:shadow-2xl hover:cursor-pointer bg-[url('https://euhfmfenonopvmoowvbb.supabase.co/storage/v1/object/public/product-images/uploads/Components/Component%201%20(1).png')] bg-cover bg-center"
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={30} // Increased spacing for smoother layout
+          slidesPerView={1}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
+          speed={1000} // Smooth transition speed
+          loop={true}
         >
-          <p className="text-lg md:text-xl italic mb-6 text-white">
-            &ldquo;{testimonials[currentIndex].text}&rdquo;
-          </p>
-          <div className="flex flex-col md:flex-row items-center justify-center">
-            <img
-              src={`/bussinessPartners/${testimonials[currentIndex].image}`}
-              alt={testimonials[currentIndex].name}
-              className="w-12 h-12 rounded-full mb-4 md:mb-0 md:mr-4 transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-12"
-            />
-            <div>
-              <p className="font-bold text-white">{testimonials[currentIndex].name}</p>
-              <p className="text-gray-400 text-sm">{testimonials[currentIndex].role}</p>
-            </div>
-          </div>
-          <div className="mt-4 flex justify-center scale-50">
-            {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-              <span key={i} className="text-yellow-500 text-lg">
-                &#9733;
-              </span>
-            ))}
-          </div>
-        </div>
+          {testimonials.map((testimonial, index) => (
+            <SwiperSlide key={index}>
+              <TestimonialCard testimonial={testimonial} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </section>
   );
 };
 
-export default TestimonialsSection;
+export default Testimonials;

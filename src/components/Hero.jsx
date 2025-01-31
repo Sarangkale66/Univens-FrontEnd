@@ -3,7 +3,7 @@ const Hero = () => {
   return (
     <div
       id="features"
-      className="w-full max-w-[1260px] min-h-screen mx-auto flex flex-col items-center gap-12 px-6 py-20 bg-[#010102] text-white "
+      className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 py-10 sm:py-20 bg-[#010102] text-white"
     >
       <div className="w-[80vw] text-center pb-5 relative z-10">
         <button className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Roboto, sans-serif' }}>

@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+const apiUrl = import.meta.env.VITE_API_URL;
+import React, { useState, useRef, useCallback } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ToastContainer, toast } from 'react-toastify';
@@ -18,6 +19,26 @@ const Slider = () => {
 
   const handleFileChange = (event) => setFiles(event.target.files);
 
+  const handleCardUpwardCurrent = ()=>{
+    gsap.to(`.card-${index}`, {
+      top: "-130%",
+      scale: 0,
+      duration: 0.8,
+      ease: "power2.inOut"
+    });
+  }
+
+  const handleCardUpwardNext = (delay)=>{
+    gsap.set(".card-0", { scale: 0.85, top: "100%" });
+    gsap.to(".card-0", {
+      delay,
+      scale: 0.85,
+      top: "0%",
+      duration: 1,
+      ease: "power2.inOut"
+    });
+  }
+
   const onSubmit = async (data) => {
     try {
       const jsonData = {
@@ -30,19 +51,23 @@ const Slider = () => {
         role:"Bussiness",
       };
 
-      const response = await axios.post("http://localhost:8080/user/create", jsonData, {
+      const response = await axios.post(`${apiUrl}/user/create`, jsonData, {
         headers: { "Content-Type": "application/json" },
       });
 
-      if(response){
-
-      }
+      handleCardUpwardCurrent();
+      handleCardUpwardNext(5)
       toast.success("✅ Form submitted successfully!");
     } catch (error) {
       console.error("Error:", error);
       toast.error(`❌ ${error.response?.data?.message || "Something went wrong."}`);
     }
   };
+
+  const handleSelection1 = useCallback((event) => {
+    setObj((prevObj) => ({ ...prevObj, lookingFor: event.target.value }));
+  }, []);
+
 
   const handleSelection = (e, prevRef) => {
     if (prevRef.current !== null) {
@@ -58,13 +83,20 @@ const Slider = () => {
   const cards = [
     {
       title: '1. What are you looking for *',
-      description: 'Choose As Many As You Like',
-      content: ['IT Services', 'Marketing Services', 'HR Solutions', 'Other Services'].map((service, idx) => (
-        <button onClick={(e) => handleSelection(e, prev)} key={idx} className="bg-transparent shadow-xl px-4 py-2 rounded-lg flex items-center">
-          <span className="mr-3 bg-[#295AAD] text-white rounded-full w-6 h-6 flex items-center justify-center">{idx + 1}</span>
-          {service}
-        </button>
-      )),
+      description: 'Choose One',
+      content: (
+        <select
+          value={obj.lookingFor}
+          onChange={handleSelection1}
+          className="bg-transparent shadow-xl outline-none w-[70%] text-white"
+        >
+          <option className='bg-[#010102]' value="" disabled>What are you looking for?</option>
+          <option className='bg-[#010102]' value="IT Services">IT Services</option>
+          <option className='bg-[#010102]' value="Marketing Services">Marketing Services</option>
+          <option className='bg-[#010102]' value="HR Solutions">HR Solutions</option>
+          <option className='bg-[#010102]' value="Other Services">Other Services</option>
+        </select>
+      ),
     },
     {
       title: '2. Describe Your Requirement *',
@@ -135,7 +167,7 @@ const Slider = () => {
 
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-xl mt-4"
+          className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-xl mt-0"
         >
           Submit
         </button>
@@ -145,15 +177,10 @@ const Slider = () => {
   ];
 
   useGSAP(() => {
-    gsap.set(".card-0", { scale: 0.85, top: "100%" });
-    gsap.to(".card-0", {
-      delay: 0.75,
-      scale: 0.85,
-      top: "-6%",
-      duration: 1,
-      ease: "power2.inOut"
-    });
-  });
+    if( index === 0 ){
+      handleCardUpwardNext(0.75);
+    }
+  },[]);
 
   const handlePrev = () => {
     if (index === 0) return;
@@ -166,15 +193,6 @@ const Slider = () => {
   };
 
   const handleNext = async () => {
-    if (!prev.current) {
-      toast("✅ select option to move forward");
-      return;
-    }
-
-    if (index === 0 && prev.current) {
-      const text = String(prev.current.textContent).split('(')[0].trim().slice(1);
-      setObj((x) => ({ ...x, lookingFor: text }));
-    }
 
     if (index === 1 && textAreaRef.current.value) {
       setObj((x) => ({ ...x, description: textAreaRef.current.value }));
@@ -200,14 +218,16 @@ const Slider = () => {
         formData.append('communicationChannel', newObj.communicationChannel);
         Array.from(files).forEach((file) => formData.append('file', file));
 
-        axios.post('http://localhost:8080/file/create', formData, {
+        axios.post(`${apiUrl}/file/create`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         })
           .then((response) => {
             toast("✅ Data uploaded successfully!");
+            console.log(response.data);
             setFileId(response.data.data._id);
           })
-          .catch(() => {
+          .catch((err) => {
+            console.log(err);
             toast("❌ Something went wrong");
           });
         return newObj;
@@ -217,16 +237,16 @@ const Slider = () => {
       return;
     }
 
-    gsap.to(`.card-${index}`, { 
-      top: "-130%", 
-      scale: 0, 
-      duration: 0.8, 
-      ease: "power2.inOut" 
-    });
+    handleCardUpwardCurrent();
 
     setIndex((prevIndex) => {
       const newIndex = (prevIndex + 1) % cards.length;
-      gsap.to(`.card-${newIndex}`, { top: "-6%", scale: 0.85, duration: 0.8, ease: "power2.inOut" });
+      gsap.to(`.card-${newIndex}`, {
+        top: "-6%",
+        scale: 0.85,
+        duration: 0.8,
+        ease: "power2.inOut"
+      });
       return newIndex;
     });
   };
@@ -238,19 +258,28 @@ const Slider = () => {
         <div className="overflow-hidden -translate-y-5 relative min-h-[80vh] flex-grow">
           {cards.map((card, cardIndex) => (
             <div key={cardIndex} className={`card-${cardIndex} scale-[0.85] absolute top-[-130%] left-1/2 -translate-x-1/2 min-w-96 max-w-xl w-full h-full flex justify-center items-start`}>
-              <div className="text-white p-6 rounded-lg w-full max-w-2xl bg-black">
-                <p className="text-sm font-semibold mb-2">{card.title}</p>
-                <p className="text-sm text-gray-400 mb-5">{card.description}</p>
+              <div className={`${cardIndex===0 && "flex gap-3"} text-white ${cardIndex===0 ? "px-6 py-3 rounded-full": "p-6 rounded-lg"} w-full max-w-2xl bg-black`}>
+                { cardIndex!==0 && <p className="text-sm font-semibold mb-2">{card.title}</p> }
+                { cardIndex!==0 && cardIndex!==4 && <p className="text-sm text-gray-400 mb-5">{card.description}</p> }
                 {card.content}
-                { cardIndex !== 4 &&
-                <div className='flex gap-5'>
-                  <button onClick={handleNext} className={`${cardIndex !== 4 ? "mt-6" : ""} bg-[#295AAD] text-white px-6 py-2 rounded-sm hover:bg-[#295AAD]`}>
-                    {cardIndex === 4 ? "Submit" : "Next"}
-                  </button>
-                  <button onClick={handlePrev} className={`${cardIndex !== 4 ? "mt-6" : ""} bg-${cardIndex === 0 ? "#2959ad6a" : "#295AAD"} text-white px-6 py-2 rounded-sm ${(cardIndex !== 0) && "hover:bg-[#295AAD]"}`}>
+                {cardIndex !== 4 && (
+              <div className="flex gap-5 flex-wrap">
+                <button
+                  onClick={handleNext}
+                  className={`bg-[#295AAD] text-white text-base px-1 py-2 ${cardIndex !==0 && "mt-2"} rounded-full hover:bg-[#295AAD] w-28 text-center`}
+                >
+                  {cardIndex === 0 ? "Get Started" : "Next"}
+                </button>
+                {cardIndex !== 0 && (
+                  <button
+                    onClick={handlePrev}
+                    className="bg-[#295AAD] rounded-full text-white text-base mt-2 px-1 py-2 hover:bg-[#295AAD] w-28 text-center"
+                  >
                     {cardIndex === 0 ? <s> Previous </s> : "Previous"}
                   </button>
-                </div>}
+                )}
+              </div>
+            )}
               </div>
             </div>
           ))}

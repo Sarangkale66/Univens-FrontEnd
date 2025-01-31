@@ -128,17 +128,17 @@ const FAQSection = () => {
     {
       question: "How quickly can I be matched with an expert?",
       answer:
-        "We strive to match you with the perfect expert within 24–48 hours.",
+        "Within minutes. Once you submit your request, we’ll immediately connect you with the right person for the job.",
     },
     {
       question: "What industries do you support?",
       answer:
-        "We support a wide range of industries, including technology, healthcare, and finance.",
+        "We support all industries. Whether you're in tech, marketing, HR, or beyond, our network covers a broad range of services. ",
     },
     {
       question: "Is there a long-term commitment?",
       answer:
-        "No, there’s no long-term commitment. You can scale up or down based on your needs.",
+        "You choose the service you need, and we handle it according to your preferences — simple and efficient",
     },
     {
       question: "Do you offer international support?",
