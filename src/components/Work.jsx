@@ -40,13 +40,14 @@ export default function WorkTogether() {
 
       <div className="mt-12 grid md:grid-cols-2 gap-8 items-center fade-in">
         {/* Image Section */}
-        <div>
-          <img
-            src="https://euhfmfenonopvmoowvbb.supabase.co/storage/v1/object/public/product-images/uploads/Components/fv5yPBmjikTk2Jc47v6BFoFyxg.png.png" // Replace with actual image URL
-            alt="Team working together"
-            className="rounded-lg shadow-lg"
-          />
-        </div>
+       <div>
+  <img
+    src="https://images.pexels.com/photos/7691691/pexels-photo-7691691.jpeg?auto=compress&cs=tinysrgb&w=600"  // A high-quality teamwork image from Unsplash
+    alt="Team working together"
+    className="rounded-lg shadow-lg"
+  />
+</div>
+
 
         {/* Content Section */}
         <div className="space-y-6">
