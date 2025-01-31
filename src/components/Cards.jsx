@@ -6,16 +6,16 @@ const Cards = () => {
   return (
     <div
       id="process"
-      className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 md:px-8 py-16 bg-gradient-to-r text-white relative z-10"
+      className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 md:px-8 py-16 bg-gradient-to-r text-white "
     >
     
       {/* Section Header */}
-      <div className="text-center">
-      <Bgeffect/>
-        
+      <div className="w-[80vw] text-center relative z-10">
+       
         <button className=" mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Roboto, sans-serif' }}>
           How It Works
         </button>
+      <Bgeffect/>
         <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
           Getting Started Is Easy
         </h5>

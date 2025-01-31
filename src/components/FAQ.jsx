@@ -220,9 +220,9 @@ const FAQFooter = () => {
 };
 
 const FAQ = () => (
-  <div id="faq" className="text-white min-h-screen py-16 bg-[#010102]  relative z-10">
+  <div id="faq" className="text-white min-h-screen py-16 bg-[#010102] ">
+    <div className="container w-[80vw] mx-auto relative z-10">
     <Bgeffect/>
-    <div className="container mx-auto ">
       <FAQHeader />
       <FAQSection />
       <FAQFooter />

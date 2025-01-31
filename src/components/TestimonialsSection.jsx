@@ -73,6 +73,8 @@ const TestimonialsSection = () => {
 
   return (
     <section id="testimonials" className="h-screen flex items-center justify-center bg-gradient-to-b flex-col pt-10  ">
+      <div className="w-[80vw] relative z-10 flex flex-col items-center">
+        <Bgeffect />
       <button className=" mt-4 text-[#dbdbe2] text-base md:text-lg  bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default " style={{ fontFamily: 'Roboto, sans-serif' }}>
           Testimonials
         </button>
@@ -83,7 +85,7 @@ const TestimonialsSection = () => {
         <p className="text-gray-400 text-sm md:text-base mb-10">
           Discover the experiences and success stories of our clients working with Univens.
         </p>
-
+        </div>
         {isLoading && (
           <div className="flex justify-center items-center mb-6">
             <div className="w-12 h-12 border-4 border-t-4 border-blue-400 border-solid rounded-full animate-spin"></div>

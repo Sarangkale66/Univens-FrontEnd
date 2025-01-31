@@ -3,16 +3,16 @@ const Hero = () => {
   return (
     <div
       id="features"
-      className="w-full max-w-[1260px] min-h-screen mx-auto flex flex-col items-center gap-12 px-6 py-20 bg-[#010102] text-white relative z-10"
+      className="w-full max-w-[1260px] min-h-screen mx-auto flex flex-col items-center gap-12 px-6 py-20 bg-[#010102] text-white "
     >
-      <div className="text-center pb-5">
-      <Bgeffect/>
+      <div className="w-[80vw] text-center pb-5 relative z-10">
         <button className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Roboto, sans-serif' }}>
           Features
         </button>
         <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
           Struggling to Find the Right Solutions for Your Business?
         </h5>
+      <Bgeffect/>
         <p className="text-[10px] sm:text-[12px] md:text-[14px] text-gray-300 max-w-[800px] mx-auto mb-8 opacity-80" style={{ fontFamily: 'Inter' }}>
           As an entrepreneur, your time is precious. We know the frustration of searching for reliable
           solutions—waiting for responses, navigating complex processes, and getting lost in a sea of

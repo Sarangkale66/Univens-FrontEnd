@@ -37,7 +37,7 @@ const Comparison = () => {
       className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 md:px-8 py-16 text-white relative z-10"
       ref={sectionRef}
     >
-      <div className="text-center fade-in">
+      <div className=" w-[80vw] text-center fade-in">
       <Bgeffect/>
         <button className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Roboto, sans-serif' }}>
           Why Choose Univens
