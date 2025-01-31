@@ -2,7 +2,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-
 const PartnersSection = () => {
   const containerRef = useRef(null);
   const logoRefs = useRef([]);
@@ -40,12 +39,24 @@ const PartnersSection = () => {
   }, [logos]);
 
   return (
-    <div className=" relative w-full  md:w-1/2 overflow-hidden mx-auto">
+    <div className="relative w-full md:w-1/2 overflow-hidden mx-auto">
+      <p
+        className="font-medium text-gray-400 my-8"
+        style={{
+          fontFamily: "Roboto, sans-serif",
+          fontSize: "var(--fontsize16)",
+          fontWeight: 500,
+          lineHeight: "var(--lineheight192)",
+          textUnderlinePosition: "from-font",
+          textDecorationSkipInk: "none",
+          textAlign: "center",
+          textTransform: "uppercase",
+          letterSpacing: "0.05em",
+        }}
+      >
+        Our Experts Has Worked With
+      </p>
 
-       <p className="text-center text-sm sm:text-base font-medium uppercase tracking-wide text-gray-400 my-8">
-          Our Partners Worked With
-        </p>
-  
       <div
         ref={containerRef}
         className="flex justify-center items-center whitespace-nowrap"

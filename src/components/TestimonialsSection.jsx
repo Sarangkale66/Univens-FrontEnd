@@ -9,44 +9,49 @@ const testimonials = [
     name: "Raj Warma",
     position: "Startup Founder",
     image: "https://randomuser.me/api/portraits/men/63.jpg",
-    feedback: "Univens connected us with the right marketing experts at the perfect time. They made our growth seamless",
-    rating: 5
+    feedback:
+      "Univens connected us with the right marketing experts at the perfect time. They made our growth seamless",
+    rating: 5,
   },
   {
     name: "Sarah Johnson",
     position: "Scale-up Founder",
     image: "https://randomuser.me/api/portraits/women/67.jpg",
-    feedback: "We got exactly what you needed—no fuss, no delay. Univens just works!",
-    rating: 4
+    feedback: "We got exactly what we needed—no fuss, no delay. Univens just works!",
+    rating: 4,
   },
   {
     name: "Michael Brown",
     position: "Tech Entrepreneur!",
     image: "https://randomuser.me/api/portraits/men/92.jpg",
-    feedback: "Univens helped us scale rapidly while keeping costs in check. Their expertise is unmatched.",
-    rating: 5
+    feedback:
+      "Univens helped us scale rapidly while keeping costs in check. Their expertise is unmatched.",
+    rating: 5,
   },
   {
     name: "Emily White",
     position: "E-commerce CEO.",
     image: "https://randomuser.me/api/portraits/women/88.jpg",
-    feedback: "We couldn’t be happier with the results. Univens understands our business and always delivers above expectations",
-    rating: 5
+    feedback:
+      "We couldn’t be happier with the results. Univens understands our business and always delivers above expectations.",
+    rating: 5,
   },
   {
     name: "Rock Warner",
     position: "Product Manager",
     image: "https://randomuser.me/api/portraits/men/44.jpg",
-    feedback: "The team at Univens provided us with tailored solutions that were practical, effective, and transformative for our company",
-    rating: 5
+    feedback:
+      "The team at Univens provided us with tailored solutions that were practical, effective, and transformative for our company.",
+    rating: 5,
   },
   {
     name: "Anni Mava",
     position: "Business Director.",
     image: "https://randomuser.me/api/portraits/women/19.jpg",
-    feedback: "Univens’ attention to detail and commitment to our success made all the difference. They’ve been a true partner.",
-    rating: 5
-  }
+    feedback:
+      "Univens’ attention to detail and commitment to our success made all the difference. They’ve been a true partner.",
+    rating: 5,
+  },
 ];
 
 const StarRating = ({ rating }) => (
@@ -74,20 +79,27 @@ const TestimonialCard = ({ testimonial }) => (
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-12 h-screen flex items-center justify-center flex-col">
+    <section
+      id="testimonials"
+      className="py-12 h-screen flex items-center justify-center flex-col"
+    >
       <p
-        className="text-center text-sm sm:text-base font-medium uppercase tracking-wide text-gray-400 gap-2"
+        className="text-center text-sm sm:text-base font-medium uppercase tracking-wide text-gray-400"
         style={{ fontFamily: "Roboto, sans-serif" }}
       >
         Testimonials
       </p>
       <div className="container mx-auto text-center">
-        <h5
-          className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6"
-          style={{ fontFamily: "Roboto, sans-serif" }}
-        >
-          What Our Clients Are Saying
-        </h5>
+     <h3
+  className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2 mb-6 text-center"
+  style={{
+    fontFamily: "Roboto, sans-serif",
+    textUnderlinePosition: "from-font",
+    textDecorationSkipInk: "none",
+  }}
+>
+  What Our Clients Are Saying
+</h3>
         <p className="text-gray-400 text-sm md:text-base mb-10">
           Discover the experiences and success stories of our clients working
           with Univens.
