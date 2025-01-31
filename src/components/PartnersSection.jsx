@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -13,65 +13,39 @@ const PartnersSection = () => {
     "bigfm.png",
   ];
 
-  const handleRef = (ref) => {
-    if (ref && !logoRefs.current.includes(ref)) {
-      logoRefs.current.push(ref);
-    }
-  };
+  useEffect(() => {
+    if (containerRef.current) {
+      const container = containerRef.current;
+      const totalWidth = container.scrollWidth / 2;
 
-  useGSAP(() => {
-    if (logoRefs.current.length && containerRef.current) {
-      const totalWidth = logoRefs.current.reduce(
-        (acc, logo) => acc + logo.offsetWidth + 2,
-        0
-      );
-
-      const wrapper = containerRef.current;
-      wrapper.style.width = `${totalWidth * 2}px`;
-
-      return gsap.to(wrapper, {
+      gsap.to(container, {
         x: -totalWidth,
-        duration: 10,
+        duration: 12,
         ease: "linear",
         repeat: -1,
       });
     }
-  }, [logos]);
+  }, []);
 
   return (
     <div className="relative w-full md:w-2/3 lg:w-1/2 overflow-hidden mx-auto">
-      <p
-        className="font-medium text-gray-400 my-8 text-xs sm:text-sm md:text-base"
-        style={{
-          fontFamily: "Montserrat, sans-serif",
-          fontSize: "var(--fontsize16)",
-          fontWeight: 500,
-          lineHeight: "var(--lineheight192)",
-          textUnderlinePosition: "from-font",
-          textDecorationSkipInk: "none",
-          textAlign: "center",
-          letterSpacing: "0.05em",
-        }}
-      >
+      <p className="font-medium text-gray-400 my-8 text-xs sm:text-sm md:text-base text-center tracking-wider">
         Our Experts Have Worked With
       </p>
 
-      <div
-        ref={containerRef}
-        className="flex justify-center items-center whitespace-nowrap"
-      >
+      <div ref={containerRef} className="flex flex-nowrap items-center">
         {[...logos, ...logos].map((logo, index) => (
           <img
             key={index}
-            ref={handleRef}
             src={`/logo/${logo}`}
-            alt={logo}
-            className="h-10 mx-5 md:h-12 opacity-80 hover:opacity-100 cursor-pointer"
+            alt={logo.replace(".svg", "").replace(".png", "")}
+            className="h-10 mx-4 md:h-12 opacity-80 hover:opacity-100 cursor-pointer transition-all duration-300"
+            loading="lazy"
             style={{
               width: "12%",
               aspectRatio: "3 / 2",
               objectFit: "contain",
-              ...(index % 5 !== 4 && { filter: "invert(1)" }),
+              filter: index % 5 !== 4 ? "invert(1)" : "none",
             }}
           />
         ))}

@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import { Star, Bolt } from '@mui/icons-material'; // Replacing Close with Star & Check with Bolt
+import { Star, Bolt } from '@mui/icons-material';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const Comparison = () => {
@@ -56,7 +55,7 @@ const Comparison = () => {
           </h5>
           <ul className="space-y-6">
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl sm:text-4xl text-gray-500"> {/* Gray color for Star Icon */}
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-gray-500 drop-shadow-lg">
                 <Star />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -64,7 +63,7 @@ const Comparison = () => {
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl sm:text-4xl text-gray-500">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-gray-500 drop-shadow-lg">
                 <Star />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -72,7 +71,7 @@ const Comparison = () => {
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl sm:text-4xl text-gray-500">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-gray-500 drop-shadow-lg">
                 <Star />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -89,7 +88,7 @@ const Comparison = () => {
           </h5>
           <ul className="space-y-6">
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl sm:text-4xl text-blue-500"> {/* Blue + White shading for Bolt Icon */}
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-blue-500 drop-shadow-xl">
                 <Bolt />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -97,7 +96,7 @@ const Comparison = () => {
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl sm:text-4xl text-blue-500">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-blue-500 drop-shadow-xl">
                 <Bolt />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -105,7 +104,7 @@ const Comparison = () => {
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl sm:text-4xl text-blue-500">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-blue-500 drop-shadow-xl">
                 <Bolt />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
