@@ -25,7 +25,7 @@ const App = () => {
   return (
     <div className="flex flex-col min-h-screen text-white font-sans h-screen w-screen">
   <section className="text-center py-16 px-4">
-    <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
+     <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
       Ready to Solve Your Business Challenges?
     </h5>
     <p className="text-[10px] sm:text-[12px] md:text-[14px] text-gray-300 max-w-[800px] mx-auto mb-8 opacity-80" style={{ fontFamily: 'Inter' }}>

@@ -84,22 +84,15 @@ const Testimonials = () => {
       className="py-12 h-screen flex items-center justify-center flex-col"
     >
       <p
-        className="text-center text-sm sm:text-base font-medium uppercase tracking-wide text-gray-400"
+        className="text-center text-sm sm:text-base font-medium tracking-wide text-gray-400"
         style={{ fontFamily: "Roboto, sans-serif" }}
       >
         Testimonials
       </p>
       <div className="container mx-auto text-center">
-     <h3
-  className="text-3xl sm:text-4xl md:text-5xl font-bold mt-2 mb-6 text-center"
-  style={{
-    fontFamily: "Roboto, sans-serif",
-    textUnderlinePosition: "from-font",
-    textDecorationSkipInk: "none",
-  }}
->
-  What Our Clients Are Saying
-</h3>
+        <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          What Our Clients Are Saying
+        </h5>
         <p className="text-gray-400 text-sm md:text-base mb-10">
           Discover the experiences and success stories of our clients working
           with Univens.

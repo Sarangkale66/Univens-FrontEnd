@@ -8,12 +8,13 @@ const Cards = () => {
     >
       {/* Section Header */}
       <div className="text-center">
-        <p className="text-sm sm:text-base font-medium uppercase tracking-widest text-gray-400">
+        <p className="text-sm sm:text-base font-medium  tracking-widest text-gray-400">
           How It Works
         </p>
-        <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
-          Getting Started Is Easy
-        </h5>
+      <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
+      Getting Started Is Easy
+      </h5>
+
         <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-[720px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
           At Univen, we simplify your journey by connecting you with trusted
           solutions tailored to your business needs. It’s fast, effective, and

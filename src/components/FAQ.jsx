@@ -27,7 +27,7 @@ const FAQHeader = () => {
   return (
     <div ref={headerRef} className="text-center px-6 mb-12">
       <p className="text-sm sm:text-base font-medium uppercase tracking-widest text-gray-400">FAQ</p>
-      <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
+       <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
         Got Questions? We’ve Got Answers.
       </h5>
       <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-[720px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>

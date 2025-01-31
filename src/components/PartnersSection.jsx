@@ -50,7 +50,7 @@ const PartnersSection = () => {
           textUnderlinePosition: "from-font",
           textDecorationSkipInk: "none",
           textAlign: "center",
-          textTransform: "uppercase",
+
           letterSpacing: "0.05em",
         }}
       >

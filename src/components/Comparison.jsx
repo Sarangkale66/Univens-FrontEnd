@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Close, Check } from '@mui/icons-material';
+import { Star, Bolt } from '@mui/icons-material'; // Replacing Close with Star & Check with Bolt
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -37,10 +37,10 @@ const Comparison = () => {
       ref={sectionRef}
     >
       <div className="text-center fade-in">
-        <p className="text-sm sm:text-base font-medium uppercase tracking-widest text-gray-400">
+        <p className="text-sm sm:text-base font-medium tracking-widest text-gray-400">
           Why Choose Univens
         </p>
-        <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
+         <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
           Why Entrepreneurs Choose Univens
         </h5>
         <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-[720px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -52,28 +52,28 @@ const Comparison = () => {
         {/* Other Agencies Card */}
         <div className="flex flex-col p-8 bg-gray-950 rounded-xl shadow-xl relative overflow-hidden fade-in">
           <h5 className="text-xl sm:text-2xl font-semibold text-center mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
-            Other Agencies
+            Agencies
           </h5>
           <ul className="space-y-6">
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl text-red-600">
-                <Close />
+              <div className="flex items-start justify-center text-3xl text-yellow-500">
+                <Star />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Lengthy onboarding processes delay project initiation.
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl text-red-600">
-                <Close />
+              <div className="flex items-start justify-center text-3xl text-yellow-500">
+                <Star />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Generic solutions fail to meet unique client needs.
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl text-red-600">
-                <Close />
+              <div className="flex items-start justify-center text-3xl text-yellow-500">
+                <Star />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Bureaucratic hurdles complicate collaboration and results.
@@ -89,24 +89,24 @@ const Comparison = () => {
           </h5>
           <ul className="space-y-6">
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl text-green-600">
-                <Check />
+              <div className="flex items-start justify-center text-3xl text-green-500">
+                <Bolt />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Instant Access to Experts – Stop searching. Start solving with experts you can trust.
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl text-green-600">
-                <Check />
+              <div className="flex items-start justify-center text-3xl text-green-500">
+                <Bolt />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Tailored Solutions, Every Time – Get exactly what you need, when you need it.
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl text-green-600">
-                <Check />
+              <div className="flex items-start justify-center text-3xl text-green-500">
+                <Bolt />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
                 No Complex Processes – We make business support simple and straightforward.
