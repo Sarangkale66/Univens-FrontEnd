@@ -39,22 +39,21 @@ const PartnersSection = () => {
   }, [logos]);
 
   return (
-    <div className="relative w-full md:w-1/2 overflow-hidden mx-auto">
+    <div className="relative w-full md:w-2/3 lg:w-1/2 overflow-hidden mx-auto">
       <p
-        className="font-medium text-gray-400 my-8"
+        className="font-medium text-gray-400 my-8 text-xs sm:text-sm md:text-base"
         style={{
-          fontFamily: "Roboto, sans-serif",
+          fontFamily: "Montserrat, sans-serif",
           fontSize: "var(--fontsize16)",
           fontWeight: 500,
           lineHeight: "var(--lineheight192)",
           textUnderlinePosition: "from-font",
           textDecorationSkipInk: "none",
           textAlign: "center",
-
           letterSpacing: "0.05em",
         }}
       >
-        Our Experts Has Worked With
+        Our Experts Have Worked With
       </p>
 
       <div
@@ -69,7 +68,7 @@ const PartnersSection = () => {
             alt={logo}
             className="h-10 mx-5 md:h-12 opacity-80 hover:opacity-100 cursor-pointer"
             style={{
-              width: "10%",
+              width: "12%",
               aspectRatio: "3 / 2",
               objectFit: "contain",
               ...(index % 5 !== 4 && { filter: "invert(1)" }),

@@ -37,10 +37,10 @@ const Comparison = () => {
       ref={sectionRef}
     >
       <div className="text-center fade-in">
-        <p className="text-sm sm:text-base font-medium tracking-widest text-gray-400">
+        <p className="text-sm sm:text-base font-medium tracking-widest text-gray-400" style={{ fontFamily:'Montserrat, sans-serif' }}>
           Why Choose Univens
         </p>
-         <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
+        <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Why Entrepreneurs Choose Univens
         </h5>
         <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-[720px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -48,7 +48,7 @@ const Comparison = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-16">
         {/* Other Agencies Card */}
         <div className="flex flex-col p-8 bg-gray-950 rounded-xl shadow-xl relative overflow-hidden fade-in">
           <h5 className="text-xl sm:text-2xl font-semibold text-center mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
@@ -56,7 +56,7 @@ const Comparison = () => {
           </h5>
           <ul className="space-y-6">
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl text-yellow-500">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-gray-500"> {/* Gray color for Star Icon */}
                 <Star />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -64,7 +64,7 @@ const Comparison = () => {
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl text-yellow-500">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-gray-500">
                 <Star />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -72,7 +72,7 @@ const Comparison = () => {
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl text-yellow-500">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-gray-500">
                 <Star />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -89,7 +89,7 @@ const Comparison = () => {
           </h5>
           <ul className="space-y-6">
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl text-green-500">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-blue-500"> {/* Blue + White shading for Bolt Icon */}
                 <Bolt />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -97,7 +97,7 @@ const Comparison = () => {
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl text-green-500">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-blue-500">
                 <Bolt />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -105,7 +105,7 @@ const Comparison = () => {
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl text-green-500">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-blue-500">
                 <Bolt />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>

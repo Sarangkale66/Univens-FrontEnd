@@ -8,12 +8,12 @@ const Cards = () => {
     >
       {/* Section Header */}
       <div className="text-center">
-        <p className="text-sm sm:text-base font-medium  tracking-widest text-gray-400">
+  <p className="text-sm sm:text-base font-medium tracking-widest text-gray-400 style={{ fontFamily:'Montserrat, sans-serif' }}">
           How It Works
         </p>
-      <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
-      Getting Started Is Easy
-      </h5>
+        <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily:'Montserrat, sans-serif' }}>
+          Getting Started Is Easy
+        </h5>
 
         <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-[720px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
           At Univen, we simplify your journey by connecting you with trusted
@@ -29,7 +29,7 @@ const Cards = () => {
           <div className="flex items-center justify-center w-16 h-16 bg-gray-700 text-3xl rounded-full mb-6">
             <Assignment />
           </div>
-          <h5 className="text-xl sm:text-2xl font-semibold mb-4 text-white" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          <h5 className="text-xl sm:text-2xl font-semibold mb-4 text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Tell Us What You Need
           </h5>
           <p className="text-sm sm:text-base text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -42,7 +42,7 @@ const Cards = () => {
           <div className="flex items-center justify-center w-16 h-16 bg-gray-700 text-3xl rounded-full mb-6">
             <Handshake />
           </div>
-          <h5 className="text-xl sm:text-2xl font-semibold mb-4 text-white" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          <h5 className="text-xl sm:text-2xl font-semibold mb-4 text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Connect with an Expert
           </h5>
           <p className="text-sm sm:text-base text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -55,7 +55,7 @@ const Cards = () => {
           <div className="flex items-center justify-center w-16 h-16 bg-gray-700 text-3xl rounded-full mb-6">
             <Star />
           </div>
-          <h5 className="text-xl sm:text-2xl font-semibold mb-4 text-white" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          <h5 className="text-xl sm:text-2xl font-semibold mb-4 text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Let Us Handle the Rest
           </h5>
           <p className="text-sm sm:text-base text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -66,5 +66,4 @@ const Cards = () => {
     </div>
   );
 };
-
 export default Cards;

@@ -31,25 +31,24 @@ export default function WorkTogether() {
   return (
     <div ref={sectionRef} className="text-white py-16 px-4 md:px-16">
       <div className="text-center fade-in">
-        <p className="text-lg font-semibold  text-gray-400">Business Models to Connect Over</p>
-        <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
+        <p className="text-sm sm:text-base font-semibold text-gray-400">Business Models to Connect Over</p>
+        <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily:'Montserrat, sans-serif' }}>
           How We Work Together
         </h5>
-        <p className="text-lg text-gray-400 mt-4 max-w-3xl mx-auto">
+        <p className="text-sm sm:text-lg md:text-xl text-gray-400 mt-4 max-w-3xl mx-auto">
           Whether you need a one-time solution or ongoing support, we’ve got you covered. Choose the business model that works for you.
         </p>
       </div>
 
-      <div className="mt-12 grid md:grid-cols-2 gap-8 items-center fade-in">
+      <div className="mt-12 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8 items-center fade-in">
         {/* Image Section */}
-       <div>
-  <img
-    src="https://images.pexels.com/photos/7691691/pexels-photo-7691691.jpeg?auto=compress&cs=tinysrgb&w=600"  // A high-quality teamwork image from Unsplash
-    alt="Team working together"
-    className="rounded-lg shadow-lg"
-  />
-</div>
-
+        <div>
+          <img
+            src="https://images.pexels.com/photos/7691691/pexels-photo-7691691.jpeg?auto=compress&cs=tinysrgb&w=600"  // A high-quality teamwork image from Unsplash
+            alt="Team working together"
+            className="rounded-lg shadow-lg"
+          />
+        </div>
 
         {/* Content Section */}
         <div className="space-y-6">
@@ -71,9 +70,9 @@ export default function WorkTogether() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold">Contract-Based Work</h3>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold">Contract-Based Work</h3>
             </div>
-            <p className="mt-4 text-gray-400">
+            <p className="mt-4 text-gray-400 text-sm sm:text-base md:text-lg">
               Get the expertise you need with the long-term commitment.
             </p>
           </div>
@@ -96,9 +95,9 @@ export default function WorkTogether() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold">Project-Based Work</h3>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold">Project-Based Work</h3>
             </div>
-            <p className="mt-4 text-gray-400">
+            <p className="mt-4 text-gray-400 text-sm sm:text-base md:text-lg">
               From building a website to launching a new marketing campaign, get it done.
             </p>
           </div>

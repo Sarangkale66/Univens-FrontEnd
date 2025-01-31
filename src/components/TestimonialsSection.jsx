@@ -85,17 +85,16 @@ const Testimonials = () => {
     >
       <p
         className="text-center text-sm sm:text-base font-medium tracking-wide text-gray-400"
-        style={{ fontFamily: "Roboto, sans-serif" }}
+        style={{ fontFamily: "Montserrat, sans-serif" }}
       >
         Testimonials
       </p>
       <div className="container mx-auto text-center">
-        <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
+        <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily:'Montserrat, sans-serif' }}>
           What Our Clients Are Saying
         </h5>
         <p className="text-gray-400 text-sm md:text-base mb-10">
-          Discover the experiences and success stories of our clients working
-          with Univens.
+          Discover the experiences and success stories of our clients working with Univens.
         </p>
         <Swiper
           modules={[Autoplay]}
