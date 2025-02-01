@@ -93,7 +93,7 @@ const Testimonials = () => {
           </p>
         <Swiper
           modules={[Autoplay]}
-          spaceBetween={30} 
+          spaceBetween={30}
           slidesPerView={1}
           breakpoints={{
             640: { slidesPerView: 1 },
@@ -101,7 +101,7 @@ const Testimonials = () => {
             1024: { slidesPerView: 3 },
           }}
           autoplay={{ delay: 2500, disableOnInteraction: false }}
-          speed={1000} 
+          speed={1000}
           loop={true}
         >
           {testimonials.map((testimonial, index) => (
