@@ -29,9 +29,12 @@ const PartnersSection = () => {
 
   return (
     <div className="relative w-full md:w-2/3 lg:w-1/2 overflow-hidden mx-auto">
-      <p className="font-medium text-gray-400 my-8 text-xs sm:text-sm md:text-base text-center tracking-wider">
-        Our Experts Have Worked With
-      </p>
+   <button
+  className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-6 py-2 cursor-pointer font-medium  my-8 text-xs sm:text-sm md:text-base tracking-wider transition-all duration-300 mx-auto block"
+  style={{ fontFamily: 'Montserrat, sans-serif' }}
+>
+  Our Experts Have Worked With
+</button>
 
       <div ref={containerRef} className="flex flex-nowrap items-center">
         {[...logos, ...logos].map((logo, index) => (

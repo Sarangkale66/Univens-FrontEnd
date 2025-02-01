@@ -5,9 +5,12 @@ const Hero = () => {
       className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 py-10 sm:py-20 bg-[#010102] text-white"
     >
       <div className="text-center">
-        <p className="text-[10px] sm:text-[12px] md:text-[14px] font-medium tracking-widest text-gray-400" style={{ fontFamily: 'Roboto, sans-serif' }}>
+         <button
+            className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}
+        >
           Features
-        </p>
+          </button>
         <h5 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Struggling to Find the Right Solutions for Your Business?
         </h5>

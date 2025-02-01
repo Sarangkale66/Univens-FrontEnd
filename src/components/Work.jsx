@@ -31,7 +31,10 @@ export default function WorkTogether() {
   return (
     <div ref={sectionRef} className="text-white py-16 px-4 md:px-16">
       <div className="text-center fade-in">
-        <p className="text-sm sm:text-base font-semibold text-gray-400">Business Models to Connect Over</p>
+         <button
+            className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}
+      > Business Models to Connect Over</button>
         <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily:'Montserrat, sans-serif' }}>
           How We Work Together
         </h5>

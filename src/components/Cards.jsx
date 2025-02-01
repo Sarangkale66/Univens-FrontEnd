@@ -1,31 +1,59 @@
+import React, { useEffect } from 'react';
 import { Assignment, Handshake, Star } from '@mui/icons-material';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Cards = () => {
+  useEffect(() => {
+    gsap.fromTo(
+      '.fade-in-card',
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: '.fade-in-card',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    );
+  }, []);
+
   return (
     <div
       id="process"
       className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 md:px-8 py-16 bg-gradient-to-r text-white"
     >
       {/* Section Header */}
-      <div className="text-center">
-  <p className="text-sm sm:text-base font-medium tracking-widest text-gray-400 style={{ fontFamily:'Montserrat, sans-serif' }}">
-          How It Works
-        </p>
-        <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily:'Montserrat, sans-serif' }}>
-          Getting Started Is Easy
-        </h5>
+      <div className="relative w-full text-center">
+        <div className="relative z-10">
+          <button
+            className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}
+          >
+            How It Works
+          </button>
 
-        <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-[720px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
-          At Univen, we simplify your journey by connecting you with trusted
-          solutions tailored to your business needs. It’s fast, effective, and
-          stress-free.
-        </p>
+          <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            Getting Started Is Easy
+          </h5>
+
+          <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-[720px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
+            At Univen, we simplify your journey by connecting you with trusted solutions tailored to your business needs. It’s fast, effective, and stress-free.
+          </p>
+        </div>
       </div>
 
       {/* Cards Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
         {/* Card 1 */}
-        <div className="flex flex-col items-center text-center p-8 bg-gray-800 rounded-xl shadow-lg">
+        <div className="flex flex-col items-center text-center p-8 bg-gray-800 rounded-xl shadow-lg fade-in-card">
           <div className="flex items-center justify-center w-16 h-16 bg-gray-700 text-3xl rounded-full mb-6">
             <Assignment />
           </div>
@@ -38,7 +66,7 @@ const Cards = () => {
         </div>
 
         {/* Card 2 */}
-        <div className="flex flex-col items-center text-center p-8 bg-gray-800 rounded-xl shadow-lg">
+        <div className="flex flex-col items-center text-center p-8 bg-gray-800 rounded-xl shadow-lg fade-in-card">
           <div className="flex items-center justify-center w-16 h-16 bg-gray-700 text-3xl rounded-full mb-6">
             <Handshake />
           </div>
@@ -51,7 +79,7 @@ const Cards = () => {
         </div>
 
         {/* Card 3 */}
-        <div className="flex flex-col items-center text-center p-8 bg-gray-800 rounded-xl shadow-lg">
+        <div className="flex flex-col items-center text-center p-8 bg-gray-800 rounded-xl shadow-lg fade-in-card">
           <div className="flex items-center justify-center w-16 h-16 bg-gray-700 text-3xl rounded-full mb-6">
             <Star />
           </div>
@@ -66,4 +94,5 @@ const Cards = () => {
     </div>
   );
 };
+
 export default Cards;

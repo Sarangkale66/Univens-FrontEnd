@@ -83,12 +83,12 @@ const Testimonials = () => {
       id="testimonials"
       className="py-12 h-screen flex items-center justify-center flex-col"
     >
-      <p
-        className="text-center text-sm sm:text-base font-medium tracking-wide text-gray-400"
-        style={{ fontFamily: "Montserrat, sans-serif" }}
+       <button
+            className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}
       >
         Testimonials
-      </p>
+      </button>
       <div className="container mx-auto text-center">
         <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily:'Montserrat, sans-serif' }}>
           What Our Clients Are Saying
