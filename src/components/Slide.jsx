@@ -132,8 +132,8 @@ const Slide = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="text-white">
         {[
           { label: "Full Name", name: "fullName", type: "text" },
-          { label: "Email Address", name: "email", type: "email" },
-          { label: "Phone Number", name: "phone", type: "tel" },
+          { label: "Email Address", name: "email", type: "email"},
+          {label: "Phone Number", name: "phone", type: "tel" },
           { label: "Company Name", name: "companyName", type: "text" },
           { label: "Company Website", name: "companyWebsite", type: "text" },
         ].map((field, idx) => (
