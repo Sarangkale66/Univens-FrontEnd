@@ -6,35 +6,35 @@ const testimonials = [
     text: "‘Univens connected us with the right marketing experts at the perfect time. They made our growth seamless.’",
     name: "Raj",
     role: "Startup Founder",
-    image: "raj.jpg",
+    image: "/raj.jpg",
     rating: 5,
   },
   {
     text: "‘We got exactly what you needed—no fuss, no delay. Univens just works.’",
     name: "Priya",
     role: "Scale-up Founder",
-    image: "priya.jpg",
+    image: "/priya.jpg",
     rating: 5,
   },
   {
     text: "‘Working with Univens was a game changer for our business. Their team truly understood our needs.’",
     name: "Emily",
     role: "Business Owner",
-    image: "emily.jpg",
+    image: "/emily.jpg",
     rating: 5,
   },
   {
     text: "‘The level of professionalism and expertise at Univens exceeded our expectations. Highly recommend!’",
     name: "James",
     role: "CEO",
-    image: "james.jpg",
+    image: "/james.jpg",
     rating: 5,
   },
   {
     text: "‘Univens helped us streamline our processes, and the results speak for themselves.’",
     name: "Michael",
     role: "Operations Manager",
-    image: "michele.jpg",
+    image: "/michele.jpg",
     rating: 4,
   },
 ];
@@ -70,7 +70,14 @@ const TestimonialsSection = () => {
   }, [currentIndex]);
 
   return (
+ 
     <section id="testimonials" className=" h-screen flex items-center bg-gradient-to-b">
+ 
+    <section id="testimonials" className="py-12 h-screen flex items-center justify-center bg-gradient-to-b flex-col">
+      <p className="text-center text-sm sm:text-base font-medium uppercase tracking-wide text-gray-400 gap-2" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          Testimonials
+        </p>
+ 
       <div className="container mx-auto text-center">
         <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
           What Our Clients Are Saying
@@ -112,6 +119,8 @@ const TestimonialsSection = () => {
           </div>
         </div>
       </div>
+    </section>
+
     </section>
   );
 };

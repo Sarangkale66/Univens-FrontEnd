@@ -39,10 +39,19 @@ const PartnersSection = () => {
   }, [logos]);
 
   return (
+ 
     <div className="relative w-full md:w-1/2 overflow-hidden py-10 mx-auto">
       <h1 className="text-4xl md:text-4xl font-bold text-center mb-12">
       Our Valued Collaborators
       </h1>
+ 
+    <div className=" relative w-full  md:w-1/2 overflow-hidden mx-auto">
+
+       <p className="text-center text-sm sm:text-base font-medium uppercase tracking-wide text-gray-400 my-8">
+          Our Partners Worked With
+        </p>
+  
+ 
       <div
         ref={containerRef}
         className="flex justify-center items-center whitespace-nowrap"
@@ -63,6 +72,7 @@ const PartnersSection = () => {
           />
         ))}
       </div>
+    </div>
     </div>
   );
 };
