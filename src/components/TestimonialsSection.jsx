@@ -71,7 +71,7 @@ const TestimonialsSection = () => {
 
   return (
  
-    <section id="testimonials" className=" h-screen flex items-center bg-gradient-to-b">
+    <section id="testimonials" className=" h-screen flex items-center justify-center bg-gradient-to-b">
  
     <section id="testimonials" className="py-12 h-screen flex items-center justify-center bg-gradient-to-b flex-col">
       <p className="text-center text-sm sm:text-base font-medium uppercase tracking-wide text-gray-400 gap-2" style={{ fontFamily: 'Roboto, sans-serif' }}>
@@ -120,8 +120,8 @@ const TestimonialsSection = () => {
         </div>
       </div>
     </section>
-
     </section>
+ 
   );
 };
 
