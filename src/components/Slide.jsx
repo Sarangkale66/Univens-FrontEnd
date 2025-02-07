@@ -129,50 +129,90 @@ const Slide = () => {
       title: '5. Your Contact Details *',
       description: 'Fill it carefully!',
       content: (
-      <form onSubmit={handleSubmit(onSubmit)} className="text-white">
-        {[
-          { label: "Full Name", name: "fullName", type: "text" },
-          { label: "Email Address", name: "email", type: "email"},
-          {label: "Phone Number", name: "phone", type: "tel" },
-          { label: "Company Name", name: "companyName", type: "text" },
-          { label: "Company Website", name: "companyWebsite", type: "text" },
-        ].map((field, idx) => (
-          <div key={idx} className="mb-4">
-            <p className="text-sm font-semibold mb-2">{`${idx + 1}. ${field.label} *`}</p>
-            <input
-              type={field.type}
-              placeholder={`Enter Your ${field.label}`}
-              {...register(field.name, {
-                required: `${field.label} is required`,
-                pattern:
-                  field.name === "email"
-                    ? {
-                        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                        message: "Enter a valid email",
-                      }
-                    : field.name === "phone"
-                    ? {
-                        value: /^[0-9]{10,15}$/,
-                        message: "Enter a valid phone number",
-                      }
-                    : null,
-              })}
-              className="w-full bg-transparent shadow-xl text-white px-4 py-2 rounded-lg"
-            />
-            {errors[field.name] && (
-              <p className="text-red-500 text-xs mt-1">{errors[field.name].message}</p>
-            )}
+        <form onSubmit={handleSubmit(onSubmit)} className="text-white">
+          {[
+            { label: "Full Name", name: "fullName", type: "text" },
+          ].map((field, idx) => (
+            <div key={idx} className="mb-4 flex flex-col">
+              <p className="text-sm font-semibold mb-1">{`${idx + 1}. ${field.label} *`}</p>
+              <input
+                type={field.type}
+                placeholder={`Enter Your ${field.label}`}
+                {...register(field.name, {
+                  required: `${field.label} is required`,
+                })}
+                className="bg-[#000529] text-white px-4 py-2 rounded-full cursor-pointer shadow-md hover:bg-[#EEEEEE14] w-[500px]"
+              />
+              {errors[field.name] && (
+                <p className="text-red-500 text-xs mt-1">{errors[field.name].message}</p>
+              )}
+            </div>
+          ))}
+    
+          {/* Email & Phone Number Side-by-Side */}
+          <div className="flex gap-6 mb-4">
+            {[
+              { label: "Email Address", name: "email", type: "email" },
+              { label: "Role", name: "role", type: "text" },
+            ].map((field, idx) => (
+              <div key={idx} className="flex flex-col w-1/2">
+                <p className="text-sm font-semibold mb-1">{`${idx + 2}. ${field.label} *`}</p>
+                <input
+                  type={field.type}
+                  placeholder={`Enter Your ${field.label}`}
+                  {...register(field.name, {
+                    required: `${field.label} is required`,
+                    pattern:
+                      field.name === "email"
+                        ? {
+                            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                            message: "Enter a valid email",
+                          }
+                        : field.name === "phone"
+                        ? {
+                            value: /^[0-9]{10,15}$/,
+                            message: "Enter a valid phone number",
+                          }
+                        : null,
+                  })}
+                  className="bg-[#000529] text-white px-4 py-2 rounded-full cursor-pointer shadow-md hover:bg-[#EEEEEE14] w-full"
+                />
+                {errors[field.name] && (
+                  <p className="text-red-500 text-xs mt-1">{errors[field.name].message}</p>
+                )}
+              </div>
+            ))}
           </div>
-        ))}
-
-        <button
+    
+          {[
+            { label: "Phone Number", name: "phoneNumber", type: "text" },
+            { label: "Company Name", name: "companyName", type: "text" },
+            { label: "Company Website", name: "companyWebsite", type: "text" },
+          ].map((field, idx) => (
+            <div key={idx} className="mb-4 flex flex-col">
+              <p className="text-sm font-semibold mb-1">{`${idx + 4}. ${field.label} *`}</p>
+              <input
+                type={field.type}
+                placeholder={`Enter Your ${field.label}`}
+                {...register(field.name, {
+                  required: `${field.label} is required`,
+                })}
+                className="bg-[#000529] text-white px-4 py-2 rounded-full cursor-pointer shadow-md hover:bg-[#EEEEEE14] w-[500px]"
+              />
+              {errors[field.name] && (
+                <p className="text-red-500 text-xs mt-1">{errors[field.name].message}</p>
+              )}
+            
+            </div>
+          ))}
+          <button
           type="submit"
           className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-xl mt-0"
         >
           Submit
         </button>
-      </form>
-      ),
+        </form>
+      )
     },
   ];
 
