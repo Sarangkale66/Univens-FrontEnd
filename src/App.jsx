@@ -29,8 +29,8 @@ function App() {
         const response = await axios.get('http://localhost:8080/');
         return response.data;
       },
-      retry: true, 
-      retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 30000), 
+      retry: true,
+      retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 30000),
       onSuccess: (data) => {
         console.log("Connected:", data);
       },
@@ -87,7 +87,7 @@ function App() {
           <Comparison />
           <Work />
           <FAQ />
-          <Footer />
+        <Footer />
       </div>
     </div>
   );
