@@ -19,6 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import UnivensAnimation from './components/UnivensAnimation';
 import Element from './components/Elementimg';
 
+
 const Hero = lazy(() => import('./components/Hero'));
 const TestimonialsSection = lazy(() => import('./components/TestimonialsSection'));
 
@@ -68,14 +69,13 @@ function App() {
 
   return (
     <div className="scroll-container pb-0">
-      <div id="home"></div>
       <div data-scroll-container className="bg-[#010102] text-white font-sans min-h-screen flex flex-col pb-0">
         <div className="BG w-full overflow-hidden relative">
-          {/* <div className="glow-quarter"></div>
-          <div className="glow-inner"></div> */}
-          <UnivensAnimation/>
-          <Element/>
-          {/* <Header /> */}
+          <div className="glow-quarter"></div>
+          <div className="glow-inner"></div>
+          {/* <UnivensAnimation/>
+          <Element/> */}
+          <Header />
           <HeroSection />
         </div>
         <PartnersSection />
