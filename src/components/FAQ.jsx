@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Bgeffect from './Bgeffectimg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,7 +27,7 @@ const FAQHeader = () => {
   return (
     <div ref={headerRef} className="text-center px-6 mb-12">
       <button className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Roboto, sans-serif' }}>FAQ</button>
-      <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
+      <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
         Got Questions? We’ve Got Answers.
       </h5>
       <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-[720px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -96,7 +95,7 @@ const FAQItem = ({ question, answer, isOpen, toggle, index, searchTerm }) => {
   return (
     <div ref={faqRef} className="rounded-lg mb-4 overflow-hidden shadow-lg transition-all duration-300">
       <div onClick={handleToggle} className="flex justify-between items-center p-5 cursor-pointer bg-gray-950 hover:bg-gray-900 transition-colors duration-200">
-        <p className="text-gray-300 text-lg font-medium">
+        <p className="text-gray-300 text-lg sm:text-base">
           {highlightSearchTerm(question, searchTerm)}
         </p>
         <div
@@ -128,7 +127,7 @@ const FAQSection = () => {
     {
       question: "How quickly can I be matched with an expert?",
       answer:
-        "Within minutes. Once you submit your request, we’ll immediately connect you with the right person for the job.",
+        "Within 24 Hours. Once you submit your request, we’ll immediately connect you with the right person for the job.",
     },
     {
       question: "What industries do you support?",
@@ -165,8 +164,6 @@ const FAQSection = () => {
 
   return (
     <div ref={faqSectionRef} className="px-6 mb-10">
-      {/* Search Bar */}
-      {/* FAQ List */}
       {filteredFAQs.map((faq, index) => (
         <FAQItem
           key={index}
@@ -179,7 +176,6 @@ const FAQSection = () => {
         />
       ))}
 
-      {/* No Results Found */}
       {filteredFAQs.length === 0 && (
         <p className="text-gray-400 text-center">No FAQs found.</p>
       )}
@@ -222,7 +218,9 @@ const FAQFooter = () => {
 const FAQ = () => (
   <div id="faq" className="text-white min-h-screen py-16 bg-[#010102] ">
     <div className="container w-[80vw] mx-auto relative z-10">
-    <Bgeffect/>
+    <div className="flex justify-center">
+        <img className="h-[25vh] w-screen opacity-[50%] object-fill top-0 bg-cover filter brightness-30 contrast-125  " src="/img5.avif" style={{ position: "absolute", zIndex: -10 }} alt=""/>
+    </div>
       <FAQHeader />
       <FAQSection />
       <FAQFooter />

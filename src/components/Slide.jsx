@@ -2,11 +2,11 @@ const apiUrl = import.meta.env.VITE_API_URL;
 import React, { useState, useRef, useCallback } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ToastContainer, toast } from 'react-toastify';
+import {ToastContainer, toast} from 'react-toastify';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 
-const Slider = () => {
+const Slide = () => {
   const [index, setIndex] = useState(0);
   const [obj, setObj] = useState({ lookingFor: "", description: "", communicationChannel: "" });
 
@@ -201,11 +201,9 @@ const Slider = () => {
       return;
     }
 
-    if (index === 2 && files.length === 0) {
-      toast("⚠️ No files selected");
-      return;
-    } else if (index === 2) {
-      toast("✅ files selected");
+    if (index === 2) {
+      if(files.length !== 0)
+        toast("✅ files selected");
     }
 
     if (index === 3 && prev1.current) {
@@ -220,10 +218,8 @@ const Slider = () => {
 
         axios.post(`${apiUrl}/file/create`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
-        })
-          .then((response) => {
+        }).then((response) => {
             toast("✅ Data uploaded successfully!");
-            console.log(response.data);
             setFileId(response.data.data._id);
           })
           .catch((err) => {
@@ -234,7 +230,6 @@ const Slider = () => {
       });
     } else if (index === 3) {
       toast("✅ select option to move forward");
-      return;
     }
 
     handleCardUpwardCurrent();
@@ -289,4 +284,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default Slide;

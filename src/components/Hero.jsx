@@ -9,10 +9,12 @@ const Hero = () => {
         <button className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Roboto, sans-serif' }}>
           Features
         </button>
-        <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
+        <h5 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Struggling to Find the Right Solutions for Your Business?
         </h5>
-      <Bgeffect/>
+        <div className="flex justify-center">
+        <img className="h-[25vh] w-screen opacity-[50%] object-fill top-0 bg-cover filter brightness-30 contrast-125  " src="/img5.avif" style={{ position: "absolute", zIndex: -10 }} alt=""/>
+      </div>
         <p className="text-[10px] sm:text-[12px] md:text-[14px] text-gray-300 max-w-[800px] mx-auto mb-8 opacity-80" style={{ fontFamily: 'Inter' }}>
           As an entrepreneur, your time is precious. We know the frustration of searching for reliable
           solutions—waiting for responses, navigating complex processes, and getting lost in a sea of
@@ -22,7 +24,7 @@ const Hero = () => {
       </div>
 
       <div className="w-full flex justify-center">
-        <div className="w-full max-w-[800px] sm:max-w-[720px] md:max-w-[760px] lg:max-w-[820px] h-[280px] sm:h-[320px] md:h-[350px] lg:h-[380px] gap-0 border-radius-[24px_0px_0px_0px] relative rounded-lg overflow-hidden shadow-2xl">
+        <div className="w-full max-w-[800px] sm:max-w-[720px] md:max-w-[760px] lg:max-w-[820px] h-[280px] sm:h-[320px] md:h-[350px] lg:h-[380px] gap-0 rounded-lg overflow-hidden shadow-2xl relative">
           <video
             className="absolute inset-0 w-full h-full object-cover"
             src="/video.mp4"

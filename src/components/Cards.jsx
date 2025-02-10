@@ -11,14 +11,16 @@ const Cards = () => {
     
       {/* Section Header */}
       <div className="w-[80vw] text-center relative z-10">
-       
-        <button className=" mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Roboto, sans-serif' }}>
+        <button className=" mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily:'Montserrat, sans-serif' }}>
           How It Works
         </button>
-      <Bgeffect/>
-        <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
+        <div className="flex justify-center">
+        <img className="h-[25vh] w-screen opacity-[50%] object-fill top-0 bg-cover filter brightness-30 contrast-125  " src="/img5.avif" style={{ position: "absolute", zIndex: -10 }} alt=""/>
+      </div>
+        <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily:'Montserrat, sans-serif' }}>
           Getting Started Is Easy
         </h5>
+
         <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-[720px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
           At Univen, we simplify your journey by connecting you with trusted
           solutions tailored to your business needs. It’s fast, effective, and
@@ -33,7 +35,7 @@ const Cards = () => {
           <div className="flex items-center justify-center w-16 h-16 bg-gray-700 text-3xl rounded-full mb-6">
             <Assignment />
           </div>
-          <h5 className="text-xl sm:text-2xl font-semibold mb-4 text-white" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          <h5 className="text-xl sm:text-2xl font-semibold mb-4 text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Tell Us What You Need
           </h5>
           <p className="text-sm sm:text-base text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -46,7 +48,7 @@ const Cards = () => {
           <div className="flex items-center justify-center w-16 h-16 bg-gray-700 text-3xl rounded-full mb-6">
             <Handshake />
           </div>
-          <h5 className="text-xl sm:text-2xl font-semibold mb-4 text-white" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          <h5 className="text-xl sm:text-2xl font-semibold mb-4 text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Connect with an Expert
           </h5>
           <p className="text-sm sm:text-base text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -59,7 +61,7 @@ const Cards = () => {
           <div className="flex items-center justify-center w-16 h-16 bg-gray-700 text-3xl rounded-full mb-6">
             <Star />
           </div>
-          <h5 className="text-xl sm:text-2xl font-semibold mb-4 text-white" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          <h5 className="text-xl sm:text-2xl font-semibold mb-4 text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Let Us Handle the Rest
           </h5>
           <p className="text-sm sm:text-base text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -70,5 +72,4 @@ const Cards = () => {
     </div>
   );
 };
-
 export default Cards;
