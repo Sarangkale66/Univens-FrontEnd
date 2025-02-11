@@ -129,7 +129,7 @@ const Slide = () => {
       title: '5. Your Contact Details *',
       description: 'Fill it carefully!',
       content: (
-      <form onSubmit={handleSubmit(onSubmit)} className="text-white">
+      <form onSubmit={handleSubmit(onSubmit)} className="text-white ">
         {[
           { label: "Full Name", name: "fullName", type: "text" },
           { label: "Email Address", name: "email", type: "email" },
@@ -249,7 +249,7 @@ const Slide = () => {
   return (
     <>
       <ToastContainer />
-      <div className="text-white font-sans h-[80vh] flex flex-col">
+      <div className="text-white font-sans  flex flex-col">
         <div className="overflow-hidden -translate-y-5 relative min-h-[80vh] flex-grow">
           {cards.map((card, cardIndex) => (
             <div key={cardIndex} className={`card-${cardIndex} scale-[0.85] absolute top-[-130%] left-1/2 -translate-x-1/2 min-w-96 max-w-xl w-full h-full flex justify-center items-start`}>
