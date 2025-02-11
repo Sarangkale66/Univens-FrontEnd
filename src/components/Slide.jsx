@@ -201,11 +201,9 @@ const Slide = () => {
       return;
     }
 
-    if (index === 2 && files.length === 0) {
-      toast("⚠️ No files selected");
-      return;
-    } else if (index === 2) {
-      toast("✅ files selected");
+    if (index === 2) {
+      if(files.length !== 0)
+        toast("✅ files selected");
     }
 
     if (index === 3 && prev1.current) {
@@ -220,10 +218,8 @@ const Slide = () => {
 
         axios.post(`${apiUrl}/file/create`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
-        })
-          .then((response) => {
+        }).then((response) => {
             toast("✅ Data uploaded successfully!");
-            console.log(response.data);
             setFileId(response.data.data._id);
           })
           .catch((err) => {
@@ -234,7 +230,6 @@ const Slide = () => {
       });
     } else if (index === 3) {
       toast("✅ select option to move forward");
-      return;
     }
 
     handleCardUpwardCurrent();

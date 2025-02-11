@@ -1,7 +1,7 @@
 import React, { useEffect, Suspense, lazy } from 'react';
-const apiUrl = import.meta.env.VITE_API_URL;
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 import Lenis from '@studio-freight/lenis';
 import { gsap } from 'gsap';
@@ -18,27 +18,48 @@ import Footer from './components/Footer';
 import AnimatedLoader from './components/AnimatedLoader';
 import 'react-toastify/dist/ReactToastify.css';
 
+const apiUrl = import.meta.env.VITE_API_URL;
 const Hero = lazy(() => import('./components/Hero'));
 const TestimonialsSection = lazy(() => import('./components/TestimonialsSection'));
 
 function App() {
   const handleSelection = (e) => e.preventDefault();
 
-    const { data, isLoading, isError, error } = useQuery({
-      queryKey: ['serverConnection'],
-      queryFn: async () => {
-        const response = await axios.get(apiUrl);
-        return response.data;
-      },
-      retry: true, 
-      retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 30000), 
-      onSuccess: (data) => {
-        console.log("Connected:", data);
-      },
-      onError: (error) => {
-        console.error("Error:", error);
-      },
-    });
+  const trackUsers = async(token) => {
+    try {
+      const visitorToken = Cookies.get('visitor');
+
+      if (!visitorToken) {
+        await axios.post(`${apiUrl}/isFirstVisit`,{
+          token
+        },{
+          headers: { "Content-Type": "application/json" },
+        });
+
+        Cookies.set('visitor', token, { expires: 365, path: '/' });
+      }
+    } catch (error) {
+      console.error('Error while fetching visitor token:', error);
+    }
+  };
+
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ['serverConnection'],
+    queryFn: async () => {
+      const response = await axios.get(apiUrl);
+      console.log(response.data.token);
+      if (response) trackUsers(response.data.token);
+      return response.data;
+    },
+    onSuccess: (data) => {
+      console.log('Connected:', data);
+    },
+    onError: (error) => {
+      console.error('Error:', error);
+    },
+  });
+
+  
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -66,7 +87,7 @@ function App() {
   }, []);
 
   return (
-    <div className="scroll-container pb-0">
+      <div className="scroll-container pb-0">
         <div
           data-scroll-container
           className="bg-[#010102] text-white font-sans min-h-screen flex flex-col pb-0"
@@ -89,8 +110,8 @@ function App() {
           <Work />
           <FAQ />
           <Footer />
+        </div>
       </div>
-    </div>
   );
 }
 
