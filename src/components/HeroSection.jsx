@@ -24,7 +24,7 @@ const HeroSection = () => {
             wordSpacing: "5px",
           }}
         >
-          Focus on what matters, grow your business with trusted solutions from reliable experts.
+          Grow your business with trusted solutions from reliable experts.
         </h2>
       </div>
 
