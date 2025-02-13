@@ -1,7 +1,6 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-
 
 const PartnersSection = () => {
   const containerRef = useRef(null);
@@ -39,13 +38,19 @@ const PartnersSection = () => {
     }
   }, [logos]);
 
-  return (
-    <div className=" relative w-full  md:w-1/2 overflow-hidden mx-auto">
 
-       <p className="text-center text-sm sm:text-base font-medium uppercase tracking-wide text-gray-400 my-8">
-          Our Partners Worked With
-        </p>
-  
+
+  return (
+    <div className="relative w-full md:w-2/3 lg:w-1/2 overflow-hidden mx-auto">
+      {/* <h5
+        className="text-xl sm:text-2xl text-center mt-12 md:text-3xl lg:text-4xl font-medium mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}
+>
+        Our Valued Collaborators
+      </h5> */}
+      <p className="text-center text-sm sm:text-base font-medium uppercase tracking-wide text-gray-400 my-8">
+        Our Experts Worked With
+      </p>
+
       <div
         ref={containerRef}
         className="flex justify-center items-center whitespace-nowrap"

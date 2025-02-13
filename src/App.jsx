@@ -28,30 +28,33 @@ const TestimonialsSection = lazy(() => import('./components/TestimonialsSection'
 function App() {
   const handleSelection = (e) => e.preventDefault();
 
-  const trackUsers = async(token) => {
-    try {
-      const visitorToken = Cookies.get('visitor');
+  // const trackUsers = async(token) => {
+  //   try {
+  //     const visitorToken = Cookies.get('visitor');
 
-      if (!visitorToken) {
-        await axios.post(`${apiUrl}/isFirstVisit`,{
-          token
-        },{
-          headers: { "Content-Type": "application/json" },
-        });
+  //     if (!visitorToken) {
+  //       await axios.post(`${apiUrl}/isFirstVisit`,{
+  //         token
+  //       },{
+  //         headers: { "Content-Type": "application/json" },
+  //       });
 
-        Cookies.set('visitor', token, { expires: 365, path: '/' });
-      }
-    } catch (error) {
-      console.error('Error while fetching visitor token:', error);
-    }
-  };
+  //       Cookies.set('visitor', token, { expires: 365, path: '/' });
+  //     }
+  //   } catch (error) {
+  //     console.error('Error while fetching visitor token:', error);
+  //   }
+  // };
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['serverConnection'],
     queryFn: async () => {
-      const response = await axios.get(apiUrl);
-      console.log(response.data.token);
-      if (response) trackUsers(response.data.token);
+      let visitorId = Cookies.get("visitorId") || "";
+      const response = await axios.get(`${apiUrl}/${visitorId}`);
+      console.log(response);
+      if (!visitorId) {
+        Cookies.set("visitorId", response.data.token, { expires: 365, path: "/" }); 
+      }
       return response.data;
     },
     onSuccess: (data) => {
@@ -61,8 +64,6 @@ function App() {
       console.error('Error:', error);
     },
   });
-
-  
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -101,7 +102,7 @@ function App() {
             <Header />
             <HeroSection />
           </div>
-          <PartnersSection />
+            <PartnersSection />
           <Suspense fallback={<AnimatedLoader />}>
             <TestimonialsSection />
           </Suspense>

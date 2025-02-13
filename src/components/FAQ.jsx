@@ -218,9 +218,6 @@ const FAQFooter = () => {
 const FAQ = () => (
   <div id="faq" className="text-white min-h-screen py-16 bg-[#010102] ">
     <div className="container w-[80vw] mx-auto relative z-10">
-    <div className="flex justify-center">
-        <img className="h-[25vh] w-screen opacity-[50%] object-fill top-0 bg-cover filter brightness-30 contrast-125  " src="/img5.avif" style={{ position: "absolute", zIndex: -10 }} alt=""/>
-    </div>
       <FAQHeader />
       <FAQSection />
       <FAQFooter />

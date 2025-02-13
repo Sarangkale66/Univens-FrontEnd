@@ -5,16 +5,15 @@ import { useGSAP } from '@gsap/react';
 import {ToastContainer, toast} from 'react-toastify';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
+import "react-toastify/dist/ReactToastify.css";
 
 const Slide = () => {
   const [index, setIndex] = useState(0);
   const [obj, setObj] = useState({ lookingFor: "", description: "", communicationChannel: "" });
 
-  const prev = useRef(null);
-  const prev1 = useRef(null);
   const textAreaRef = useRef(null);
   const [files, setFiles] = useState([]);
-  const [fileId, setFileId] = useState("");
+  const [fileId, setFileId] = useState(null);
   const { register, handleSubmit, formState: { errors }, } = useForm();
 
   const handleFileChange = (event) => setFiles(event.target.files);
@@ -28,12 +27,12 @@ const Slide = () => {
     });
   }
 
-  const handleCardUpwardNext = (delay)=>{
+  const handleCardUpwardNext = (delay, top)=>{
     gsap.set(".card-0", { scale: 0.85, top: "100%" });
     gsap.to(".card-0", {
       delay,
       scale: 0.85,
-      top: "0%",
+      top,
       duration: 1,
       ease: "power2.inOut"
     });
@@ -41,14 +40,43 @@ const Slide = () => {
 
   const onSubmit = async (data) => {
     try {
+      if (!data.fullName) {
+        toast.error("❌ Your full name is required", { position: "top-center" });
+        return;
+      }
+      if (!data.companyName) {
+        toast.error("❌ Company/Business name is required", { position: "top-center" });
+        return;
+      }
+      if (!data.role) {
+        toast.error("❌ Your role is required", { position: "top-center" });
+        return;
+      }
+      if (!data.email) {
+        toast.error("❌ Your e-mail is required", { position: "top-center" });
+        return;
+      }
+      if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(data.email)) {
+        toast.error("❌ Enter a valid email", { position: "top-center" });
+        return;
+      }
+      if (!data.phone) {
+        toast.error("❌ Your phone number is required", { position: "top-center" });
+        return;
+      }
+      if (!/^[0-9]{10,15}$/.test(data.phone)) {
+        toast.error("❌ Enter a valid phone number", { position: "top-center" });
+        return;
+      }
+  
       const jsonData = {
         fullname: data.fullName,
         companyName: data.companyName,
         websiteLink: data.companyWebsite,
         phoneNumber: data.phone,
         email: data.email,
-        fileId: fileId || "",
-        role:"Bussiness",
+        fileId: fileId || null,
+        role:data.role,
       };
 
       const response = await axios.post(`${apiUrl}/user/create`, jsonData, {
@@ -56,11 +84,17 @@ const Slide = () => {
       });
 
       handleCardUpwardCurrent();
-      handleCardUpwardNext(5)
-      toast.success("✅ Form submitted successfully!");
+      handleCardUpwardNext(5,"-6%")
+      setIndex(0);
+      toast.success("✅ Form submitted successfully!",{
+        position: 'top-center', 
+      });
+      setObj({ lookingFor: "What are you looking for?", description: "", communicationChannel: "" });
     } catch (error) {
       console.error("Error:", error);
-      toast.error(`❌ ${error.response?.data?.message || "Something went wrong."}`);
+      toast.error(`❌ ${error.response?.data?.message || "Something went wrong."}`,{
+        position: 'top-center', 
+      });
     }
   };
 
@@ -68,117 +102,119 @@ const Slide = () => {
     setObj((prevObj) => ({ ...prevObj, lookingFor: event.target.value }));
   }, []);
 
-
-  const handleSelection = (e, prevRef) => {
-    if (prevRef.current !== null) {
-      prevRef.current.classList.remove('bg-white', 'text-black');
-      prevRef.current.classList.add('bg-transparent', 'text-white');
-    }
-
-    prevRef.current = e.target;
-    e.target.classList.remove('bg-transparent', 'text-white');
-    e.target.classList.add('bg-white', 'text-black');
-  };
-
   const cards = [
     {
-      title: '1. What are you looking for *',
+      title: 'What are you looking for *',
       description: 'Choose One',
       content: (
         <select
           value={obj.lookingFor}
           onChange={handleSelection1}
-          className="bg-transparent shadow-xl outline-none w-[70%] text-white"
+          className="shadow-xl outline-none w-[90%] text-white px-8 py-3 bg-gray-950 border rounded-full"
         >
           <option className='bg-[#010102]' value="" disabled>What are you looking for?</option>
-          <option className='bg-[#010102]' value="IT Services">IT Services</option>
-          <option className='bg-[#010102]' value="Marketing Services">Marketing Services</option>
-          <option className='bg-[#010102]' value="HR Solutions">HR Solutions</option>
-          <option className='bg-[#010102]' value="Other Services">Other Services</option>
+          <option className='bg-[#010102]' value="Branding & Marketing">Branding & Marketing</option>
+          <option className='bg-[#010102]' value="Business Strategy & Planning">Business Strategy & Planning</option>
+          <option className='bg-[#010102]' value="Customer Experience">Customer Experience</option>
+          <option className='bg-[#010102]' value="Customer Support">Customer Support</option>
+          <option className='bg-[#010102]' value="Funding & Investment">Funding & Investment</option>
+          <option className='bg-[#010102]' value="Innovation">Innovation</option>
+          <option className='bg-[#010102]' value="Sustainability">Sustainability</option>
+          <option className='bg-[#010102]' value="Legal & Compliance">Legal & Compliance</option>
+          <option className='bg-[#010102]' value="Operations & Efficiency">Operations & Efficiency</option>
+          <option className='bg-[#010102]' value="Product Development">Product Development</option>
+          <option className='bg-[#010102]' value="Risk Management">Risk Management</option>
+          <option className='bg-[#010102]' value="Sales">Sales</option>
+          <option className='bg-[#010102]' value="Growth">Growth</option>
+          <option className='bg-[#010102]' value="Talent Acquisition">Talent Acquisition</option>
+          <option className='bg-[#010102]' value="Tech Integration">Tech Integration</option>
+          <option className='bg-[#010102]' value="Something else..">Something else..</option>
         </select>
       ),
     },
     {
-      title: '2. Describe Your Requirement *',
+      title: 'Describe Your Requirement *',
       description: 'Briefly Explain What You Need.',
       content: (
         <textarea
           ref={textAreaRef}
-          style={{ resize: 'none', minHeight: '100px', maxHeight: '300px' }}
-          className="text-white bg-transparent shadow-xl min-w-[80%] px-4 py-2 rounded-lg text-sm"
-          placeholder="E.g. We need a custom CRM system to manage sales."
+          style={{ resize: 'none', minHeight: '200px', maxHeight: '400px'}}
+          className="text-white bg-transparent shadow-xl min-w-[100%] px-5 py-3 rounded-3xl text-sm outline-none border overflow-y-scroll"
+          placeholder="Hi, I want to."
         />
       ),
     },
     {
-      title: '3. Share supporting document',
+      title: 'Share supporting document',
       description: 'Upload Project Briefs, Designs, Or Other Relevant Documents.',
       content: <input onChange={handleFileChange} multiple type="file" className="bg-transparent shadow-xl text-gray-400 py-2 px-2 rounded-lg" />,
     },
     {
-      title: '4. Preferred Communication Channel *',
-      description: 'Select',
-      content: ['Email', 'Phone Call', 'Video Call', 'WhatsApp', 'Slack'].map((channel, idx) => (
-        <button onClick={(e) => handleSelection(e, prev1)} key={idx} className="cursor-pointer  bg-transparent shadow-xl px-4 py-2 rounded-lg flex items-center w-full">
-          <span className="mr-3 bg-[#295AAD] text-white rounded-full w-6 h-6 flex items-center justify-center">{idx + 1}</span>
-          {channel}
-        </button>
-      )),
-    },
-    {
-      title: '5. Your Contact Details *',
+      title: "Let's get to know you and your business *",
       description: 'Fill it carefully!',
       content: (
-      <form onSubmit={handleSubmit(onSubmit)} className="text-white ">
-        {[
-          { label: "Full Name", name: "fullName", type: "text" },
-          { label: "Email Address", name: "email", type: "email" },
-          { label: "Phone Number", name: "phone", type: "tel" },
-          { label: "Company Name", name: "companyName", type: "text" },
-          { label: "Company Website", name: "companyWebsite", type: "text" },
-        ].map((field, idx) => (
-          <div key={idx} className="mb-4">
-            <p className="text-sm font-semibold mb-2">{`${idx + 1}. ${field.label} *`}</p>
+        <form onSubmit={handleSubmit(onSubmit)} className="text-white z-[100000]">
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Full name"
+            {...register("fullName")}
+            className=" bg-gray-950 shadow-xl  text-white px-5 py-3 rounded-full border w-full"
+          />
+        </div>
+        <div className="flex justify-between gap-10 w-full mb-4">
+          <div className='w-full h-full'>
             <input
-              type={field.type}
-              placeholder={`Enter Your ${field.label}`}
-              {...register(field.name, {
-                required: `${field.label} is required`,
-                pattern:
-                  field.name === "email"
-                    ? {
-                        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                        message: "Enter a valid email",
-                      }
-                    : field.name === "phone"
-                    ? {
-                        value: /^[0-9]{10,15}$/,
-                        message: "Enter a valid phone number",
-                      }
-                    : null,
-              })}
-              className="w-full bg-transparent shadow-xl text-white px-4 py-2 rounded-lg"
+              type="text"
+              placeholder="Company/ Business name"
+              {...register("companyName")}
+              className="bg-gray-950 shadow-xl text-white outline-none px-5 py-3 rounded-full border w-[120%] md:w-[110%]"
             />
-            {errors[field.name] && (
-              <p className="text-red-500 text-xs mt-1">{errors[field.name].message}</p>
-            )}
           </div>
-        ))}
-
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-xl mt-0"
-        >
+          <div className='w-[60%] h-full'>
+            <input
+              type="text"
+              placeholder="role"
+              {...register("role")}
+              className="bg-gray-950 shadow-xl outline-none text-white px-5 py-3 rounded-full border w-[75%] md:w-full"
+            />
+          </div>
+        </div>
+        <div className="mb-4">
+          <input
+            type="email"
+            placeholder="E-mail"
+            {...register("email")}
+            className="inline bg-gray-950 shadow-xl outline-none text-white px-5 py-3 rounded-full border w-full"
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            type="tel"
+            placeholder="Number to hear back from us"
+            {...register("phone")}
+            className="inline bg-gray-950 shadow-xl outline-none text-white px-5 py-3 rounded-full border w-full"
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Link to your Website (if available)"
+            {...register("companyWebsite")}
+            className="inline bg-gray-950 shadow-xl outline-none text-white px-5 py-3 rounded-full border w-full"
+          />
+        </div>
+        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-xl mt-0">
           Submit
         </button>
-      </form>
+      </form>      
       ),
-    },
+    }
   ];
 
   useGSAP(() => {
     if( index === 0 ){
-      handleCardUpwardNext(0.75);
+      handleCardUpwardNext(0.75,"-6%");
     }
   },[]);
 
@@ -197,40 +233,37 @@ const Slide = () => {
     if (index === 1 && textAreaRef.current.value) {
       setObj((x) => ({ ...x, description: textAreaRef.current.value }));
     } else if (index === 1) {
-      toast("✅ Don't Miss to write description");
+      toast("✅ Don't Miss to write description",{
+        position: 'top-center', 
+      });
       return;
     }
 
     if (index === 2) {
       if(files.length !== 0)
-        toast("✅ files selected");
-    }
+        toast("✅ files selected",{
+          position: 'top-center', 
+        });
 
-    if (index === 3 && prev1.current) {
-      const text = String(prev1.current.textContent).split('(')[0].trim().slice(1);
-      setObj((x) => {
-        const newObj = { ...x, communicationChannel: text };
-        const formData = new FormData();
-        formData.append('lookingFor', newObj.lookingFor);
-        formData.append('description', newObj.description);
-        formData.append('communicationChannel', newObj.communicationChannel);
-        Array.from(files).forEach((file) => formData.append('file', file));
+      const formData = new FormData();
+      formData.append('lookingFor', obj.lookingFor);
+      formData.append('description', obj.description);
+      Array.from(files).forEach((file) => formData.append('file', file));
 
-        axios.post(`${apiUrl}/file/create`, formData, {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        }).then((response) => {
-            toast("✅ Data uploaded successfully!");
-            setFileId(response.data.data._id);
-          })
-          .catch((err) => {
-            console.log(err);
-            toast("❌ Something went wrong");
-          });
-        return newObj;
+      axios.post(`${apiUrl}/file/create`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      }).then((response) => {
+        toast("✅ Data uploaded successfully!",{
+          position: 'top-center', 
+        });
+        setFileId(response.data.data._id||"");
+      }).catch((err) => {
+        console.log(err);
+        toast("❌ Something went wrong",{
+          position: 'top-center', 
+        });
       });
-    } else if (index === 3) {
-      toast("✅ select option to move forward");
-    }
+    } 
 
     handleCardUpwardCurrent();
 
@@ -248,31 +281,33 @@ const Slide = () => {
 
   return (
     <>
-      <ToastContainer />
-      <div className="text-white font-sans  flex flex-col">
-        <div className="overflow-hidden -translate-y-5 relative min-h-[80vh] flex-grow">
+      <ToastContainer style={{ zIndex: 100000000000 }} position="top-center" />
+      <div className="text-white font-sans h-[100vh] flex flex-col">
+        <div className="overflow-hidden -translate-y-5 relative min-h-[100vh] flex-grow font">
           {cards.map((card, cardIndex) => (
-            <div key={cardIndex} className={`card-${cardIndex} scale-[0.85] absolute top-[-130%] left-1/2 -translate-x-1/2 min-w-96 max-w-xl w-full h-full flex justify-center items-start`}>
-              <div className={`${cardIndex===0 && "flex gap-3"} text-white ${cardIndex===0 ? "px-6 py-3 rounded-full": "p-6 rounded-lg"} w-full max-w-2xl bg-black`}>
-                { cardIndex!==0 && <p className="text-sm font-semibold mb-2">{card.title}</p> }
-                { cardIndex!==0 && cardIndex!==4 && <p className="text-sm text-gray-400 mb-5">{card.description}</p> }
+            <div key={cardIndex} className={`card-${cardIndex} ${cardIndex===0 ? "scale-[1]" : "scale-[0.85]"}  absolute top-[-130%] left-1/2 -translate-x-1/2 min-w-96 max-w-xl w-full h-full flex justify-center items-start`}>
+              <div className={`${cardIndex===0 && "flex gap-3"} text-white ${cardIndex!==0 && "p-6 rounded-lg"} w-full max-w-2xl ${cardIndex!==0&&"bg-black"}`}>
+                { cardIndex!==0 && cardIndex!==1 && <p className="text-sm font-semibold mb-5">{card.title}</p> }
+                { cardIndex!==0 && cardIndex!==1 && cardIndex!==3 && <p className="text-sm text-gray-400 mb-5">{card.description}</p> }
                 {card.content}
-                {cardIndex !== 4 && (
-              <div className="flex gap-5 flex-wrap">
+                {cardIndex !== 3 && (
+              <div className="flex justify-between flex-wrap">
+                {cardIndex !== 0 && (
+                  <button
+                    onClick={handlePrev}
+                    className="rounded-full text-base mt-2 text-center w-10"
+                  >
+                    <img src="/arrow-left-s-line.svg" className='h-[100%] object-cover' style={{
+                      filter:"invert(1)"
+                    }} alt="arrow-left-s-line" />
+                  </button>
+                )}
                 <button
                   onClick={handleNext}
                   className={`bg-[#295AAD] text-white text-base px-1 py-2 ${cardIndex !==0 && "mt-2"} rounded-full hover:bg-[#295AAD] w-28 text-center`}
                 >
                   {cardIndex === 0 ? "Get Started" : "Next"}
                 </button>
-                {cardIndex !== 0 && (
-                  <button
-                    onClick={handlePrev}
-                    className="bg-[#295AAD] rounded-full text-white text-base mt-2 px-1 py-2 hover:bg-[#295AAD] w-28 text-center"
-                  >
-                    {cardIndex === 0 ? <s> Previous </s> : "Previous"}
-                  </button>
-                )}
               </div>
             )}
               </div>

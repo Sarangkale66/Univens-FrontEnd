@@ -24,7 +24,6 @@ const App = () => {
 
   return (
     <div className="flex flex-col min-h-screen text-white font-sans w-full">
-      {/* Main Section */}
       <section className="text-center py-16 px-4 sm:px-8 md:px-12">
         <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Ready to Solve Your Business Challenges?
@@ -58,10 +57,8 @@ const App = () => {
         </a>
       </section>
 
-      {/* Footer */}
       <footer className="w-full py-6 px-4 relative bg-[#1E293B]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {/* Left Section */}
           <div>
             <h3 className="text-xl sm:text-2xl font-bold mb-4 ml-5 style={{ fontFamily:'Montserrat, sans-serif' }}">Univens</h3>
             <p className="text-sm sm:text-base mb-6 ml-5 style={{ fontFamily:'inter' }}">
@@ -77,14 +74,12 @@ const App = () => {
             </a>
           </div>
 
-          {/* Middle Section */}
           <div className="text-center">
             <h3 className="text-xl sm:text-2xl font-bold mb-4 style={{ fontFamily:'Montserrat, sans-serif' }}">Join Our Community</h3>
             <p className="italic mb-4 style={{ fontFamily:'inter' }}">
               "Univens: Where Hustlers Turn Ideas into Reality."
             </p>
             <div className="flex justify-center space-x-4">
-              {/* LinkedIn Icon */}
               <a
                 href="#"
                 className="text-gray-400 hover:text-white transition-transform transform hover:scale-110"
@@ -93,7 +88,6 @@ const App = () => {
                 <LinkedIn className="w-6 h-6" />
               </a>
 
-              {/* GitHub Icon */}
               <a
                 href="#"
                 className="text-gray-400 hover:text-white transition-transform transform hover:scale-110"
@@ -102,7 +96,6 @@ const App = () => {
                 <GitHub className="w-6 h-6" />
               </a>
 
-              {/* Twitter Icon */}
               <a
                 href="#"
                 className="text-gray-400 hover:text-white transition-transform transform hover:scale-110"
@@ -113,7 +106,6 @@ const App = () => {
             </div>
           </div>
 
-          {/* Right Section */}
           <div className="ml-5">
             <h3 className="text-xl sm:text-2xl font-bold mb-4 style={{ fontFamily:'Montserrat, sans-serif' }}">Home</h3>
             <ul className="space-y-2">
@@ -141,7 +133,6 @@ const App = () => {
           </div>
         </div>
 
-        {/* Legal Links */}
         <div className="text-center mt-8">
           <ul className="flex justify-center gap-4 text-sm text-gray-400">
             <li>
@@ -162,10 +153,9 @@ const App = () => {
           </ul>
         </div>
 
-        {/* Back to Top Button */}
         {showScroll && (
           <motion.button
-            className="fixed bottom-8 right-8 bg-[#295AAD] text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg hover:bg-blue-500"
+            className="fixed z-[100000] bottom-8 right-8 bg-[#295AAD] text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg hover:bg-blue-500"
             onClick={scrollToTop}
             whileHover={{ scale: 1.2 }}
           >
