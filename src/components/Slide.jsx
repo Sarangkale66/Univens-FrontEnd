@@ -6,6 +6,7 @@ import {ToastContainer, toast} from 'react-toastify';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import "react-toastify/dist/ReactToastify.css";
+import { ChevronDown } from "lucide-react";
 
 const Slide = () => {
   const [index, setIndex] = useState(0);
@@ -107,29 +108,35 @@ const Slide = () => {
       title: 'What are you looking for *',
       description: 'Choose One',
       content: (
-        <select
-          value={obj.lookingFor}
-          onChange={handleSelection1}
-          className="shadow-xl outline-none w-[90%] text-white px-8 py-3 bg-gray-950 border rounded-full"
-        >
-          <option className='bg-[#010102]' value="" disabled>What are you looking for?</option>
-          <option className='bg-[#010102]' value="Branding & Marketing">Branding & Marketing</option>
-          <option className='bg-[#010102]' value="Business Strategy & Planning">Business Strategy & Planning</option>
-          <option className='bg-[#010102]' value="Customer Experience">Customer Experience</option>
-          <option className='bg-[#010102]' value="Customer Support">Customer Support</option>
-          <option className='bg-[#010102]' value="Funding & Investment">Funding & Investment</option>
-          <option className='bg-[#010102]' value="Innovation">Innovation</option>
-          <option className='bg-[#010102]' value="Sustainability">Sustainability</option>
-          <option className='bg-[#010102]' value="Legal & Compliance">Legal & Compliance</option>
-          <option className='bg-[#010102]' value="Operations & Efficiency">Operations & Efficiency</option>
-          <option className='bg-[#010102]' value="Product Development">Product Development</option>
-          <option className='bg-[#010102]' value="Risk Management">Risk Management</option>
-          <option className='bg-[#010102]' value="Sales">Sales</option>
-          <option className='bg-[#010102]' value="Growth">Growth</option>
-          <option className='bg-[#010102]' value="Talent Acquisition">Talent Acquisition</option>
-          <option className='bg-[#010102]' value="Tech Integration">Tech Integration</option>
-          <option className='bg-[#010102]' value="Something else..">Something else..</option>
-        </select>
+
+
+<div className="relative w-[90%]">
+  <select
+    value={obj.lookingFor}
+    onChange={handleSelection1}
+    className="shadow-xl outline-none w-full text-white px-8 py-3 pr-12 bg-gray-950 border rounded-full appearance-none"
+  >
+    <option className='bg-[#010102]' value="" disabled>What are you looking for?</option>
+    <option className='bg-[#010102]' value="Branding & Marketing">Branding & Marketing</option>
+    <option className='bg-[#010102]' value="Business Strategy & Planning">Business Strategy & Planning</option>
+    <option className='bg-[#010102]' value="Customer Experience">Customer Experience</option>
+    <option className='bg-[#010102]' value="Customer Support">Customer Support</option>
+    <option className='bg-[#010102]' value="Funding & Investment">Funding & Investment</option>
+    <option className='bg-[#010102]' value="Innovation">Innovation</option>
+    <option className='bg-[#010102]' value="Sustainability">Sustainability</option>
+    <option className='bg-[#010102]' value="Legal & Compliance">Legal & Compliance</option>
+    <option className='bg-[#010102]' value="Operations & Efficiency">Operations & Efficiency</option>
+    <option className='bg-[#010102]' value="Product Development">Product Development</option>
+    <option className='bg-[#010102]' value="Risk Management">Risk Management</option>
+    <option className='bg-[#010102]' value="Sales">Sales</option>
+    <option className='bg-[#010102]' value="Growth">Growth</option>
+    <option className='bg-[#010102]' value="Talent Acquisition">Talent Acquisition</option>
+    <option className='bg-[#010102]' value="Tech Integration">Tech Integration</option>
+    <option className='bg-[#010102]' value="Something else..">Something else..</option>
+  </select>
+  <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white pointer-events-none" />
+</div>
+
       ),
     },
     {

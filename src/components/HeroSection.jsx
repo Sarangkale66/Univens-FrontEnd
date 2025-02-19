@@ -18,8 +18,9 @@ const HeroSection = () => {
                      text-lg sm:text-2xl md:text-[3.5rem]
                      leading-[1.3] sm:leading-[1.4] md:leading-[3.7rem]
                      z-[10000] tracking-wide text-white">
-        Grow your business with trusted solutions <br className="hidden sm:block" />
-        from reliable experts.
+        Scale your business with powerful solutions <br className="hidden sm:block" />
+        crafted by trusted experts.
+
       </h2>
 
       {/* Responsive Slider Section */}

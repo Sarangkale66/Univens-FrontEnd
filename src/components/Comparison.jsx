@@ -43,7 +43,7 @@ const Comparison = () => {
           Why Choose Univens
         </button>
         <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          Univens vs Other Agencies
+          Univens vs Agencies
         </h5>
         <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-[720px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
           We don’t just solve problems—we get things done. Univens gives you access to a trusted network of experts in every area of your business. From tech to marketing to HR, we streamline your journey with reliable solutions. No more stress. Just results.
