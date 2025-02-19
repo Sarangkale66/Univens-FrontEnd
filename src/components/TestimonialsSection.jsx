@@ -79,26 +79,24 @@ const TestimonialCard = ({ testimonial }) => (
 
 const Testimonials = () => {
   return (
-    <section
-      id="testimonials"
-      className="py-12 h-screen flex items-center justify-center flex-col"
-    >
-       <button
-            className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
-      >
-        Testimonials
-      </button>
-      <div className="container mx-auto text-center">
-        <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily:'Montserrat, sans-serif' }}>
-          What Our Clients Are Saying
-        </h5>
-        <p className="text-gray-400 text-sm md:text-base mb-10">
-          Discover the experiences and success stories of our clients working with Univens.
-        </p>
+    <section id="testimonials" className="py-12 h-screen flex items-center justify-center flex-col relative pt-10">
+        <img className="h-[25vh] w-screen opacity-[50%] object-fill top-1/2 left-0 transform translate-y-full bg-cover filter brightness-30 contrast-125 z-[1]" src="/img5.avif" alt=""/>
+        <button className=" mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily:'Montserrat, sans-serif' }}>
+          Testimonials
+        </button>
+        <div className="container mx-auto text-center z-[10]">
+          <h5
+           className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}
+          >
+            What Our Clients Are Saying
+          </h5>
+          <p className="text-gray-400 text-xs text-center md:text-base mb-10 z-[4]">
+            Discover the experiences and success stories of our clients working
+            with Univens.
+          </p>
         <Swiper
           modules={[Autoplay]}
-          spaceBetween={30} // Increased spacing for smoother layout
+          spaceBetween={30}
           slidesPerView={1}
           breakpoints={{
             640: { slidesPerView: 1 },
@@ -106,7 +104,7 @@ const Testimonials = () => {
             1024: { slidesPerView: 3 },
           }}
           autoplay={{ delay: 2500, disableOnInteraction: false }}
-          speed={1000} // Smooth transition speed
+          speed={1000}
           loop={true}
         >
           {testimonials.map((testimonial, index) => (

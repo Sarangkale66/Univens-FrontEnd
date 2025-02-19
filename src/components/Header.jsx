@@ -25,18 +25,10 @@ const Header = forwardRef((props, ref) => {
   }, []);
 
   return (
-    <div className="fixed w-screen px-4 md:px-10 z-[2]">
-      <header className="flex flex-wrap justify-between items-center py-5 md:py-6 px-4 md:px-1 mb-6">
-        <h1
-          ref={headerRef}
-          className="text-xl sm:text-2xl md:text-3xl font-semibold font-montserrat"
-        >
-          Univens
-        </h1>
-        <button
-          ref={buttonRef}
-          className="bg-[#295AAD] text-white py-2 px-6 rounded-full text-sm sm:text-base md:text-lg"
-        >
+    <div className="fixed w-screen px-10 md:px-0 z-[1000000]">
+      <header className="flex flex-wrap justify-between items-center py-5 px-4 md:px-52">
+        <h1 ref={headerRef} className="text-lg md:text-xl">Univens</h1>
+        <button ref={buttonRef} className="bg-[#295AAD] rounded-full text-white py-2 px-4">
           Contact Us
         </button>
       </header>

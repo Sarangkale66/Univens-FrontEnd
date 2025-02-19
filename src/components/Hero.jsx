@@ -4,13 +4,10 @@ const Hero = () => {
       id="features"
       className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 py-10 sm:py-20 bg-[#010102] text-white"
     >
-      <div className="text-center">
-         <button
-            className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
-        >
+      <div className="w-[80vw] text-center pb-5 relative z-10">
+        <button className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Roboto, sans-serif' }}>
           Features
-          </button>
+        </button>
         <h5 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Struggling to Find the Right Solutions for Your Business?
         </h5>

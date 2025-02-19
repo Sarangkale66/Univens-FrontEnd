@@ -27,16 +27,23 @@ const PartnersSection = () => {
     }
   }, []);
 
+
+
   return (
     <div className="relative w-full md:w-2/3 lg:w-1/2 overflow-hidden mx-auto">
-   <button
-  className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-6 py-2 cursor-pointer font-medium  my-8 text-xs sm:text-sm md:text-base tracking-wider transition-all duration-300 mx-auto block"
-  style={{ fontFamily: 'Montserrat, sans-serif' }}
+      {/* <h5
+        className="text-xl sm:text-2xl text-center mt-12 md:text-3xl lg:text-4xl font-medium mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}
 >
-  Our Experts Have Worked With
-</button>
+        Our Valued Collaborators
+      </h5> */}
+      <p className="text-center text-sm sm:text-base font-medium uppercase tracking-wide text-gray-400 my-8">
+        Our Experts Worked With
+      </p>
 
-      <div ref={containerRef} className="flex flex-nowrap items-center">
+      <div
+        ref={containerRef}
+        className="flex justify-center items-center whitespace-nowrap"
+      >
         {[...logos, ...logos].map((logo, index) => (
           <img
             key={index}

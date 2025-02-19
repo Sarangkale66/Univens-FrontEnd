@@ -26,12 +26,7 @@ const FAQHeader = () => {
 
   return (
     <div ref={headerRef} className="text-center px-6 mb-12">
-       <button
-            className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
-      >
-        FAQ's
-        </button>
+      <button className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Roboto, sans-serif' }}>FAQ</button>
       <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
         Got Questions? We’ve Got Answers.
       </h5>
@@ -221,8 +216,8 @@ const FAQFooter = () => {
 };
 
 const FAQ = () => (
-  <div id="faq" className="text-white min-h-screen py-16 bg-[#010102]">
-    <div className="container mx-auto">
+  <div id="faq" className="text-white min-h-screen py-16 bg-[#010102] ">
+    <div className="container w-[80vw] mx-auto relative z-10">
       <FAQHeader />
       <FAQSection />
       <FAQFooter />

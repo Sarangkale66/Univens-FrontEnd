@@ -32,18 +32,18 @@ const Comparison = () => {
   return (
     <div
       id="comparison"
-      className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 md:px-8 py-16 text-white"
+      className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 md:px-8 py-16 text-white relative z-10"
       ref={sectionRef}
     >
-      <div className="text-center fade-in">
-       <button
-            className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
-          >
+      <div className=" w-[80vw] text-center fade-in">
+      <div className="flex justify-center">
+        <img className="h-[25vh] w-screen opacity-[50%] object-fill top-0 bg-cover filter brightness-30 contrast-125  " src="/img5.avif" style={{ position: "absolute", zIndex: -10 }} alt=""/>
+      </div>
+        <button className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Why Choose Univens
-          </button>
-        <h5 className="text-2xl sm:text-3xl md:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          Why Entrepreneurs Choose Univens
+        </button>
+        <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          Univens vs Other Agencies
         </h5>
         <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-[720px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
           We don’t just solve problems—we get things done. Univens gives you access to a trusted network of experts in every area of your business. From tech to marketing to HR, we streamline your journey with reliable solutions. No more stress. Just results.
@@ -58,7 +58,7 @@ const Comparison = () => {
           </h5>
           <ul className="space-y-6">
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl sm:text-4xl text-gray-500 drop-shadow-lg">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-gray-500"> {/* Gray color for Star Icon */}
                 <Star />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -66,7 +66,7 @@ const Comparison = () => {
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl sm:text-4xl text-gray-500 drop-shadow-lg">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-gray-500">
                 <Star />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -74,7 +74,7 @@ const Comparison = () => {
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl sm:text-4xl text-gray-500 drop-shadow-lg">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-gray-500">
                 <Star />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -91,7 +91,7 @@ const Comparison = () => {
           </h5>
           <ul className="space-y-6">
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl sm:text-4xl text-blue-500 drop-shadow-xl">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-blue-500"> {/* Blue + White shading for Bolt Icon */}
                 <Bolt />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -99,7 +99,7 @@ const Comparison = () => {
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl sm:text-4xl text-blue-500 drop-shadow-xl">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-blue-500">
                 <Bolt />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -107,7 +107,7 @@ const Comparison = () => {
               </p>
             </li>
             <li className="flex items-start gap-6">
-              <div className="flex items-start justify-center text-3xl sm:text-4xl text-blue-500 drop-shadow-xl">
+              <div className="flex items-start justify-center text-3xl sm:text-4xl text-blue-500">
                 <Bolt />
               </div>
               <p className="text-sm sm:text-base md:text-lg text-gray-300" style={{ fontFamily: 'Inter, sans-serif' }}>
