@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { LinkedIn, GitHub, Twitter, CheckCircle } from "@mui/icons-material"; // Import Material Icons
+import { LinkedIn, GitHub, Twitter, CheckCircle, Instagram } from "@mui/icons-material"; // Import Material Icons
 
 const App = () => {
   const [showScroll, setShowScroll] = useState(false);
@@ -81,7 +81,7 @@ const App = () => {
             </p>
             <div className="flex justify-center space-x-4">
               <a
-                href="#"
+                href="https://www.linkedin.com/company/teamunivens/"
                 className="text-gray-400 hover:text-white transition-transform transform hover:scale-110"
                 aria-label="LinkedIn"
               >
@@ -89,15 +89,15 @@ const App = () => {
               </a>
 
               <a
-                href="#"
+                href="https://www.instagram.com/teamunivens"
                 className="text-gray-400 hover:text-white transition-transform transform hover:scale-110"
                 aria-label="GitHub"
               >
-                <GitHub className="w-6 h-6" />
+                <Instagram className="w-6 h-6" />
               </a>
 
               <a
-                href="#"
+                href="https://x.com/teamunivens"
                 className="text-gray-400 hover:text-white transition-transform transform hover:scale-110"
                 aria-label="Twitter"
               >

@@ -21,6 +21,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const apiUrl = import.meta.env.VITE_API_URL;
 const Hero = lazy(() => import('./components/Hero'));
 const TestimonialsSection = lazy(() => import('./components/TestimonialsSection'));
+import { initGA, logPageView } from "./gtag";
 
 function App() {
   const handleSelection = (e) => e.preventDefault();
@@ -80,7 +81,10 @@ function App() {
     lenis.on('scroll', ScrollTrigger.update);
 
     document.addEventListener('selectstart', handleSelection);
-
+    
+    initGA();
+    logPageView();
+    
     return () => {
       lenis.destroy();
       document.removeEventListener('selectstart', handleSelection);
