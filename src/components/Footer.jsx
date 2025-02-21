@@ -67,7 +67,7 @@ const App = () => {
               matters.
             </p>
             <a
-              href="#"
+              href="http://wa.me/919172725217"
               className="px-4 py-2 ml-5 bg-[#295AAD] block w-fit text-white rounded-full hover:bg-blue-600 transition-transform transform hover:scale-105"
             >
               Contact Us →
