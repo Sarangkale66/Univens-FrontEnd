@@ -81,11 +81,9 @@ const Testimonials = () => {
   return (
     <section id="testimonials" className="py-12 h-screen flex items-center justify-center flex-col relative pt-10">
         <img className="h-[25vh] w-screen opacity-[50%] object-fill top-1/2 left-0 transform translate-y-full bg-cover filter brightness-30 contrast-125 z-[1]" src="/img5.avif" alt=""/>
-        <button
-          className="mt-4 text-[#dbdbe2] text-base md:text-lg bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Roboto, sans-serif' }}
-        >
-          Testimonials
-        </button>
+       <button className=" mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily:'Montserrat, sans-serif' }}>
+        Testimonials
+      </button>
         <div className="container mx-auto text-center z-[10]">
           <h5
            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}
