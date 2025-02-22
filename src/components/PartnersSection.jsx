@@ -11,6 +11,11 @@ const PartnersSection = () => {
     "pocket-fm-seeklogo.svg",
     "kuku-fm-svgrepo-com.svg",
     "bigfm.png",
+    "Colors.svg",
+    "Jio_Star_India_Private_Limited.svg",
+    "MTV_Logo.svg",
+    "Network_18_Logo.svg",
+    "Viacom_18.svg"
   ];
 
   const handleRef = (ref) => {
@@ -66,7 +71,7 @@ const PartnersSection = () => {
               width: "10%",
               aspectRatio: "3 / 2",
               objectFit: "contain",
-              ...(index % 5 !== 4 && { filter: "invert(1)" }),
+              ...((index % 5 !== 4) && { filter: "invert(1)" }),
             }}
           />
         ))}
