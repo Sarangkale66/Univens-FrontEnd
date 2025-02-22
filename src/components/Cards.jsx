@@ -6,8 +6,6 @@ const Cards = () => {
       id="process"
       className="w-full max-w-[1260px] mx-auto flex flex-col items-center gap-12 px-6 md:px-8 py-16 bg-gradient-to-r text-white "
     >
-    
-      {/* Section Header */}
       <div className="w-[80vw] text-center relative z-10">
         <button className=" mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily:'Montserrat, sans-serif' }}>
           How It Works
@@ -26,9 +24,7 @@ const Cards = () => {
         </p>
       </div>
 
-      {/* Cards Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {/* Card 1 */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 z-[10000]">
         <div className="flex flex-col items-center text-center p-8 bg-gray-800 rounded-xl shadow-lg">
           <div className="flex items-center justify-center w-16 h-16 bg-gray-700 text-3xl rounded-full mb-6">
             <Assignment />
@@ -41,7 +37,6 @@ const Cards = () => {
           </p>
         </div>
 
-        {/* Card 2 */}
         <div className="flex flex-col items-center text-center p-8 bg-gray-800 rounded-xl shadow-lg">
           <div className="flex items-center justify-center w-16 h-16 bg-gray-700 text-3xl rounded-full mb-6">
             <Handshake />
@@ -54,7 +49,6 @@ const Cards = () => {
           </p>
         </div>
 
-        {/* Card 3 */}
         <div className="flex flex-col items-center text-center p-8 bg-gray-800 rounded-xl shadow-lg">
           <div className="flex items-center justify-center w-16 h-16 bg-gray-700 text-3xl rounded-full mb-6">
             <Star />

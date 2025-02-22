@@ -208,7 +208,7 @@ const FAQFooter = () => {
       <p className="text-gray-400 text-base mb-6">
         Still have a question?
       </p>
-      <button className="bg-[#295AAD] text-white px-6 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-105 duration-300">
+      <button onClick={()=>{window.location.href="https://mail.google.com/mail/?view=cm&fs=1&to=connect@univens.in&su=Ask%20Question%20to%20Univens%3F"}} className="bg-[#295AAD] text-white px-6 py-3 rounded-full shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-105 duration-300">
         Ask a Question
       </button>
     </div>
@@ -218,9 +218,6 @@ const FAQFooter = () => {
 const FAQ = () => (
   <div id="faq" className="text-white min-h-screen py-16 bg-[#010102] ">
     <div className="container w-[80vw] mx-auto relative z-10">
-    <div className="flex justify-center">
-        <img className="h-[25vh] w-screen opacity-[50%] object-fill top-0 bg-cover filter brightness-30 contrast-125  " src="/img5.avif" style={{ position: "absolute", zIndex: -10 }} alt=""/>
-    </div>
       <FAQHeader />
       <FAQSection />
       <FAQFooter />

@@ -1,7 +1,6 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-
 
 const PartnersSection = () => {
   const containerRef = useRef(null);
@@ -12,6 +11,11 @@ const PartnersSection = () => {
     "pocket-fm-seeklogo.svg",
     "kuku-fm-svgrepo-com.svg",
     "bigfm.png",
+    "Colors.svg",
+    "Jio_Star_India_Private_Limited.svg",
+    "MTV_Logo.svg",
+    "Network_18_Logo.svg",
+    "Viacom_18.svg"
   ];
 
   const handleRef = (ref) => {
@@ -39,13 +43,19 @@ const PartnersSection = () => {
     }
   }, [logos]);
 
-  return (
-    <div className=" relative w-full  md:w-1/2 overflow-hidden mx-auto">
 
-       <p className="text-center text-sm sm:text-base font-medium uppercase tracking-wide text-gray-400 my-8">
-          Our Partners Worked With
-        </p>
-  
+
+  return (
+    <div className="relative w-full md:w-2/3 lg:w-1/2 overflow-hidden mx-auto">
+      {/* <h5
+        className="text-xl sm:text-2xl text-center mt-12 md:text-3xl lg:text-4xl font-medium mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}
+>
+        Our Valued Collaborators
+      </h5> */}
+      <p className="text-center text-sm sm:text-base font-medium uppercase tracking-wide text-gray-400 my-8">
+        Our Experts Worked With
+      </p>
+
       <div
         ref={containerRef}
         className="flex justify-center items-center whitespace-nowrap"
@@ -61,7 +71,7 @@ const PartnersSection = () => {
               width: "10%",
               aspectRatio: "3 / 2",
               objectFit: "contain",
-              ...(index % 5 !== 4 && { filter: "invert(1)" }),
+              ...((index % 5 !== 4) && { filter: "invert(1)" }),
             }}
           />
         ))}

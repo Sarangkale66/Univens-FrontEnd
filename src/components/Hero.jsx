@@ -11,9 +11,6 @@ const Hero = () => {
         <h5 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mt-2 mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Struggling to Find the Right Solutions for Your Business?
         </h5>
-        <div className="flex justify-center">
-        <img className="h-[25vh] w-screen opacity-[50%] object-fill top-0 bg-cover filter brightness-30 contrast-125  " src="/img5.avif" style={{ position: "absolute", zIndex: -10 }} alt=""/>
-      </div>
         <p className="text-[10px] sm:text-[12px] md:text-[14px] text-gray-300 max-w-[800px] mx-auto mb-8 opacity-80" style={{ fontFamily: 'Inter' }}>
           As an entrepreneur, your time is precious. We know the frustration of searching for reliable
           solutions—waiting for responses, navigating complex processes, and getting lost in a sea of
