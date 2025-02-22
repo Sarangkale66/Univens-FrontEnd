@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { Star, Bolt } from '@mui/icons-material'; 
+import { Star, Bolt } from '@mui/icons-material';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Register GSAP plugin
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Comparison = () => {
@@ -44,7 +44,7 @@ const Comparison = () => {
           Why Choose Univens
         </button>
         <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          Univens vs Other Agencies
+          Univens vs Agencies
         </h5>
         <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-[720px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
           We don’t just solve problems—we get things done. Univens gives you access to a trusted network of experts in every area of your business. From tech to marketing to HR, we streamline your journey with reliable solutions. No more stress. Just results.
@@ -52,7 +52,6 @@ const Comparison = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-16">
-        {/* Other Agencies Card */}
         <div className="flex flex-col p-8 bg-gray-950 rounded-xl shadow-xl relative overflow-hidden fade-in">
           <h5 className="text-xl sm:text-2xl font-semibold text-center mb-6" style={{ fontFamily: 'Roboto, sans-serif' }}>
             Agencies
