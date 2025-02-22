@@ -50,7 +50,7 @@ const App = () => {
           )}
         </div>
         <a
-          href="#"
+          href="https://calendly.com/teamunivens/30min"
           className="px-6 py-3 bg-[#295AAD] block w-fit mx-auto text-white font-semibold rounded-full hover:bg-blue-600 transition-transform transform hover:scale-105"
         >
           Schedule Your Free Consultation
