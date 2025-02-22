@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { LinkedIn, GitHub, Twitter, CheckCircle, Instagram } from "@mui/icons-material"; // Import Material Icons
+import { LinkedIn, Twitter, CheckCircle, Instagram } from "@mui/icons-material"; // Import Material Icons
 
 const App = () => {
   const [showScroll, setShowScroll] = useState(false);
