@@ -1,8 +1,8 @@
 import React, { useEffect, Suspense, lazy } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import Cookies from 'js-cookie';
-import { toast } from 'react-toastify';
+// import { useQuery } from '@tanstack/react-query';
+// import axios from 'axios';
+// import Cookies from 'js-cookie';
+// import { toast } from 'react-toastify';
 import Lenis from '@studio-freight/lenis';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -24,45 +24,47 @@ import Element from './components/Elementimg';
 const apiUrl = import.meta.env.VITE_API_URL;
 const Hero = lazy(() => import('./components/Hero'));
 const TestimonialsSection = lazy(() => import('./components/TestimonialsSection'));
+import { initGA, logPageView } from "./gtag";
 
 function App() {
   const handleSelection = (e) => e.preventDefault();
 
-  const trackUsers = async(token) => {
-    try {
-      const visitorToken = Cookies.get('visitor');
+  // const trackUsers = async(token) => {
+  //   try {
+  //     const visitorToken = Cookies.get('visitor');
 
-      if (!visitorToken) {
-        await axios.post(`${apiUrl}/isFirstVisit`,{
-          token
-        },{
-          headers: { "Content-Type": "application/json" },
-        });
+  //     if (!visitorToken) {
+  //       await axios.post(`${apiUrl}/isFirstVisit`,{
+  //         token
+  //       },{
+  //         headers: { "Content-Type": "application/json" },
+  //       });
 
-        Cookies.set('visitor', token, { expires: 365, path: '/' });
-      }
-    } catch (error) {
-      console.error('Error while fetching visitor token:', error);
-    }
-  };
+  //       Cookies.set('visitor', token, { expires: 365, path: '/' });
+  //     }
+  //   } catch (error) {
+  //     console.error('Error while fetching visitor token:', error);
+  //   }
+  // };
 
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: ['serverConnection'],
-    queryFn: async () => {
-      const response = await axios.get(apiUrl);
-      console.log(response.data.token);
-      if (response) trackUsers(response.data.token);
-      return response.data;
-    },
-    onSuccess: (data) => {
-      console.log('Connected:', data);
-    },
-    onError: (error) => {
-      console.error('Error:', error);
-    },
-  });
-
-  
+  // const { data, isLoading, isError, error } = useQuery({
+  //   queryKey: ['serverConnection'],
+  //   queryFn: async () => {
+  //     let visitorId = Cookies.get("visitorId") || "";
+  //     const response = await axios.get(`${apiUrl}/${visitorId}`);
+  //     console.log(response);
+  //     if (!visitorId) {
+  //       Cookies.set("visitorId", response.data.token, { expires: 365, path: "/" }); 
+  //     }
+  //     return response.data;
+  //   },
+  //   onSuccess: (data) => {
+  //     console.log('Connected:', data);
+  //   },
+  //   onError: (error) => {
+  //     console.error('Error:', error);
+  //   },
+  // });
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -82,7 +84,10 @@ function App() {
     lenis.on('scroll', ScrollTrigger.update);
 
     document.addEventListener('selectstart', handleSelection);
-
+    
+    initGA();
+    logPageView();
+    
     return () => {
       lenis.destroy();
       document.removeEventListener('selectstart', handleSelection);
@@ -101,7 +106,7 @@ function App() {
             <Header />
             <HeroSection />
           </div>
-          <PartnersSection />
+            <PartnersSection />
           <Suspense fallback={<AnimatedLoader />}>
             <TestimonialsSection />
           </Suspense>
