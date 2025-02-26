@@ -17,8 +17,8 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import AnimatedLoader from './components/AnimatedLoader';
 import 'react-toastify/dist/ReactToastify.css';
-import UnivensAnimation from './components/UnivensAnimation';
-import Element from './components/Elementimg';
+import LoginSignup from './components/LoginSignup';
+
 
 
 const apiUrl = import.meta.env.VITE_API_URL;
