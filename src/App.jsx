@@ -47,24 +47,24 @@ function App() {
   //   }
   // };
 
-  // const { data, isLoading, isError, error } = useQuery({
-  //   queryKey: ['serverConnection'],
-  //   queryFn: async () => {
-  //     let visitorId = Cookies.get("visitorId") || "";
-  //     const response = await axios.get(`${apiUrl}/${visitorId}`);
-  //     console.log(response);
-  //     if (!visitorId) {
-  //       Cookies.set("visitorId", response.data.token, { expires: 365, path: "/" }); 
-  //     }
-  //     return response.data;
-  //   },
-  //   onSuccess: (data) => {
-  //     console.log('Connected:', data);
-  //   },
-  //   onError: (error) => {
-  //     console.error('Error:', error);
-  //   },
-  // });
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ['serverConnection'],
+    queryFn: async () => {
+      let visitorId = Cookies.get("visitorId") || "";
+      const response = await axios.get(`${apiUrl}/${visitorId}`);
+      console.log(response);
+      if (!visitorId) {
+        Cookies.set("visitorId", response.data.token, { expires: 365, path: "/" }); 
+      }
+      return response.data;
+    },
+    onSuccess: (data) => {
+      console.log('Connected:', data);
+    },
+    onError: (error) => {
+      console.error('Error:', error);
+    },
+  });
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
