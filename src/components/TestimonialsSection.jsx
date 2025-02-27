@@ -11,44 +11,49 @@ const testimonials = [
     name: "Raj Warma",
     position: "Startup Founder",
     image: "https://randomuser.me/api/portraits/men/63.jpg",
-    feedback: "Univens connected us with the right marketing experts at the perfect time. They made our growth seamless",
-    rating: 5
+    feedback:
+      "Univens connected us with the right marketing experts at the perfect time. They made our growth seamless",
+    rating: 5,
   },
   {
     name: "Sarah Johnson",
     position: "Scale-up Founder",
     image: "https://randomuser.me/api/portraits/women/67.jpg",
-    feedback: "We got exactly what you needed—no fuss, no delay. Univens just works!",
-    rating: 4
+    feedback: "We got exactly what we needed—no fuss, no delay. Univens just works!",
+    rating: 4,
   },
   {
     name: "Michael Brown",
     position: "Tech Entrepreneur!",
     image: "https://randomuser.me/api/portraits/men/92.jpg",
-    feedback: "Univens helped us scale rapidly while keeping costs in check. Their expertise is unmatched.",
-    rating: 5
+    feedback:
+      "Univens helped us scale rapidly while keeping costs in check. Their expertise is unmatched.",
+    rating: 5,
   },
   {
     name: "Emily White",
     position: "E-commerce CEO.",
     image: "https://randomuser.me/api/portraits/women/88.jpg",
-    feedback: "We couldn’t be happier with the results. Univens understands our business and always delivers above expectations",
-    rating: 5
+    feedback:
+      "We couldn’t be happier with the results. Univens understands our business and always delivers above expectations.",
+    rating: 5,
   },
   {
     name: "Rock Warner",
     position: "Product Manager",
     image: "https://randomuser.me/api/portraits/men/44.jpg",
-    feedback: "The team at Univens provided us with tailored solutions that were practical, effective, and transformative for our company",
-    rating: 5
+    feedback:
+      "The team at Univens provided us with tailored solutions that were practical, effective, and transformative for our company.",
+    rating: 5,
   },
   {
     name: "Anni Mava",
     position: "Business Director.",
     image: "https://randomuser.me/api/portraits/women/19.jpg",
-    feedback: "Univens’ attention to detail and commitment to our success made all the difference. They’ve been a true partner.",
-    rating: 5
-  }
+    feedback:
+      "Univens’ attention to detail and commitment to our success made all the difference. They’ve been a true partner.",
+    rating: 5,
+  },
 ];
 
 const StarRating = ({ rating }) => (
@@ -78,9 +83,7 @@ const Testimonials = () => {
   return (
     <section id="testimonials" className="py-12 h-screen flex items-center justify-center flex-col relative pt-10">
         <img className="h-[25vh] w-screen opacity-[50%] object-fill top-1/2 left-0 transform translate-y-full bg-cover filter brightness-30 contrast-125 z-[1]" src="/img5.avif" alt=""/>
-        <button
-          className="mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily: 'Roboto, sans-serif' }}
-        >
+        <button className=" mt-4 text-[#dbdbe2] text-base md:text-lg z-[10000] bg-[#000E23] rounded-3xl px-3 py-1.5 cursor-default" style={{ fontFamily:'Montserrat, sans-serif' }}>
           Testimonials
         </button>
         <div className="container mx-auto text-center z-[10]">
@@ -95,7 +98,7 @@ const Testimonials = () => {
           </p>
         <Swiper
           modules={[Autoplay]}
-          spaceBetween={30} 
+          spaceBetween={30}
           slidesPerView={1}
           breakpoints={{
             640: { slidesPerView: 1 },
@@ -103,7 +106,7 @@ const Testimonials = () => {
             1024: { slidesPerView: 3 },
           }}
           autoplay={{ delay: 2500, disableOnInteraction: false }}
-          speed={1000} 
+          speed={1000}
           loop={true}
         >
           {testimonials.map((testimonial, index) => (
