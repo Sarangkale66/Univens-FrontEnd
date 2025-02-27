@@ -82,38 +82,33 @@ const App = () => {
             </a>
           </div>
 
-          <div className="text-center">
-            <h3 className="text-xl sm:text-2xl font-bold mb-4 style={{ fontFamily:'Montserrat, sans-serif' }}">Join Our Community</h3>
-            <p className="italic mb-4 style={{ fontFamily:'inter' }}">
-              "Univens: Where Hustlers Turn Ideas into Reality."
-            </p>
-            <div className="flex justify-center space-x-4">
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-transform transform hover:scale-110"
-                aria-label="LinkedIn"
-              >
-                <LinkedIn className="w-6 h-6" />
-              </a>
-
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-transform transform hover:scale-110"
-                aria-label="GitHub"
-              >
-                <GitHub className="w-6 h-6" />
-              </a>
-
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-transform transform hover:scale-110"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-6 h-6" />
-              </a>
-            </div>
-          </div>
-
+<div className="text-center">
+  <h3
+    className="text-xl sm:text-2xl font-bold mb-4"
+    style={{ fontFamily: "Montserrat, sans-serif" }}
+  >
+    Join Our Community
+  </h3>
+  <p className="italic mb-4" style={{ fontFamily: "Inter" }}>
+    "Univens: Where Hustlers Turn Ideas into Reality."
+  </p>
+  <div className="flex justify-center space-x-4">
+    {[
+      { icon: <LinkedInIcon />, link: "https://www.linkedin.com/company/teamunivens/", label: "LinkedIn" },
+      { icon: <WhatsAppIcon />, link: "http://wa.me/919172725217", label: "WhatsApp" },
+      { icon: <InstagramIcon />, link: "https://www.instagram.com/teamunivens", label: "Instagram" },
+    ].map((social, index) => (
+      <a
+        key={index}
+        href={social.link}
+        className="text-gray-400 hover:text-white transition-transform transform hover:scale-110"
+        aria-label={social.label}
+      >
+        {social.icon}
+      </a>
+    ))}
+  </div>
+</div>
           <div className="ml-5">
             <h3
               className="text-xl sm:text-2xl font-bold mb-4"
