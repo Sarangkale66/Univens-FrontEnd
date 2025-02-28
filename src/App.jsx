@@ -18,9 +18,6 @@ import Footer from './components/Footer';
 import AnimatedLoader from './components/AnimatedLoader';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
-
 const apiUrl = import.meta.env.VITE_API_URL;
 const Hero = lazy(() => import('./components/Hero'));
 const TestimonialsSection = lazy(() => import('./components/TestimonialsSection'));
@@ -81,6 +78,8 @@ function App() {
           <Work />
           <FAQ />
           <Footer />
+
+
         </div>
       </div>
   );
