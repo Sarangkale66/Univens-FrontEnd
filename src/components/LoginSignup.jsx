@@ -15,7 +15,7 @@ function LoginSignup() {
     password: '',
     confirmPassword: '',
   });
-  const text = isLogin ? "Login" : "Signup";
+  const text = isLogin ? "LogIn" : "SignUp";
   const textRef = useRef(null);
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword1, setShowPassword1] = useState(false);
@@ -200,7 +200,7 @@ function LoginSignup() {
                 }}
               >
                 <span className="relative text-xl font-bold text-[#00ddff] before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-full before:h-1 before:bg-[#00ddff] before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100">
-                  {!isLogin ? "Login" : "Signup"}
+                  {!isLogin ? "Login" : "Sign up"}
                 </span>
               </span>
             </p>
