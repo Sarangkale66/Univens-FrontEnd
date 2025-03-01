@@ -5,6 +5,9 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap';
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { toast, ToastContainer } from 'react-toastify';
+import { useGoogleLogin } from "@react-oauth/google";
+import { useNavigate } from 'react-router-dom';
+import { googleAuth } from "../API/GoogleAPI";
 
 function LoginSignup() {
   const [isLogin, setIsLogin] = useState(true);
@@ -15,10 +18,12 @@ function LoginSignup() {
     password: '',
     confirmPassword: '',
   });
+
   const text = isLogin ? "LogIn" : "SignUp";
   const textRef = useRef(null);
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword1, setShowPassword1] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if(textRef.current){
@@ -88,6 +93,30 @@ function LoginSignup() {
       
   }
 
+  const responseGoogle = async (authResult) => {
+		try {
+			if (authResult["code"]) {
+				const result = await googleAuth(authResult.code);
+				const {email, name, image} = result.data.user;
+				const token = result.data.token;
+				const obj = {email,name, token, image};
+				localStorage.setItem('user-info',JSON.stringify(obj));
+				navigate('/User');
+			} else {
+				console.log(authResult);
+				throw new Error(authResult);
+			}
+		} catch (e) {
+			console.log('Error while Google Login...', e);
+		}
+	};
+
+  const googleLogin = useGoogleLogin({
+		onSuccess: responseGoogle,
+		onError: responseGoogle,
+		flow: "auth-code",
+	});
+
   return (
     <div className='relative min-h-screen w-full'>
       <ToastContainer style={{ zIndex: 100000000000 }} position="top-center" />
@@ -106,7 +135,7 @@ function LoginSignup() {
             <div className="flex flex-col gap-4 w-full">
               <button
                 type="button"
-                onClick={() => signInWithGoogle()}
+                onClick={googleLogin}
                 className="flex items-center justify-center w-full py-2 px-4 bg-white text-black rounded-lg hover:bg-gray-100 transition-all duration-300 ease-in-out  font-semibold shadow-lg text-sm md:text-base"
               >
                 <img src="https://www.google.com/favicon.ico" alt="Google" className="w-5 h-5 md:w-6 md:h-6 mr-2  " />
