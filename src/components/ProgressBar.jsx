@@ -29,7 +29,7 @@ const ProgressBar = () => {
       top:"0",
       left:"0",
       right:"0",
-      zIndex:100
+      zIndex:10000000000000
     }}>
         <div className="loader-bar" style={{
           height:"1%",

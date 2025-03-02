@@ -34,7 +34,6 @@ canvas {
   }
 }
 
-
 .loader-bar {
   position: fixed;
   top: 0;
@@ -42,7 +41,7 @@ canvas {
   height: 5px;
   background-color: #00FFFF;
   width: 0;
-  z-index: 9999;
+  z-index: 10000000000000;
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.7); 
   animation: neonGlow 1.5s ease-in-out infinite alternate;
 }

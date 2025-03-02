@@ -100,7 +100,7 @@ function LoginSignup() {
 				const {email, name, image} = result.data.user;
 				const token = result.data.token;
 				const obj = {email,name, token, image};
-				localStorage.setItem('user-info',JSON.stringify(obj));
+				localStorage.setItem('user-info', JSON.stringify(obj));
 				navigate('/User');
 			} else {
 				console.log(authResult);
@@ -120,7 +120,7 @@ function LoginSignup() {
   return (
     <div className='relative min-h-screen w-full'>
       <ToastContainer style={{ zIndex: 100000000000 }} position="top-center" />
-      <LogAni/>
+      <LogAni particle={35}/>
       <div className="rounded-lg shadow-lg w-[70%] md:w-[70%] lg:w-[40%] xl:w-[30%] px-6 flex justify-center items-center flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-5 overflow-y-hidden">  
           <>
             <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-semibold text-center transition-opacity duration-300 ease-in-out">

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./LogAni.css";
 
-const LogAni = () => {
+const LogAni = ({ particle }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -9,7 +9,7 @@ const LogAni = () => {
     const ctx = canvas.getContext("2d");
     
     let particlesArray = [];
-    const numberOfParticles = 35;
+    const numberOfParticles = particle;
 
     class Particle {
       constructor(x, y, size, speedX, speedY) {
