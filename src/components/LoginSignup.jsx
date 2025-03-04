@@ -19,6 +19,8 @@ function LoginSignup() {
     confirmPassword: '',
   });
 
+  
+
   const text = isLogin ? "LogIn" : "SignUp";
   const textRef = useRef(null);
   const [showPassword, setShowPassword] = useState(false);

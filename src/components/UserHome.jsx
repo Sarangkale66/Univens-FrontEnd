@@ -1,9 +1,10 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState, useContext } from 'react'
 import gsap from 'gsap';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import { getUserUpdate } from '../api/UserAPI';
 import { toast } from 'react-toastify';
+import  { AppContext } from '../contextAPI/AppContext'
 
 const UserHome = () => {
 
@@ -15,6 +16,8 @@ const UserHome = () => {
       companyName:'',
       address:'',
     });
+
+    const { user, setUser } = useContext(AppContext);
 
     const navigate = useNavigate();
     const {register, handleSubmit } = useForm({ defaultValues:additionalData }); 

@@ -11,30 +11,20 @@ function RefreshHandler({ setIsAuthenticated }) {
         const result = JSON.parse(data);
 
         if (result?.token) {
-            try {
-                const decoded = jwtDecode(result.token); 
-                if (decoded.exp * 1000 < Date.now()) {
-                    localStorage.removeItem('user-info');
-                    setIsAuthenticated(false);
-                    navigate('/Auth', { replace: true });
-                    return;
-                }
-
-                setIsAuthenticated(true);
-                if (location.pathname === '/Auth') {
-                    if (!result?.isCompleted)
-                        navigate('/User', { replace: false });
-                    else  
-                        navigate('/User/edit');
-                }
-            } catch (error) {
+            const decoded = jwtDecode(result.token); 
+            if (decoded.exp * 1000 < Date.now()) {
                 localStorage.removeItem('user-info');
                 setIsAuthenticated(false);
                 navigate('/Auth', { replace: true });
+                return;
             }
-        } else {
+
+            setIsAuthenticated(true);
+            if (location.pathname === '/Auth') {
+                navigate("/User");
+            }
+        } else if(!result?.token){
             setIsAuthenticated(false);
-            localStorage.removeItem('user-info');
         }
     }, [location, navigate, setIsAuthenticated]);
 

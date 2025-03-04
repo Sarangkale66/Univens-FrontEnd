@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { AppContext } from '../contextAPI/AppContext';
 import { toast } from 'react-toastify';
 import { Tooltip } from 'react-tooltip';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const UserTeam = () => {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -127,9 +129,19 @@ const UserTeam = () => {
             cardRef.current.push(e);
           }}
           >
-            <img src={member.image||"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIRR8brJpXF3vGjGa6wg-2z3Xo_OqJL2G3vg&s"} alt={member.fullname} className="w-20 object-contain h-20 rounded-full border mb-2" />
+            <LazyLoadImage
+              src={member?.image?.startsWith("//")
+                ? `https:${member.image}`
+                : member?.image||"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIRR8brJpXF3vGjGa6wg-2z3Xo_OqJL2G3vg&s"}
+              alt="Lazy loaded example"
+              effect="blur"
+              width="50%"
+              className="h-full w-full object-cover block p-0 m-0 rounded-full"
+              referrerPolicy="no-referrer"
+            />
+            {/* <img src={member?.image||"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIRR8brJpXF3vGjGa6wg-2z3Xo_OqJL2G3vg&s"} loading='lazy' alt={member.fullname} className="w-20 object-contain h-20 rounded-full border mb-2" /> */}
             <h2 className="text-xl font-semibold text-center">
-            {member?.isMember && <img src="/global-svgrepo-com.svg" alt="univens member" className='absolute left-[-1%] top-[-1%] w-10 h-10 scale-50' />}
+            {member?.isMember && <img src="/global-svgrepo-com.svg" loading="eager|lazy" alt="univens member" className='absolute left-[-1%] top-[-1%] w-10 h-10 scale-50' />}
             {member?.isInvited && <p className='bg-green-700 px-3 py-1 absolute right-[-1%] top-[-1%] scale-50'>invited</p>}
               {member.fullname}
             </h2>
@@ -147,7 +159,7 @@ const UserTeam = () => {
           <h3 className="text-lg font-semibold text-center mb-2">{selectedMember.fullname}</h3>
           <img src={selectedMember.image} alt={selectedMember.fullname} className="w-24 h-24 rounded-full bg-black mx-auto mb-2 object-contain" /> 
           <p className="text-gray-500 mb-2 text-center">{selectedMember.role||"role not mentioned"}</p>
-          {selectedMember.isMember && <img src="/global-svgrepo-com.svg" alt="univens member" className='absolute left-[-10%] top-[-1%] w-10 h-10 scale-50' />}
+          {selectedMember.isMember && <img src="/global-svgrepo-com.svg" alt="univens member" className='absolute left-[0%] top-[0%] w-10 h-10 scale-50' />}
           <div className='h-full w-full flex flex-col justify-start'>
             <p><span className='font-bold'>Company Name:</span> {selectedMember.companyName||"Not Mentioned"} </p>
             {selectedMember.dob && (<p><span className='font-bold'>Date of Birth:</span> {new Date(selectedMember.dob).toISOString().split("T")[0]||"Not Mentioned"}</p>)}
@@ -221,7 +233,16 @@ const UserTeam = () => {
 
           {user1 && (<div onClick={handleSelection} className="h-fit w-fit text-sm px-3 py-2 hover:bg-slate-900 bg-zinc-700 absolute z-50 flex items-center justify-center cursor-pointer rounded-sm">
             <div className="w-9 h-9 rounded-full overflow-hidden border-4 shadow-md mr-2">
-              <img src={user1?.image|| "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIRR8brJpXF3vGjGa6wg-2z3Xo_OqJL2G3vg&s"} alt="img-profile" className="w-full h-full object-cover" />
+            <LazyLoadImage
+                src={user1?.image?.startsWith("//")
+                ? `https:${user1.image}`
+                : user1?.image||"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIRR8brJpXF3vGjGa6wg-2z3Xo_OqJL2G3vg&s"}
+              alt="Lazy loaded example"
+              effect="blur"
+              width="100%"
+              className="h-full w-full object-cover block p-0 m-0 rounded-full"
+              referrerPolicy="no-referrer"
+            />
             </div>
             <span>{`${user1?.fullname} ${user1?.role && `(${user1?.role})`}`}</span>
           </div>)}
