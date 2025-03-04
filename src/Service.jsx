@@ -11,6 +11,7 @@ import UserProfilePage from './components/UserProfilePage.jsx';
 import UserHome from './components/UserHome.jsx';
 import RequestPage from './components/RequestPage.jsx';
 import AnimatedLoader from './components/AnimatedLoader';
+import { AppProvider } from './contextAPI/AppContext.jsx'
 
 const UserEdit = lazy(() => import('./components/UserEdit.jsx'));
 const UserTeam = lazy(() => import('./components/UserTeam.jsx'));
@@ -21,28 +22,31 @@ function Service() {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const GoogleWrapper = ()=>(
 		<GoogleOAuthProvider clientId={GClientID}>
-			<LoginSignup></LoginSignup>
+			<LoginSignup />	
 		</GoogleOAuthProvider>
 	)
 	const PrivateRoute = ({ element }) => {
 		return isAuthenticated ? element : <Navigate to="/Auth" />
 	}
+
 	return (
-		<BrowserRouter>
-      <RefreshHandler setIsAuthenticated={setIsAuthenticated} />
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/Auth" element={<GoogleWrapper />} />
-        <Route path="/User" element={<UserProfilePage />}>
-					<Route path="" element={<Suspense fallback={<AnimatedLoader/>}><UserHome /></Suspense>} /> 
-					<Route path="edit" element={<Suspense fallback={<AnimatedLoader/>}><UserEdit /></Suspense>} />
-					<Route path="team" element={<Suspense fallback={<AnimatedLoader/>}><UserTeam /></Suspense>} /> 
-					<Route path="request" element={<Suspense fallback={<AnimatedLoader/>}><RequestPage /></Suspense>} /> 
-      	</Route>
-      {/* <Route path="/Chat" element={<ChatInterface />} /> */}
-      <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+		<AppProvider>
+			<BrowserRouter>
+				<RefreshHandler setIsAuthenticated={setIsAuthenticated} />
+				<Routes>
+					<Route path="/" element={<App />} />
+					<Route path="/Auth" element={<GoogleWrapper />} />
+					<Route path="/User" element={<PrivateRoute element={<UserProfilePage />}/>}>
+						<Route path="" element={<Suspense fallback={<AnimatedLoader/>}><UserHome /></Suspense>} /> 
+						<Route path="edit" element={<Suspense fallback={<AnimatedLoader/>}><UserEdit /></Suspense>} />
+						<Route path="team" element={<Suspense fallback={<AnimatedLoader/>}><UserTeam /></Suspense>} /> 
+						<Route path="request" element={<Suspense fallback={<AnimatedLoader/>}><RequestPage /></Suspense>} /> 
+					</Route>
+				{/* <Route path="/Chat" element={<ChatInterface />} /> */}
+				<Route path="*" element={<NotFound />} />
+				</Routes>
+			</BrowserRouter>
+		</AppProvider>
 	);
 }
 

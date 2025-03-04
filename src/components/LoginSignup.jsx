@@ -7,7 +7,7 @@ import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { toast, ToastContainer } from 'react-toastify';
 import { useGoogleLogin } from "@react-oauth/google";
 import { useNavigate } from 'react-router-dom';
-import { googleAuth } from "../API/GoogleAPI";
+import { googleAuth, signin, signup } from "../api/AuthAPI";
 
 function LoginSignup() {
   const [isLogin, setIsLogin] = useState(true);
@@ -44,64 +44,77 @@ function LoginSignup() {
     }));
   };
   
-  const onSubmit = (data) =>{ 
+  const onSubmit = async (data) => { 
     try {
-        if (!isLogin && !data.fullName) {
-          toast.error("❌ Your full name is required", { position: "top-center" });
-          return;
-        }
-        if (!data.email) {
-          toast.error("❌ Your e-mail is required", { position: "top-center" });
-          return;
-        }
-        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(data.email)) {
-          toast.error("❌ Enter a valid email", { position: "top-center" });
-          return;
-        }
-        if (!data.password) {
-          toast.error("❌ Your Password is required", { position: "top-center" });
-          return;
-        }
-        if (!/^(?=.*[A-Z])(?=.*\d).{8,}$/.test(data.password)) {
-          toast.error("❌ Password must be at least 8 characters long, contain at least one uppercase letter and one number", { position: "top-center" });
-          return;
-        }
-        if(!isLogin){
-          if(!data.confirmPassword){
-            toast.error("❌ Confirm Password is required", { position: "top-center" });
-            return;
-          }
-          if (!/^(?=.*[A-Z])(?=.*\d).{8,}$/.test(data.confirmPassword)) {
-            toast.error("❌ Confirm Password must be at least 8 characters long, contain at least one uppercase letter and one number", { position: "top-center" });
-            return;
-          }
-          if(data.confirmPassword !== data.password){
-            toast.error("❌ Confirm Password And Password doesNot match", { position: "top-center" });
-            return;
-          }
-        }
-        console.log(data);
-        
-        toast.success("✅ Form submitted successfully!",{
-          position: 'top-center',
-        });
-      } catch (error) {
-        toast.error(`❌ ${error.response?.data?.message || "Something went wrong."}`,{
-          position: 'top-center',
-        });
+      if (!isLogin && !data.fullName) {
+        toast.error("❌ Your full name is required", { position: "top-center" });
+        return;
       }
-      
-  }
+      if (!data.email) {
+        toast.error("❌ Your e-mail is required", { position: "top-center" });
+        return;
+      }
+      if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(data.email)) {
+        toast.error("❌ Enter a valid email", { position: "top-center" });
+        return;
+      }
+      if (!data.password) {
+        toast.error("❌ Your Password is required", { position: "top-center" });
+        return;
+      }
+      if (!/^(?=.*[A-Z])(?=.*\d).{8,}$/.test(data.password)) {
+        toast.error("❌ Password must be at least 8 characters long, contain at least one uppercase letter and one number", { position: "top-center" });
+        return;
+      }
+      if (!isLogin) {
+        if (!data.confirmPassword) {
+          toast.error("❌ Confirm Password is required", { position: "top-center" });
+          return;
+        }
+        if (data.confirmPassword !== data.password) {
+          toast.error("❌ Confirm Password and Password do not match", { position: "top-center" });
+          return;
+        }
+      }
+  
+      let result;
+      if (isLogin) {
+        result = await signin(data);
+      } else {
+        result = await signup(data);
+      }
+  
+      const { email, fullname, image, role, phoneNumber, companyName, address, websiteLink, dob, gender } = result.data.user;
+      const token = result.data.token;
+      const isCompleted = result.data.isCompleted;
+      const userInfo = { email, fullname, token, role, image, isCompleted, phoneNumber, companyName, address, websiteLink, dob, gender };
+  
+      localStorage.setItem("user-info", JSON.stringify(userInfo));
+  
+      toast.success("✅ Authentication successfull! redirecting to user profile ", { position: "top-center" });
+  
+      if (!isCompleted) navigate("/User");
+      else navigate("/User/edit");
+    } catch (error) {
+      toast.error(`❌ ${error.response?.data?.message || "Something went wrong."}`, {
+        position: "top-center",
+      });
+    }
+  };
 
   const responseGoogle = async (authResult) => {
 		try {
 			if (authResult["code"]) {
 				const result = await googleAuth(authResult.code);
-				const {email, name, image} = result.data.user;
+				const {email, fullname, image, role, phoneNumber, companyName, address, websiteLink, dob, gender,} = result.data.user;
 				const token = result.data.token;
-				const obj = {email,name, token, image};
+        const isCompleted = result.data.isCompleted;
+				const obj = {email, fullname, token, image, isCompleted, role, phoneNumber, companyName, address, websiteLink, dob, gender};
 				localStorage.setItem('user-info', JSON.stringify(obj));
-				navigate('/User');
+        if(!isCompleted)
+				  navigate('/User');
+        else  
+          navigate('/User/edit');
 			} else {
 				console.log(authResult);
 				throw new Error(authResult);
@@ -116,6 +129,8 @@ function LoginSignup() {
 		onError: responseGoogle,
 		flow: "auth-code",
 	});
+
+  
 
   return (
     <div className='relative min-h-screen w-full'>

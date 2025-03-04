@@ -1,20 +1,35 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import LogAni from './LogAni';
+import { Tooltip } from "react-tooltip";
+import { logout } from "../api/AuthAPI"
+import { toast, ToastContainer } from "react-toastify"
+import { AppContext } from '../contextAPI/AppContext';
 
 const UserProfilePage = () => {
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [user, setUser] = useState({
-    name: 'omar',
-    number: '+91 123-456-7890',
-    dob: '2003-05-12',
-    role: 'Software Engineer',
-    email: 'omar@gmail.com',
-    address: 'nagpur',
-    teamMembers: ['member1', 'member3', 'member3', 'member4'],
-    profilePhoto: 'https://images.unsplash.com/photo-1740428639827-79acb8f07709?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  });
+  const { user, setUser } = useContext(AppContext);
+
+  const navigate = useNavigate();
+ 
+  const handleLogout = async ()=>{
+    try {
+      const storedUser = JSON.parse(localStorage.getItem("user-info"));
+      const token = storedUser?.token;
+  
+      if (token) {
+        await logout(token);
+      }
+  
+      localStorage.removeItem("user-info");
+      toast.success("✅ Logged out successfully!", { position: "top-center" });
+      navigate("/");
+    } catch (error) {
+      toast.error(`❌ Logout failed: ${error.response?.data?.message || "Something went wrong."}`, {
+        position: "top-center",
+      });
+    }
+  }
 
   const bgRef = useRef(null);
   const w40Ref = useRef(null);
@@ -28,19 +43,28 @@ const UserProfilePage = () => {
     gsap.from(h1Ref.current, { opacity: 0, duration: 1, delay: 0.9 });
     gsap.from(pRef.current, { opacity: 0, duration: 1, delay: 1.1 });
     gsap.from(navLinkRef.current, { opacity: 0, duration: 1, delay: 1.3, stagger:0.1 });
+
+    const data = localStorage.getItem('user-info');
+    const userData = JSON.parse(data);
+    setUser(userData);
   }, []);
 
   return (
     <div className='relative min-h-screen w-full'>
       <LogAni particle={35}/>
+      <ToastContainer style={{ zIndex: 100000000000 }} position="top-center" />
     <div className="h-screen absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-screen p-3 overflow-y-scroll">
       <div className="w-full h-full max-w-6xl rounded-lg md:overflow-hidden flex flex-col md:flex-row">
-        <div ref={bgRef} className="bg-[#003287] w-full md:w-[40%] p-6 text-white flex flex-col items-center justify-center">
-          <div ref={w40Ref} className="w-40 h-40 rounded-full overflow-hidden border-4  shadow-md mb-4">
-            <img src={user.profilePhoto} alt="" className="w-full h-full object-cover" />
+        <div ref={bgRef} className="bg-[#00ccdb] w-full md:w-[40%] p-6 text-white flex flex-col items-center justify-center relative">
+        <i onClick={handleLogout} className="w-fit ri-logout-box-line absolute right-0 md:left-0 top-0 m-3 cursor-pointer" 
+        data-tooltip-id="profile-logout"
+        data-tooltip-content="Logout"></i>
+        <Tooltip id="profile-logout" isOpen={true}/>
+          <div ref={w40Ref} className="w-30 h-30 rounded-full overflow-hidden border-4  shadow-md mb-4">
+            <img src={user?.image} alt="" className="w-full h-full object-cover" />
           </div>
-          <h1 ref={h1Ref} className="text-2xl font-semibold text-center md:text-left">{user.name}</h1>
-          <p ref={pRef} className="text-lg text-center md:text-left">{user.role}</p>
+          <h1 ref={h1Ref} className="text-2xl font-semibold text-center md:text-left">{user?.fullname}</h1>
+          <p ref={pRef} className="text-lg text-center md:text-left">{user?.role}</p>
           <div className='flex md:flex-col m-4 gap-0 w-full'>
             <hr />
             <NavLink

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
 function RefreshHandler({ setIsAuthenticated }) {
     const location = useLocation();
@@ -7,20 +8,37 @@ function RefreshHandler({ setIsAuthenticated }) {
 
     useEffect(() => {
         const data = localStorage.getItem('user-info');
-        const token = JSON.parse(data)?.token;
-        if (token) {
-            setIsAuthenticated(true);
-            if (location.pathname === '/' ||
-                location.pathname === '/login'
-            ) {
-                navigate('/User', { replace: false });
-            }
-        }
-    }, [location, navigate, setIsAuthenticated])
+        const result = JSON.parse(data);
 
-    return (
-        null
-    )
+        if (result?.token) {
+            try {
+                const decoded = jwtDecode(result.token); 
+                if (decoded.exp * 1000 < Date.now()) {
+                    localStorage.removeItem('user-info');
+                    setIsAuthenticated(false);
+                    navigate('/Auth', { replace: true });
+                    return;
+                }
+
+                setIsAuthenticated(true);
+                if (location.pathname === '/Auth') {
+                    if (!result?.isCompleted)
+                        navigate('/User', { replace: false });
+                    else  
+                        navigate('/User/edit');
+                }
+            } catch (error) {
+                localStorage.removeItem('user-info');
+                setIsAuthenticated(false);
+                navigate('/Auth', { replace: true });
+            }
+        } else {
+            setIsAuthenticated(false);
+            localStorage.removeItem('user-info');
+        }
+    }, [location, navigate, setIsAuthenticated]);
+
+    return null;
 }
 
 export default RefreshHandler;
