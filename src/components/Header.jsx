@@ -1,9 +1,12 @@
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
-import React, { useRef, forwardRef, useState, useEffect } from "react";
+import React, { useRef, forwardRef, useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
+import { AppContext } from "../contextAPI/AppContext";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 gsap.registerPlugin(TextPlugin);
 
@@ -12,6 +15,8 @@ const Header = forwardRef((props, ref) => {
   const buttonRef = useRef();
   const [btn,setBtn] = useState(null);
   const navigate = useNavigate();
+
+  const { user } = useContext(AppContext);
 
   useGSAP(() => {
     gsap.from(headerRef.current, {
@@ -43,6 +48,17 @@ const Header = forwardRef((props, ref) => {
             <img src={btn.image} alt="" className="w-full h-full object-cover" 
              data-tooltip-id="profile-image"
              data-tooltip-content={btn.name}
+            />
+            <LazyLoadImage
+              src={user?.image}
+              alt="Lazy loaded example"
+              effect="blur"
+              height="100%"
+              width="100%"
+              className="w-full h-full object-cover block p-0 m-0"
+              referrerPolicy="no-referrer"
+              data-tooltip-id="profile-image"
+              data-tooltip-content={btn.name}
             />
             <Tooltip id="profile-image" />
           </div>) :  "Login"  }

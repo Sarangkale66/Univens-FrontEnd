@@ -21,3 +21,11 @@ export const getTeamMembers = (token) =>
   api.get("/team",{ headers: {
     Authorization: `Bearer ${token}`
 }});
+
+export const addTeamMember = (jsonData, token) =>
+  api.post("/addTeam",jsonData,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  })

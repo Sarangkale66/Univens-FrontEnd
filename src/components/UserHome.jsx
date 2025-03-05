@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useContext } from 'react'
 import gsap from 'gsap';
 import { useForm } from "react-hook-form";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { getUserUpdate } from '../api/UserAPI';
 import { toast } from 'react-toastify';
 import  { AppContext } from '../contextAPI/AppContext'
@@ -20,6 +20,7 @@ const UserHome = () => {
     const { user, setUser } = useContext(AppContext);
 
     const navigate = useNavigate();
+
     const {register, handleSubmit } = useForm({ defaultValues:additionalData }); 
   
   
@@ -83,7 +84,7 @@ const UserHome = () => {
   },[]);
 
   return (
-    <div ref={bgRef} className="p-6 h-full w-full border-gray-300">
+    <div ref={bgRef} className="p-6 h-full w-full border-gray-300 overflow-y-auto">
       <div className="w-full relative">
         <button
           className="px-4 py-2 text-white rounded-full fixed right-0 top-0"
@@ -94,7 +95,7 @@ const UserHome = () => {
         <h2 className="text-xl md:text-2xl text-white font-bold mb-6 text-center">
           <i className="ri-edit-box-line mr-3"></i>Complete Your Profile
         </h2>
-        <form className="w-[75%] mx-auto" onSubmit={handleSubmit(handleAdditionalSubmit)}>
+        <form className="w-[75%] mx-auto overflow-y-auto" onSubmit={handleSubmit(handleAdditionalSubmit)}>
           <div className="mb-6">
             <label className="block font-semibold text-md text-white mb-1">Date of Birth:</label>
             <input
