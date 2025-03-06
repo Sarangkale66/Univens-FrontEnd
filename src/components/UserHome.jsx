@@ -74,12 +74,8 @@ const UserHome = () => {
   useEffect(() => {
     gsap.from(bgRef.current, { y: 10, opacity: 0, duration: 0.5, delay: 0.2 });
 
-    const data = localStorage.getItem('user-info');
-    const userData = JSON.parse(data);
-
-    // if(userData?.isCompleted){
-    //   navigate('/User/edit')
-    // }
+    // const data = localStorage.getItem('user-info');
+    // const userData = JSON.parse(data);
     
   },[]);
 
