@@ -45,13 +45,16 @@ const UserEdit = () => {
   return (
     <div
       ref={bgRef}
-      className="space-y-4 w-[100%] md:overflow-y-auto bg-opacity-50 bg-slate-800 p-6 text-white"
+      className="space-y-4 w-[100%] h-full md:overflow-y-auto bg-opacity-50 bg-slate-800 p-6 text-white"
     >
       <div className="flex gap-3 mb-5 ">
-        <h2 className="text-2xl font-bold mx-auto text-center"><i className="ri-user-3-fill mr-2"></i>Profile Details</h2>
+        <h2 className="text-2xl font-bold mx-auto mt-100 hidden  text-center"><i className="ri-user-3-fill mr-2"></i>Profile Details</h2>
+            { isEditMode && (<button className='p-2 absolute right-5 top-0 ' onClick={()=>{ setIsEditMode(!isEditMode)}}>
+              <i className="ri-close-line text-2xl"></i>
+            </button> )}
         {!isEditMode && (
           <span
-            onClick={() => setIsEditMode(!isEditMode)}
+            onClick={() => navigate("/User")}
             className="text-gray-400 text-sm cursor-pointer scale-150 bg-white h-fit w-fit rounded-full px-1"
           >
             <i className="ri-edit-line text-red-500"></i>
@@ -77,7 +80,7 @@ const UserEdit = () => {
       </div>)}
 
     {isEditMode && (
-      <form className="w-[75%] text-black mx-auto" onSubmit={handleSubmit(confirmSave)}>
+      <form className="w-[75%] h-full text-black mx-auto relative" onSubmit={handleSubmit(confirmSave)}> 
           <div className="mb-6">
             <label className="block font-semibold text-md text-white mb-1">Full Name:</label>
             <input
@@ -188,7 +191,7 @@ const UserEdit = () => {
           Submit
         </button>
         {showDialog && (
-            <div className="sticky inset-0 flex items-center justify-center z-50">
+            <div className="md:sticky absolute inset-0 flex items-center justify-center z-50">
               <div className="bg-white p-6 rounded-lg shadow-lg w-[100%] max-w-md relative">
                 <p className="text-lg font-semibold text-gray-700 text-center">
                   Are you sure you want to save the changes?

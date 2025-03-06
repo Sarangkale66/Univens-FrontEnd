@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import gsap from 'gsap';
 import { FaPlus } from 'react-icons/fa';
-import { addTeamMember, getTeamMembers, searchEmail } from '../api/UserAPI';
+import { addTeamMember, getTeamMembers, removeMember, searchEmail } from '../api/UserAPI';
 import { useForm } from "react-hook-form";
 import { AppContext } from '../contextAPI/AppContext';
 import { toast } from 'react-toastify';
@@ -90,35 +90,43 @@ const UserTeam = () => {
     }
   };
 
-  const deleteMember = (index) => {
-    setTeamMembers(teamMembers.filter((_, i) => i !== index));
-    closeMemberModal();
+  const deleteMember = async(index) => {
+    try {
+      const obj = teamMembers[index];
+      const result = await removeMember(obj.memberId._id, obj.email, user?.token);
+
+      const updatedMembers = teamMembers.filter((_, i) => i !== index);
+      setTeamMembers(updatedMembers);
+
+      localStorage.setItem("teamMembers", JSON.stringify(updatedMembers));
+  
+      closeMemberModal();
+      toast.success(result.data.message);
+    } catch (err) {
+      toast.error("Failed to remove team member.");
+    }
   };
 
   const handleSelection = async (flag) => {
     try {
-        if (flag) {
-            setUser1(null);
-            setIsDialogOpen(false);
-        }
-
-        const storedTeamMembers = JSON.parse(localStorage.getItem("teamMember")) || [];
-
-        const isMemberExists = storedTeamMembers.some(member => member.email === user1.email);
-
-        if (isMemberExists) {
+      
+      const storedTeamMembers = JSON.parse(localStorage.getItem("teamMembers")) || [];
+      
+      const isMemberExists = storedTeamMembers.some(member => member.email === user1.email);
+      
+      if (isMemberExists) {
             toast.error("Member with this email already exists in the team.");
             return;
         }
-
+        
         const result = await addTeamMember(user1, user?.token);
-        console.log(result);
+        console.log(result, storedTeamMembers);
+        
+        localStorage.setItem("teamMembers", JSON.stringify(result.data.team));
 
-        const updatedTeamMembers = [...storedTeamMembers, user1];
-        localStorage.setItem("teamMember", JSON.stringify(updatedTeamMembers));
-
-        setTeamMembers(updatedTeamMembers);
-        handleAddMember(result.data.team);
+        setTeamMembers(result.data.team);
+        setUser1(null);
+        setIsDialogOpen(false);
     } catch (err) {
         toast.error("Failed to add member");
     }
@@ -170,8 +178,8 @@ const UserTeam = () => {
             referrerPolicy="no-referrer"
           />
           <h2 className="text-xl font-semibold text-center">
-            {member.isMember && <img src="/global-svgrepo-com.svg" loading="eager|lazy" alt="univens member" className='absolute left-[-1%] top-[-1%] w-10 h-10 scale-50' />}
-            {member.isInvited && <p className='bg-green-700 px-3 py-1 absolute right-[-1%] top-[-1%] scale-50'>invited</p>}
+            {member.memberId && <img src="/global-svgrepo-com.svg" loading="eager|lazy" alt="univens member" className='absolute left-[-1%] top-[-1%] w-10 h-10 scale-50' />}
+            {member.requestType==="pending" && <p className='bg-green-700 px-3 py-1 absolute right-[0%] top-[0%] scale-50'>invited</p>}
             {member.fullname}
           </h2>
           <p className="text-gray-300 text-center">{member.role || "Role Not Mentioned"}</p>
@@ -197,7 +205,7 @@ const UserTeam = () => {
             className="w-24 h-24 rounded-full bg-black mx-auto mb-2 object-contain" 
           />
       <p className="text-gray-500 mb-2 text-center">{selectedMember.role || "Role Not Mentioned"}</p>
-      {selectedMember.isMember && <img src="/global-svgrepo-com.svg" alt="univens member" className='absolute left-[0%] top-[0%] w-10 h-10 scale-50' />}
+      {selectedMember.memberId && <img src="/global-svgrepo-com.svg" alt="univens member" className='absolute left-[0%] top-[0%] w-10 h-10 scale-50' />}
       <div className='h-full w-full flex flex-col justify-start'>
         <p><span className='font-bold'>Company Name:</span> {selectedMember.memberId?.companyName || "Not Mentioned"} </p>
         <p><span className='font-bold'>Email:</span> {selectedMember.email || "Not Mentioned"}</p>
@@ -241,7 +249,7 @@ const UserTeam = () => {
 
       {isDialogOpen && (
       <div className="fixed inset-0 flex items-center justify-center z-50">
-        <div className="bg-[#00ccdb] text-white p-6 rounded shadow-lg w-96 relative">
+        <div className="bg-[#008cbf] text-white p-6 rounded shadow-lg w-96 relative">
           <h2 className="text-xl font-semibold mb-4">Add New Member</h2>
 
           <label htmlFor="searchMem">Member already exists in UNIVENS!</label>
@@ -267,8 +275,7 @@ const UserTeam = () => {
               } 
 
               try{
-                const storedUser = JSON.parse(localStorage.getItem("user-info"));
-                const token = storedUser?.token;
+                const token = user?.token;
                 const response = await searchEmail(email,token);
                 const u = response.data.user;
                 u.isInvited=true;

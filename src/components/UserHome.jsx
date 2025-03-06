@@ -77,14 +77,14 @@ const UserHome = () => {
     const data = localStorage.getItem('user-info');
     const userData = JSON.parse(data);
 
-    if(userData?.isCompleted){
-      navigate('/User/edit')
-    }
+    // if(userData?.isCompleted){
+    //   navigate('/User/edit')
+    // }
     
   },[]);
 
   return (
-    <div ref={bgRef} className="p-6 h-full w-full border-gray-300 overflow-y-auto">
+    <div ref={bgRef} className="p-6 h-full absolute md:relative left-0 top-0 w-full border-gray-300 overflow-y-auto">
       <div className="w-full relative">
         <button
           className="px-4 py-2 text-white rounded-full fixed right-0 top-0"
