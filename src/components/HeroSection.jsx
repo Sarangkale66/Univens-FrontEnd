@@ -8,6 +8,7 @@ const HeroSection = () => {
                          cursor-default border border-white">
         Business Simplified
       </button>
+
       <h2 className="w-[90vw] sm:w-[80vw] md:w-[60vw]
                      text-lg sm:text-2xl md:text-[3.5rem]
                      leading-[1.3] sm:leading-[1.4] md:leading-[3.7rem]

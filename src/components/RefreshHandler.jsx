@@ -14,6 +14,7 @@ function RefreshHandler({ setIsAuthenticated }) {
             const decoded = jwtDecode(result.token); 
             if (decoded.exp * 1000 < Date.now()) {
                 localStorage.removeItem('user-info');
+                localStorage.removeItem('teamMembers');
                 setIsAuthenticated(false);
                 navigate('/Auth', { replace: true });
                 return;

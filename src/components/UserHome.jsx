@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useContext } from 'react'
 import gsap from 'gsap';
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getUserUpdate } from '../api/UserAPI';
 import { toast } from 'react-toastify';
 import  { AppContext } from '../contextAPI/AppContext'
@@ -21,7 +21,7 @@ const UserHome = () => {
 
     const navigate = useNavigate();
 
-    const {register, handleSubmit } = useForm({ defaultValues:additionalData }); 
+    const {register, handleSubmit, reset } = useForm({ defaultValues:additionalData }); 
   
   
     const handleAdditionalSubmit = async(data) => {
@@ -54,12 +54,12 @@ const UserHome = () => {
         const storedUser = JSON.parse(localStorage.getItem("user-info"));
         const token = storedUser?.token;
         const result = await getUserUpdate(data,token);
-        const { email, fullname, image, role, phoneNumber, companyName, address, websiteLink, dob, gender } = result.data.user;
+        const { email, fullname, image, role, phoneNumber, companyName, address, websiteLink, dob, gender, createdAt } = result.data.user;
         const isCompleted = result.data.isCompleted;
-        const userInfo = { email, fullname, image, token, role, phoneNumber, companyName, address, websiteLink, dob, isCompleted, gender };
+        const userInfo = { email, fullname, image, token, role, phoneNumber, companyName, address, websiteLink, dob, isCompleted, gender, createdAt };
   
         localStorage.setItem("user-info", JSON.stringify(userInfo));
-        
+        setUser(userInfo)
         navigate("/User/edit");
         
       }catch(err){
@@ -73,10 +73,7 @@ const UserHome = () => {
 
   useEffect(() => {
     gsap.from(bgRef.current, { y: 10, opacity: 0, duration: 0.5, delay: 0.2 });
-
-    // const data = localStorage.getItem('user-info');
-    // const userData = JSON.parse(data);
-    
+    reset(user);
   },[]);
 
   return (
@@ -88,10 +85,31 @@ const UserHome = () => {
         >
           <i className="ri-close-line text-2xl"></i>
         </button>
-        <h2 className="text-xl md:text-2xl text-white font-bold mb-6 text-center">
-          <i className="ri-edit-box-line mr-3"></i>Complete Your Profile
+        <h2 className="text-xl md:text-2xl text-white font-bold mb-6 mt-6 text-center">
+          <i className="ri-edit-box-line mr-3"></i> Updating Your Profile
         </h2>
         <form className="w-[75%] mx-auto overflow-y-auto" onSubmit={handleSubmit(handleAdditionalSubmit)}>
+          <div className="mb-6">
+            <label className="block font-semibold text-md text-white mb-1">Full Name:</label>
+            <input
+              type="text"
+              {...register("fullname")}
+              className=" w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#44082f] text-base "
+              placeholder="Enter FullName"
+              style={{ filter: "invert(1)" }}
+            />
+          </div>
+
+          <div className="mb-6">
+            <label className="block font-semibold text-md text-white mb-1">Email:</label>
+            <input
+              type="text"
+              {...register("email")}
+              className=" w-full px-3 py-2 md:px-4 md:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#44082f] text-base "
+              placeholder="Email"
+              style={{ filter: "invert(1)" }}
+            />
+          </div>
           <div className="mb-6">
             <label className="block font-semibold text-md text-white mb-1">Date of Birth:</label>
             <input

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import LogAni from './LogAni';
 import { useForm } from 'react-hook-form';
 import { useEffect, useRef } from 'react'
@@ -8,6 +8,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { useGoogleLogin } from "@react-oauth/google";
 import { useNavigate } from 'react-router-dom';
 import { googleAuth, signin, signup } from "../api/AuthAPI";
+import { AppContext } from '../contextAPI/AppContext';
 
 function LoginSignup() {
   const [isLogin, setIsLogin] = useState(true);
@@ -19,7 +20,7 @@ function LoginSignup() {
     confirmPassword: '',
   });
 
-  
+  const { user, setUser } = useContext(AppContext);
 
   const text = isLogin ? "LogIn" : "SignUp";
   const textRef = useRef(null);
@@ -86,17 +87,19 @@ function LoginSignup() {
         result = await signup(data);
       }
   
-      const { email, fullname, image, role, phoneNumber, companyName, address, websiteLink, dob, gender } = result.data.user;
+      const { email, fullname, image, role, phoneNumber, companyName, address, websiteLink, dob, gender, team, fileIds, createdAt } = result.data.user;
       const token = result.data.token;
       const isCompleted = result.data.isCompleted;
-      const userInfo = { email, fullname, token, role, image, isCompleted, phoneNumber, companyName, address, websiteLink, dob, gender };
+      const userInfo = { email, fullname, token, role, image, isCompleted, phoneNumber, companyName, address, websiteLink, dob, gender, teamLen:team.length, fileIdsLen:fileIds.length, createdAt };
   
       localStorage.setItem("user-info", JSON.stringify(userInfo));
-  
+      setUser(userInfo);
       toast.success("✅ Authentication successfull! redirecting to user profile ", { position: "top-center" });
-  
-      if (!isCompleted) navigate("/User");
-      else navigate("/User/edit");
+      
+      setTimeout(()=>{
+        if (!isCompleted) navigate("/User");
+        else navigate("/User/edit");
+      },5000);
     } catch (error) {
       toast.error(`❌ ${error.response?.data?.message || "Something went wrong."}`, {
         position: "top-center",
@@ -108,17 +111,22 @@ function LoginSignup() {
 		try {
 			if (authResult["code"]) {
 				const result = await googleAuth(authResult.code);
-				const {email, fullname, image, role, phoneNumber, companyName, address, websiteLink, dob, gender,} = result.data.user;
+				const { email, fullname, image, role, phoneNumber, companyName, address, websiteLink, dob, gender, team, fileIds, createdAt } = result.data.user;
 				const token = result.data.token;
         const isCompleted = result.data.isCompleted;
-				const obj = {email, fullname, token, image, isCompleted, role, phoneNumber, companyName, address, websiteLink, dob, gender};
+				const obj = { email, fullname, token, role, image, isCompleted, phoneNumber, companyName, address, websiteLink, dob, gender, teamLen:team.length, fileIdsLen:fileIds.length, createdAt };
 				localStorage.setItem('user-info', JSON.stringify(obj));
-        if(!isCompleted)
-				  navigate('/User');
-        else  
-          navigate('/User/edit');
+        setUser(obj);
+
+        toast.success("✅ Authentication successfull! redirecting to user profile ", { position: "top-center" });
+        
+        setTimeout(() => {
+            if(!isCompleted)
+              navigate('/User');
+            else  
+              navigate('/User/edit');
+        }, 5000);
 			} else {
-				console.log(authResult);
 				throw new Error(authResult);
 			}
 		} catch (e) {

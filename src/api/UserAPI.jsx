@@ -29,7 +29,14 @@ export const addTeamMember = (jsonData, token) =>
       'Content-Type': 'application/json',
 }});
 
-export const removeMember = (id,email,token)=>
+export const removeMember = (id,email,token) =>
   api.get(`/removeMember?memberId=${id}&email=${email}`,{ headers: {
     Authorization: `Bearer ${token}`
+}});
+
+export const sendEmail = (jsonData, token) => 
+  api.post("/sendEmail",jsonData,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
 }});

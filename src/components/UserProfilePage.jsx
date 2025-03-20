@@ -12,6 +12,7 @@ import NotificationSection from './NotificationSection';
 
 const UserProfilePage = () => {
   const { user, setUser } = useContext(AppContext);
+  const [hasFetched, setHasFetched] = useState(false); 
 
   const navigate = useNavigate();
  
@@ -25,9 +26,12 @@ const UserProfilePage = () => {
       }
   
       localStorage.removeItem("user-info");
+      localStorage.removeItem("teamMembers");
+      
       toast.success("✅ Logged out successfully!", { position: "top-center" });
-
+      
       setTimeout(()=>{
+        setUser(()=>null);
         navigate("/");
       },5000);
     } catch (error) {
@@ -93,8 +97,6 @@ const UserProfilePage = () => {
     const data = localStorage.getItem('user-info');
     const userData = JSON.parse(data);
     setUser(userData);
-
-    
   }, []);
   
   useEffect(()=>{
@@ -130,13 +132,13 @@ const UserProfilePage = () => {
       <div className="w-full h-[200%] md:h-full max-w-6xl rounded-lg md:overflow-hidden flex flex-col md:flex-row">
         <div className='md:w-[40%] h-full relative overflow-hidden '>
           <div className='h-1/2 md:h-full w-full absolute left-0 bottom-0'>
-            <div ref={bgRef} className="bg-[#1187b2] h-full w-full md:w-[100%] pt-6 text-white flex flex-col items-center justify-center relative">
-                <i onClick={handleLogout} className="w-fit ri-logout-box-line px-2 py-1 hover:text-black hover:bg-white transition-all duration-500 rounded-sm absolute right-0 top-0 m-3 cursor-pointer" 
+            <div ref={bgRef} className="bg-[#1187b2] h-full w-full md:w-[100%]  text-white flex flex-col items-center justify-center relative">
+                <i onClick={handleLogout} className="w-fit ri-logout-box-line px-2 py-1 hover:text-black hover:bg-white transition-all duration-500 rounded-sm absolute right-0 md:top-0 top-5 m-3 cursor-pointer" 
                 data-tooltip-id="profile-logout"
                 data-tooltip-content="Logout"></i>
               <Tooltip id="profile-logout" isOpen={true}/>
               <i
-                className="ri-notification-line absolute z-50 top-0 left-0  p-2 text-center hover:text-black transition-colors m-3 rounded-full cursor-pointer"
+                className="ri-notification-line absolute z-50 md:top-0 top-5 left-0  p-2 text-center hover:text-black transition-colors m-3 rounded-full cursor-pointer"
                 data-tooltip-id="notification"
                 data-tooltip-content="Notifications"
                 onClick={handleNotification}
@@ -147,11 +149,11 @@ const UserProfilePage = () => {
 
               <div
                 ref={notificationRef}
-                className={`left-0 top-0 m-3 flex rounded-sm  overflow-hidden flex-col p-2 pb-3 items-center justify-between text-black mt-4 absolute h-8 w-8 z-40 transition-all duration-500 ${
+                className={`left-0 top-5 md:top-0 m-3 flex rounded-sm  overflow-hidden flex-col p-2 pb-3 items-center justify-between text-black mt-4 absolute h-8 w-8 z-40 transition-all duration-500 ${
                   expanded ? " bg-white w-[75%]  max-h-[75%]" : " bg-transparent"
                 }`}
               >
-                {expanded && <NotificationSection/> }
+                {expanded && <NotificationSection hasFetched={hasFetched} setHasFetched={setHasFetched}  /> }
           
               </div>
           
@@ -169,6 +171,17 @@ const UserProfilePage = () => {
               <h1 ref={h1Ref} className="text-2xl font-semibold text-center md:text-left">{user?.fullname}</h1>
               <p ref={pRef} className="text-lg text-slate-200 text-center md:text-left">{user?.role}</p>
               <div className='flex md:flex-col m-4 mt-10 gap-0 w-full'>
+                <hr />
+                <NavLink
+                  ref={(ref) => { navLinkRef.current.push(ref) }}
+                  to="/"
+                  className={({ isActive }) => (!isActive ? 'text-white px-4 py-2 rounded-sm text-center w-full' : 'bg-gray-200 text-gray-800 px-4 py-2 rounded-sm text-center w-full')}
+                >
+                  <div>
+                    <i className="ri-home-2-fill mr-1"></i>
+                    <span className='hidden md:inline'>Home</span>
+                  </div>
+                </NavLink>
                 <hr />
                 <NavLink
                   ref={(ref) => { navLinkRef.current.push(ref) }}
@@ -191,16 +204,7 @@ const UserProfilePage = () => {
                     <span className='hidden md:inline'>Team</span>
                   </div>
                 </NavLink>
-                <hr />
-                <hr />
-                <NavLink
-                  ref={(ref) => { navLinkRef.current.push(ref) }}
-                  to="/User/request"
-                  className={({ isActive }) => (!isActive ? 'text-white px-4 py-2 rounded-sm text-center w-full' : 'bg-gray-200 text-gray-800 px-4 py-2 rounded-sm text-center w-full')}
-                >
-                  Requests
-                </NavLink>
-                <hr />
+                <hr />  
               </div>
               </div>
            </div>
