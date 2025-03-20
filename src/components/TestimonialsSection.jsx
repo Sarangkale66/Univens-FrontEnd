@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import Bgeffect from './Bgeffectimg';
 import { MdStar, MdStarOutline } from "react-icons/md";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";

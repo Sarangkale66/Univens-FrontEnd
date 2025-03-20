@@ -50,4 +50,8 @@ export default function Dashboard() {
       </Card>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 69dcf8f96ba028cdb59e44160e0f762020ce088c

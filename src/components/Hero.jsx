@@ -1,3 +1,4 @@
+import Bgeffect from './Bgeffectimg';
 const Hero = () => {
   return (
     <div

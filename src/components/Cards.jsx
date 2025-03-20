@@ -1,5 +1,7 @@
 import { Assignment, Handshake, Star } from '@mui/icons-material';
 
+import Bgeffect from './Bgeffectimg';
+
 const Cards = () => {
   return (
     <div

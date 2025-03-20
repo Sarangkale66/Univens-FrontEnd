@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Star, Bolt } from '@mui/icons-material';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Bgeffect from './Bgeffectimg';
 
 
 gsap.registerPlugin(ScrollTrigger);
