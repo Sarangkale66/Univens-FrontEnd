@@ -1,8 +1,4 @@
 import React, { useEffect, Suspense, lazy } from 'react';
-// import { useQuery } from '@tanstack/react-query';
-// import axios from 'axios';
-// import Cookies from 'js-cookie';
-// import { toast } from 'react-toastify';
 import Lenis from '@studio-freight/lenis';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
